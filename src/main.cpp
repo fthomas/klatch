@@ -30,6 +30,8 @@ int main(int argc, char* argv[]) {
   about.setHomepage(KlatchData::homepage());
   about.setLicense(KAboutData::License_GPL_V3);
   about.setShortDescription(KlatchData::shortDescription());
+  about.addAuthor(ki18n("Frank S. Thomas"), ki18n("Author"),
+    "frank@timepit.eu");
 
   KCmdLineOptions options;
   options.add("+[word]", ki18n("Word to lookup in dictionaries"));
@@ -38,8 +40,8 @@ int main(int argc, char* argv[]) {
 
   KApplication app;
 
-  MainWindow window;
-  window.show();
+  auto window = new MainWindow;
+  window->show();
 
   return app.exec();
 }
