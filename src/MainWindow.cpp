@@ -16,13 +16,12 @@
 
 #include "MainWindow.h"
 #include <QWidget>
-#include "ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent), ui_(new Ui::MainWindow) {
   ui_->setupUi(this);
 }
 
-MainWindow::~MainWindow() {
-  delete ui_;
+MainWindow::MainWindow(QWidget* parent) : KXmlGuiWindow(parent) {
+  setupGUI();
 }
