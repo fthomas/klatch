@@ -17,6 +17,8 @@
 #include <KAboutData>
 #include <KApplication>
 #include <KCmdLineArgs>
+#include <KCmdLineOptions>
+#include <KLocale>
 #include "KlatchData.h"
 #include "MainWindow.h"
 
@@ -29,7 +31,11 @@ int main(int argc, char* argv[]) {
   about.setLicense(KAboutData::License_GPL_V3);
   about.setShortDescription(KlatchData::shortDescription());
 
+  KCmdLineOptions options;
+  options.add("+[word]", ki18n("Word to lookup in dictionaries"));
   KCmdLineArgs::init(argc, argv, &about);
+  KCmdLineArgs::addCmdLineOptions(options);
+
   KApplication app;
 
   MainWindow window;
