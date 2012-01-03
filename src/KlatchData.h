@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 #define KLATCHDATA_H
 
 #include <QByteArray>
+#include <KAboutData>
 #include <KLocalizedString>
 
 struct KlatchData {
@@ -26,6 +27,7 @@ struct KlatchData {
   static QByteArray version();
   static QByteArray homepage();
   static KLocalizedString shortDescription();
+  static KAboutData aboutData();
 };
 
 #endif // KLATCHDATA_H

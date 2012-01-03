@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,8 +33,11 @@ int main(int argc, char* argv[]) {
   about.addAuthor(ki18n("Frank S. Thomas"), ki18n("Author"),
     "frank@timepit.eu");
 
+int main(int argc, char* argv[]) {
+  KAboutData about = KlatchData::aboutData();
   KCmdLineOptions options;
   options.add("+[word]", ki18n("Word to lookup in dictionaries"));
+
   KCmdLineArgs::init(argc, argv, &about);
   KCmdLineArgs::addCmdLineOptions(options);
 

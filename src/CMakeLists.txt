@@ -2,6 +2,7 @@ configure_file(KlatchData.cpp.in KlatchData.cpp)
 
 set(klatch_SRCS
     KlatchData.cpp.in
+    KlatchData.h
     MainWindow.cpp
     main.cpp
     ${CMAKE_CURRENT_BINARY_DIR}/KlatchData.cpp)
