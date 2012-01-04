@@ -24,6 +24,7 @@
 struct KlatchData {
   static QByteArray appName();
   static KLocalizedString displayName();
+  static QByteArray displayNameSlashVersion();
   static QByteArray version();
   static QByteArray homepage();
   static KLocalizedString shortDescription();

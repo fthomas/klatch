@@ -1,6 +1,7 @@
 configure_file(KlatchData.cpp.in KlatchData.cpp)
 
 set(klatch_SRCS
+    DictClient.cpp
     KlatchData.cpp.in
     KlatchData.h
     MainWindow.cpp
@@ -13,7 +14,8 @@ set(klatch_INCLUDE_DIRS
     ${CMAKE_CURRENT_BINARY_DIR})
 
 set(klatch_LIBRARIES
-    ${KDE4_KDEUI_LIBS})
+    ${KDE4_KDEUI_LIBS}
+    ${QT_QTNETWORK_LIBRARY})
 
 include_directories(${klatch_INCLUDE_DIRS})
 kde4_add_executable(klatch ${klatch_SRCS})

@@ -22,16 +22,7 @@
 #include "KlatchData.h"
 #include "MainWindow.h"
 
-int main(int argc, char* argv[]) {
-  KAboutData about(
-    KlatchData::appName(), 0,
-    KlatchData::displayName(),
-    KlatchData::version());
-  about.setHomepage(KlatchData::homepage());
-  about.setLicense(KAboutData::License_GPL_V3);
-  about.setShortDescription(KlatchData::shortDescription());
-  about.addAuthor(ki18n("Frank S. Thomas"), ki18n("Author"),
-    "frank@timepit.eu");
+#include "DictClient.h"
 
 int main(int argc, char* argv[]) {
   KAboutData about = KlatchData::aboutData();
@@ -45,6 +36,8 @@ int main(int argc, char* argv[]) {
 
   auto window = new MainWindow;
   window->show();
+
+  auto c = new DictClient;
 
   return app.exec();
 }

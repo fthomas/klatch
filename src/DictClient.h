@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,26 +14,52 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef DICTCLIENT_H
+#define DICTCLIENT_H
 
 #include <QObject>
-#include <QString>
+#include <QTcpSocket>
+#include <QTextStream>
 #include <QtGlobal>
-#include <KXmlGuiWindow>
 
 QT_BEGIN_NAMESPACE
-class QWidget;
+class QString;
 QT_END_NAMESPACE
 
-class MainWindow : public KXmlGuiWindow {
+class DictClient : public QObject {
   Q_OBJECT
 
  public:
-  explicit MainWindow(QWidget* parent = 0);
+  explicit DictClient(QObject* parent = 0);
+
+ public:
+  static const quint16 kDefaultPort = 2628;
+
+ signals:
+
+ public slots:
 
  private:
-  static QString getInitialWord();
+  void createConnections();
+
+  void sendClient();
+  void sendHelp();
+  void sendOptionMime();
+  void sendQuit();
+  void sendShowDatabases();
+  void sendShowInfo(const QString& database);
+  void sendShowServer();
+  void sendShowStrategies();
+  void sendStatus();
+
+ private slots:
+  void readData();
+  void handleError(QAbstractSocket::SocketError error);
+
+ private:
+  QTcpSocket socket_;
+  QTextStream stream_;
+  static const int kMaxLineLength = 6144 - 1;
 };
 
-#endif // MAINWINDOW_H
+#endif // DICTCLIENT_H

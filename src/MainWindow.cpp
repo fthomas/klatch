@@ -15,13 +15,21 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "MainWindow.h"
+#include <QClipboard>
+#include <QString>
 #include <QWidget>
-
-MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent), ui_(new Ui::MainWindow) {
-  ui_->setupUi(this);
-}
+#include <KApplication>
+#include <KCmdLineArgs>
 
 MainWindow::MainWindow(QWidget* parent) : KXmlGuiWindow(parent) {
   setupGUI();
+}
+
+QString MainWindow::getInitialWord() {
+  auto args = KCmdLineArgs::parsedArgs();
+  if (args->count()) {
+    return args->arg(0);
+  } else {
+    return KApplication::clipboard()->text(QClipboard::Selection);
+  }
 }

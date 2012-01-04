@@ -28,6 +28,10 @@ KLocalizedString KlatchData::displayName() {
   return ki18n("@CMAKE_PROJECT_NAME@");
 }
 
+QByteArray KlatchData::displayNameSlashVersion() {
+  return "@CMAKE_PROJECT_NAME@/@klatch_VERSION@";
+}
+
 QByteArray KlatchData::version() {
   return "@klatch_VERSION@";
 }
