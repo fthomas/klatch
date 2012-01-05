@@ -20,9 +20,8 @@
 #include <QString>
 #include <QTcpSocket>
 #include <QTextStream>
-#include "KlatchData.h"
-
 #include <QtDebug>
+#include "KlatchData.h"
 
 DictClient::DictClient(QObject* parent) : QObject(parent) {
   stream_.setDevice(&socket_);
@@ -32,7 +31,7 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
 
 
 
-  socket_.connectToHost("localhost", kDefaultPort);
+  connectToHost("localhost");
   sendShowDatabases();
   sendShowServer();
   sendShowInfo("fd-deu-eng");
@@ -41,8 +40,17 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
   sendClient();
   sendHelp();
   sendOptionMime();
-
   sendQuit();
+}
+
+void DictClient::connectToHost(const QString& hostname, quint16 port) {
+  socket_.connectToHost(hostname, port);
+  sendClient();
+}
+
+void DictClient::close() {
+  sendQuit();
+  socket_.close();
 }
 
 void DictClient::createConnections() {
@@ -73,11 +81,8 @@ void DictClient::sendShowDatabases() {
 }
 
 void DictClient::sendShowInfo(const QString& database) {
-  auto cmd = QString("SHOW INFO \"%1\"").arg(database);
-  // entferne lf cr aus datbase
-  cmd.truncate(kMaxLineLength);
-
-  stream_ << cmd << endl;
+  const QString cmd = QString("SHOW INFO \"%1\"").arg(database);
+  stream_ << sanitizeCmd(cmd) << endl;
 }
 
 void DictClient::sendShowServer() {
@@ -100,5 +105,14 @@ void DictClient::readData() {
 
 }
 
-void DictClient::handleError(QAbstractSocket::SocketError) {
+void DictClient::handleError(QAbstractSocket::SocketError error) {
+  qDebug() << "QAbstractSocket::SocketError:" << error;
+  qDebug() << "QAbstractSocket::errorString():" << socket_.errorString();
+}
+
+QString DictClient::sanitizeCmd(const QString& cmd) {
+  QString retval = cmd;
+  retval.truncate(kMaxLineLength);
+  retval.remove('\r').remove('\n');
+  return retval;
 }

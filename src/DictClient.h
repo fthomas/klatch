@@ -18,19 +18,19 @@
 #define DICTCLIENT_H
 
 #include <QObject>
+#include <QString>
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtGlobal>
-
-QT_BEGIN_NAMESPACE
-class QString;
-QT_END_NAMESPACE
 
 class DictClient : public QObject {
   Q_OBJECT
 
  public:
   explicit DictClient(QObject* parent = 0);
+
+  void connectToHost(const QString& hostname, quint16 port = kDefaultPort);
+  void close();
 
  public:
   static const quint16 kDefaultPort = 2628;
@@ -51,6 +51,8 @@ class DictClient : public QObject {
   void sendShowServer();
   void sendShowStrategies();
   void sendStatus();
+
+  static QString sanitizeCmd(const QString& cmd);
 
  private slots:
   void readData();
