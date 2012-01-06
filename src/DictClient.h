@@ -23,6 +23,9 @@
 #include <QTextStream>
 #include <QtGlobal>
 
+/**
+ * https://tools.ietf.org/html/rfc2229
+ */
 class DictClient : public QObject {
   Q_OBJECT
 
@@ -52,6 +55,7 @@ class DictClient : public QObject {
   void sendShowStrategies();
   void sendStatus();
 
+  static QTextStream& crlf(QTextStream& stream);
   static QString sanitizeCmd(const QString& cmd);
 
  private slots:
@@ -61,7 +65,7 @@ class DictClient : public QObject {
  private:
   QTcpSocket socket_;
   QTextStream stream_;
-  static const int kMaxLineLength = 1024 - 1;
+  static const int kMaxLineLength = 1024 - 2;
 };
 
 #endif // DICTCLIENT_H

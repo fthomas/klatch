@@ -61,40 +61,40 @@ void DictClient::createConnections() {
 }
 
 void DictClient::sendClient() {
-  stream_ << "CLIENT " << KlatchData::displayNameSlashVersion() << endl;
+  stream_ << "CLIENT " << KlatchData::displayNameSlashVersion() << crlf;
 }
 
 void DictClient::sendHelp() {
-  stream_ << "HELP" << endl;
+  stream_ << "HELP" << crlf;
 }
 
 void DictClient::sendOptionMime() {
-  stream_ << "OPTION MIME" << endl;
+  stream_ << "OPTION MIME" << crlf;
 }
 
 void DictClient::sendQuit() {
-  stream_ << "QUIT" << endl;
+  stream_ << "QUIT" << crlf;
 }
 
 void DictClient::sendShowDatabases() {
-  stream_ << "SHOW DB" << endl;
+  stream_ << "SHOW DB" << crlf;
 }
 
 void DictClient::sendShowInfo(const QString& database) {
   const QString cmd = QString("SHOW INFO \"%1\"").arg(database);
-  stream_ << sanitizeCmd(cmd) << endl;
+  stream_ << sanitizeCmd(cmd) << crlf;
 }
 
 void DictClient::sendShowServer() {
-  stream_ << "SHOW SERVER" << endl;
+  stream_ << "SHOW SERVER" << crlf;
 }
 
 void DictClient::sendShowStrategies() {
-  stream_ << "SHOW STRAT" << endl;
+  stream_ << "SHOW STRAT" << crlf;
 }
 
 void DictClient::sendStatus() {
-  stream_ << "STATUS" << endl;
+  stream_ << "STATUS" << crlf;
 }
 
 void DictClient::readData() {
@@ -108,6 +108,10 @@ void DictClient::readData() {
 void DictClient::handleError(QAbstractSocket::SocketError error) {
   qDebug() << "QAbstractSocket::SocketError:" << error;
   qDebug() << "QAbstractSocket::errorString():" << socket_.errorString();
+}
+
+QTextStream& DictClient::crlf(QTextStream& stream) {
+  return stream << "\r\n" << flush;
 }
 
 QString DictClient::sanitizeCmd(const QString& cmd) {
