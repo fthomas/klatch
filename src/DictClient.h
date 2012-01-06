@@ -61,7 +61,7 @@ class DictClient : public QObject {
  private:
   QTcpSocket socket_;
   QTextStream stream_;
-  static const int kMaxLineLength = 6144 - 1;
+  static const int kMaxLineLength = 1024 - 1;
 };
 
 #endif // DICTCLIENT_H
