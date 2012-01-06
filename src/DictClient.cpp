@@ -22,6 +22,7 @@
 #include <QTextStream>
 #include <QtDebug>
 #include "KlatchData.h"
+#include "codes.h"
 
 DictClient::DictClient(QObject* parent) : QObject(parent) {
   stream_.setDevice(&socket_);
@@ -41,7 +42,7 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
   sendHelp();
   sendOptionMime();
   sendDefine("hallo");
-  sendMatch("hal", "prefix");
+  sendMatch("halte", "prefix");
   sendQuit();
 }
 
@@ -112,11 +113,40 @@ void DictClient::sendStatus() {
 }
 
 void DictClient::readData() {
+  if (!socket_.canReadLine()) return;
 
-  while (!socket_.atEnd()) {
-    qDebug() << socket_.readLine().trimmed();
+  static bool awaiting_text = false;
+  static QString text_buffer;
+
+  while (socket_.canReadLine()) {
+    const QString line = socket_.readLine();
+
+    if (!awaiting_text) {
+      const bool ok = readStatusLine(line);
+      if (!ok) {
+        qWarning() << "Failed to read status response:" << line.trimmed();
+      }
+      // set awaiting text depending on last_status_code_
+    } else {
+      text_buffer.append(line);
+    }
+
+    qDebug() << line;
   }
+}
 
+bool DictClient::readStatusLine(const QString& line) {
+  const int code_length = 3;
+  bool retval = false;
+
+  if (line.length() < code_length) {
+    last_status_code_ = 0;
+    last_status_line_ = line.trimmed();
+  } else {
+    last_status_code_ = line.left(code_length).toInt(&retval);
+    last_status_line_ = line.mid(code_length).trimmed();
+  }
+  return retval;
 }
 
 void DictClient::handleError(QAbstractSocket::SocketError error) {

@@ -44,6 +44,7 @@ class DictClient : public QObject {
 
  private:
   void createConnections();
+  bool readStatusLine(const QString& line);
 
   void sendClient();
   void sendDefine(const QString& word, const QString& database = "*");
@@ -68,6 +69,10 @@ class DictClient : public QObject {
  private:
   QTcpSocket socket_;
   QTextStream stream_;
+
+  int last_status_code_;
+  QString last_status_line_;
+
   static const int kMaxLineLength = 1024 - 2;
 };
 
