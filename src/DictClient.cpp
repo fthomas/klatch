@@ -40,6 +40,8 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
   sendClient();
   sendHelp();
   sendOptionMime();
+  sendDefine("hallo");
+  sendMatch("hal", "prefix");
   sendQuit();
 }
 
@@ -64,8 +66,20 @@ void DictClient::sendClient() {
   stream_ << "CLIENT " << KlatchData::displayNameSlashVersion() << crlf;
 }
 
+void DictClient::sendDefine(const QString& word, const QString& database) {
+  const QString cmd = QString("DEFINE \"%1\" \"%2\"").arg(database, word);
+  stream_ << sanitizeCmd(cmd) << crlf;
+}
+
 void DictClient::sendHelp() {
   stream_ << "HELP" << crlf;
+}
+
+void DictClient::sendMatch(const QString& word, const QString& strategy,
+                           const QString& database) {
+  const QString cmd =
+    QString("MATCH \"%1\" \"%2\" \"%3\"").arg(database, strategy, word);
+  stream_ << sanitizeCmd(cmd) << crlf;
 }
 
 void DictClient::sendOptionMime() {

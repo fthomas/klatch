@@ -46,7 +46,10 @@ class DictClient : public QObject {
   void createConnections();
 
   void sendClient();
+  void sendDefine(const QString& word, const QString& database = "*");
   void sendHelp();
+  void sendMatch(const QString& word, const QString& strategy = "exact",
+                 const QString& database = "*");
   void sendOptionMime();
   void sendQuit();
   void sendShowDatabases();
