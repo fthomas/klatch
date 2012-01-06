@@ -1,0 +1,9 @@
+Files: *
+Copyright: © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+License: GPL-3+
+
+Files: src/codes.h
+Copyright: 1997, 2000 Rickard E. Faith (faith@dict.org)
+           2002-2008 Aleksey Cheusov (vle@gmx.net)
+License: GPL-2+
+ This file has been taken from the dictd-1.12.0 distribution.
