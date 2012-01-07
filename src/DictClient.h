@@ -43,9 +43,6 @@ class DictClient : public QObject {
  public slots:
 
  private:
-  void createConnections();
-  bool readStatusLine(const QString& line);
-
   void sendClient();
   void sendDefine(const QString& word, const QString& database = "*");
   void sendHelp();
@@ -59,8 +56,15 @@ class DictClient : public QObject {
   void sendShowStrategies();
   void sendStatus();
 
+  void createConnections();
+  bool readStatusLine(const QString& line);
+
+  void parseStatusResponse(int code, const QString& line);
+  void parseTextResponse(const QString& text);
+
   static QTextStream& crlf(QTextStream& stream);
   static QString sanitizeCmd(const QString& cmd);
+  static bool awaitingText(int status_code);
 
  private slots:
   void readData();

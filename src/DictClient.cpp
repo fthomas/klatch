@@ -41,8 +41,8 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
   sendClient();
   sendHelp();
   sendOptionMime();
-  sendDefine("hallo");
-  sendMatch("halte", "prefix");
+  sendDefine("Sud");
+  //sendMatch("halte", "prefix");
   sendQuit();
 }
 
@@ -119,19 +119,24 @@ void DictClient::readData() {
   static QString text_buffer;
 
   while (socket_.canReadLine()) {
-    const QString line = socket_.readLine();
+    QString line = socket_.readLine();
 
     if (!awaiting_text) {
-      const bool ok = readStatusLine(line);
-      if (!ok) {
+      if (!readStatusLine(line)) {
         qWarning() << "Failed to read status response:" << line.trimmed();
       }
-      // set awaiting text depending on last_status_code_
+      parseStatusResponse(last_status_code_, last_status_line_);
+      awaiting_text = awaitingText(last_status_code_);
     } else {
-      text_buffer.append(line);
+      if (line == ".\r\n") {
+        parseTextResponse(text_buffer);
+        text_buffer.clear();
+        awaiting_text = false;
+      } else {
+        if (line.startsWith("..")) line.remove(0, 1);
+        text_buffer.append(line);
+      }
     }
-
-    qDebug() << line;
   }
 }
 
@@ -149,6 +154,14 @@ bool DictClient::readStatusLine(const QString& line) {
   return retval;
 }
 
+void DictClient::parseStatusResponse(int code, const QString& line) {
+  qDebug() << code << line;
+}
+
+void DictClient::parseTextResponse(const QString& text) {
+  qDebug() << text;
+}
+
 void DictClient::handleError(QAbstractSocket::SocketError error) {
   qDebug() << "QAbstractSocket::SocketError:" << error;
   qDebug() << "QAbstractSocket::errorString():" << socket_.errorString();
@@ -163,4 +176,19 @@ QString DictClient::sanitizeCmd(const QString& cmd) {
   retval.truncate(kMaxLineLength);
   retval.remove('\r').remove('\n');
   return retval;
+}
+
+bool DictClient::awaitingText(int status_code) {
+  switch (status_code) {
+    case CODE_DATABASE_LIST:
+    case CODE_STRATEGY_LIST:
+    case CODE_DATABASE_INFO:
+    case CODE_HELP:
+    case CODE_SERVER_INFO:
+    case CODE_DEFINITION_FOLLOWS:
+    case CODE_MATCHES_FOUND:
+      return true;
+    default:
+      return false;
+  }
 }
