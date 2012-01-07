@@ -21,6 +21,8 @@
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtDebug>
+#include "utility/stream.h"
+#include "utility/string.h"
 #include "KlatchData.h"
 #include "codes.h"
 
@@ -44,6 +46,7 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
   sendDefine("Sud");
   //sendMatch("halte", "prefix");
   sendQuit();
+
 }
 
 void DictClient::connectToHost(const QString& hostname, quint16 port) {
@@ -165,10 +168,6 @@ void DictClient::parseTextResponse(const QString& text) {
 void DictClient::handleError(QAbstractSocket::SocketError error) {
   qDebug() << "QAbstractSocket::SocketError:" << error;
   qDebug() << "QAbstractSocket::errorString():" << socket_.errorString();
-}
-
-QTextStream& DictClient::crlf(QTextStream& stream) {
-  return stream << "\r\n" << flush;
 }
 
 QString DictClient::sanitizeCmd(const QString& cmd) {

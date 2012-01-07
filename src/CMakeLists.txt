@@ -1,6 +1,8 @@
 configure_file(KlatchData.cpp.in KlatchData.cpp)
 
 set(klatch_SRCS
+    utility/stream.cpp
+    utility/string.cpp
     DictClient.cpp
     KlatchData.cpp.in
     MainWindow.cpp
@@ -8,6 +10,8 @@ set(klatch_SRCS
     ${CMAKE_CURRENT_BINARY_DIR}/KlatchData.cpp)
 
 set(klatch_HEADERS
+    utility/stream.h
+    utility/string.h
     DictClient.h
     KlatchData.h
     MainWindow.h

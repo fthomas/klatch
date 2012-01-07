@@ -62,7 +62,6 @@ class DictClient : public QObject {
   void parseStatusResponse(int code, const QString& line);
   void parseTextResponse(const QString& text);
 
-  static QTextStream& crlf(QTextStream& stream);
   static QString sanitizeCmd(const QString& cmd);
   static bool awaitingText(int status_code);
 
