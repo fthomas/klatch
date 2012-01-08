@@ -1,21 +1,23 @@
 configure_file(KlatchData.cpp.in KlatchData.cpp)
 
 set(klatch_SRCS
+    dict/Definition.cpp
+    dict/DictClient.cpp
     utility/stream.cpp
     utility/string.cpp
-    DictClient.cpp
     KlatchData.cpp.in
     MainWindow.cpp
     main.cpp
     ${CMAKE_CURRENT_BINARY_DIR}/KlatchData.cpp)
 
 set(klatch_HEADERS
+    dict/Definition.h
+    dict/DictClient.h
+    dict/codes.h
     utility/stream.h
     utility/string.h
-    DictClient.h
     KlatchData.h
-    MainWindow.h
-    codes.h)
+    MainWindow.h)
 
 set(klatch_INCLUDE_DIRS
     ${KDE4_INCLUDES}

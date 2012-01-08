@@ -17,7 +17,10 @@
 #ifndef UTILITY_STRING_H
 #define UTILITY_STRING_H
 
+#include <QChar>
 #include <QString>
+
+QString cut_section(QString& str, QChar sep);
 
 QString remove_quotes(const QString& str);
 

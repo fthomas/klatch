@@ -22,7 +22,7 @@
 #include "KlatchData.h"
 #include "MainWindow.h"
 
-#include "DictClient.h"
+#include "dict/DictClient.h"
 
 int main(int argc, char* argv[]) {
   KAboutData about = KlatchData::aboutData();

@@ -14,30 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "utility/string.h"
-#include <QChar>
+#ifndef DICT_DEFINITION_H
+#define DICT_DEFINITION_H
+
 #include <QString>
 
-QString cut_section(QString& str, QChar sep) {
-  while (str.startsWith(sep)) str.remove(0, 1);
+class Definition {
+ public:
+  Definition(const QString& status, const QString& text);
 
-  const int section_length = str.indexOf(sep);
-  const QString section = str.left(section_length);
+  QString word() const;
+  QString database() const;
+  QString databaseDescription() const;
+  QString text() const;
 
-  if (!section.isEmpty()) str.remove(0, section_length);
-  return section;
-}
+ private:
+  void parseStatusLine(QString line);
 
-QString remove_quotes(const QString& str) {
-  static const auto remove_enclosing = [](QChar c, QString& s) {
-    if (s.startsWith(c) && s.endsWith(c)) {
-      s.remove(0, 1);
-      s.chop(1);
-    }
-  };
+ private:
+  QString word_;
+  QString database_;
+  QString db_description_;
+  QString text_;
+};
 
-  QString retval = str;
-  remove_enclosing('"', retval);
-  remove_enclosing('\'', retval);
-  return retval;
-}
+#endif // DICT_DEFINITION_H

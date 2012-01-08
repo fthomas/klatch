@@ -14,30 +14,33 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "utility/string.h"
-#include <QChar>
+#include "dict/Definition.h"
 #include <QString>
+#include "utility/string.h"
 
-QString cut_section(QString& str, QChar sep) {
-  while (str.startsWith(sep)) str.remove(0, 1);
-
-  const int section_length = str.indexOf(sep);
-  const QString section = str.left(section_length);
-
-  if (!section.isEmpty()) str.remove(0, section_length);
-  return section;
+Definition::Definition(const QString& status, const QString& text) {
+  parseStatusLine(status);
+  text_ = text;
 }
 
-QString remove_quotes(const QString& str) {
-  static const auto remove_enclosing = [](QChar c, QString& s) {
-    if (s.startsWith(c) && s.endsWith(c)) {
-      s.remove(0, 1);
-      s.chop(1);
-    }
-  };
+QString Definition::word() const {
+  return word_;
+}
 
-  QString retval = str;
-  remove_enclosing('"', retval);
-  remove_enclosing('\'', retval);
-  return retval;
+QString Definition::database() const {
+  return database_;
+}
+
+QString Definition::databaseDescription() const {
+  return db_description_;
+}
+
+QString Definition::text() const {
+  return text_;
+}
+
+void Definition::parseStatusLine(QString line) {
+  word_ = remove_quotes(cut_section(line, ' '));
+  database_ = remove_quotes(cut_section(line, ' '));
+  db_description_ = remove_quotes(line.trimmed());
 }

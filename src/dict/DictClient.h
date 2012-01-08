@@ -14,14 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef DICTCLIENT_H
-#define DICTCLIENT_H
+#ifndef DICT_DICTCLIENT_H
+#define DICT_DICTCLIENT_H
 
 #include <QObject>
 #include <QString>
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtGlobal>
+
+class Definition;
 
 /**
  * https://tools.ietf.org/html/rfc2229
@@ -39,6 +41,7 @@ class DictClient : public QObject {
   static const quint16 kDefaultPort = 2628;
 
  signals:
+  void definitionReceived(const Definition& def);
 
  public slots:
 
@@ -79,4 +82,4 @@ class DictClient : public QObject {
   static const int kMaxLineLength = 1024 - 2;
 };
 
-#endif // DICTCLIENT_H
+#endif // DICT_DICTCLIENT_H

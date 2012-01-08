@@ -14,17 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "DictClient.h"
+#include "dict/DictClient.h"
 #include <QAbstractSocket>
 #include <QObject>
 #include <QString>
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtDebug>
+#include "dict/Definition.h"
+#include "dict/codes.h"
 #include "utility/stream.h"
-#include "utility/string.h"
 #include "KlatchData.h"
-#include "codes.h"
 
 DictClient::DictClient(QObject* parent) : QObject(parent) {
   stream_.setDevice(&socket_);
@@ -35,17 +35,17 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
 
 
   connectToHost("localhost");
-  sendShowDatabases();
-  sendShowServer();
-  sendShowInfo("fd-deu-eng");
-  sendShowStrategies();
-  sendStatus();
-  sendClient();
-  sendHelp();
-  sendOptionMime();
-  sendDefine("Sud");
+  //sendShowDatabases();
+  //sendShowServer();
+  //sendShowInfo("fd-deu-eng");
+  //sendShowStrategies();
+  //sendStatus();
+  //sendClient();
+  //sendHelp();
+  //sendOptionMime();
+  sendDefine("south");
   //sendMatch("halte", "prefix");
-  sendQuit();
+  //sendQuit();
 
 }
 
@@ -133,8 +133,9 @@ void DictClient::readData() {
     } else {
       if (line == ".\r\n") {
         parseTextResponse(text_buffer);
-        text_buffer.clear();
+
         awaiting_text = false;
+        text_buffer.clear();
       } else {
         if (line.startsWith("..")) line.remove(0, 1);
         text_buffer.append(line);
@@ -158,11 +159,14 @@ bool DictClient::readStatusLine(const QString& line) {
 }
 
 void DictClient::parseStatusResponse(int code, const QString& line) {
-  qDebug() << code << line;
 }
 
 void DictClient::parseTextResponse(const QString& text) {
-  qDebug() << text;
+  switch (last_status_code_) {
+    case CODE_DEFINITION_FOLLOWS:
+      emit definitionReceived(Definition(last_status_line_, text));
+      break;
+  }
 }
 
 void DictClient::handleError(QAbstractSocket::SocketError error) {
