@@ -30,18 +30,23 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
   stream_.setDevice(&socket_);
   stream_.setCodec("UTF-8");
 
-  createConnections();
+  connect(&socket_, SIGNAL(readyRead()),
+    this, SLOT(readData()));
+  connect(&socket_, SIGNAL(error(QAbstractSocket::SocketError)),
+    this, SLOT(handleError(QAbstractSocket::SocketError)));
 
 
 
-  connectToHost("localhost");
-  //sendShowDatabases();
-  //sendShowServer();
+  hostname_ = "localhost";
+  port_ = kDefaultPort;
+
+  sendShowDatabases();
+  sendShowServer();
   //sendShowInfo("fd-deu-eng");
   //sendShowStrategies();
   //sendStatus();
   //sendClient();
-  //sendHelp();
+  sendHelp();
   //sendOptionMime();
   sendDefine("south");
   //sendMatch("halte", "prefix");
@@ -49,21 +54,26 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
 
 }
 
-void DictClient::connectToHost(const QString& hostname, quint16 port) {
-  socket_.connectToHost(hostname, port);
-  sendClient();
+QString DictClient::peerName() const {
+  return hostname_;
 }
 
-void DictClient::close() {
-  sendQuit();
-  socket_.close();
+void DictClient::setPeerName(const QString& name) {
+  if (hostname_ != name) {
+    hostname_ = name;
+    socket_.disconnectFromHost();
+  }
 }
 
-void DictClient::createConnections() {
-  connect(&socket_, SIGNAL(readyRead()),
-    this, SLOT(readData()));
-  connect(&socket_, SIGNAL(error(QAbstractSocket::SocketError)),
-    this, SLOT(handleError(QAbstractSocket::SocketError)));
+quint16 DictClient::peerPort() const {
+  return port_;
+}
+
+void DictClient::setPeerPort(quint16 port) {
+  if (port_ != port) {
+    port_ = port;
+    socket_.disconnectFromHost();
+  }
 }
 
 void DictClient::sendClient() {
@@ -72,22 +82,22 @@ void DictClient::sendClient() {
 
 void DictClient::sendDefine(const QString& word, const QString& database) {
   const QString cmd = QString("DEFINE \"%1\" \"%2\"").arg(database, word);
-  stream_ << sanitizeCmd(cmd) << crlf;
+  sendRawCommand(sanitizeCmd(cmd));
 }
 
 void DictClient::sendHelp() {
-  stream_ << "HELP" << crlf;
+  sendRawCommand("HELP");
 }
 
 void DictClient::sendMatch(const QString& word, const QString& strategy,
                            const QString& database) {
   const QString cmd =
     QString("MATCH \"%1\" \"%2\" \"%3\"").arg(database, strategy, word);
-  stream_ << sanitizeCmd(cmd) << crlf;
+  sendRawCommand(sanitizeCmd(cmd));
 }
 
 void DictClient::sendOptionMime() {
-  stream_ << "OPTION MIME" << crlf;
+  sendRawCommand("OPTION MIME");
 }
 
 void DictClient::sendQuit() {
@@ -95,29 +105,42 @@ void DictClient::sendQuit() {
 }
 
 void DictClient::sendShowDatabases() {
-  stream_ << "SHOW DB" << crlf;
+  sendRawCommand("SHOW DB");
 }
 
 void DictClient::sendShowInfo(const QString& database) {
   const QString cmd = QString("SHOW INFO \"%1\"").arg(database);
-  stream_ << sanitizeCmd(cmd) << crlf;
+  sendRawCommand(sanitizeCmd(cmd));
 }
 
 void DictClient::sendShowServer() {
-  stream_ << "SHOW SERVER" << crlf;
+  sendRawCommand("SHOW SERVER");
 }
 
 void DictClient::sendShowStrategies() {
-  stream_ << "SHOW STRAT" << crlf;
+  sendRawCommand("SHOW STRAT");
 }
 
 void DictClient::sendStatus() {
-  stream_ << "STATUS" << crlf;
+  sendRawCommand("STATUS");
+}
+
+void DictClient::connectIfdisconnected() {
+  const QAbstractSocket::SocketState state = socket_.state();
+
+  if (state == QAbstractSocket::UnconnectedState ||
+      state == QAbstractSocket::ClosingState) {
+    socket_.connectToHost(peerName(), peerPort());
+    sendClient();
+  }
+}
+
+void DictClient::sendRawCommand(const QString& command) {
+  connectIfdisconnected();
+  stream_ << command << crlf;
 }
 
 void DictClient::readData() {
-  if (!socket_.canReadLine()) return;
-
   static bool awaiting_text = false;
   static QString text_buffer;
 
@@ -129,6 +152,7 @@ void DictClient::readData() {
         qWarning() << "Failed to read status response:" << line.trimmed();
       }
       parseStatusResponse(last_status_code_, last_status_line_);
+
       awaiting_text = awaitingText(last_status_code_);
     } else {
       if (line == ".\r\n") {
@@ -159,6 +183,7 @@ bool DictClient::readStatusLine(const QString& line) {
 }
 
 void DictClient::parseStatusResponse(int code, const QString& line) {
+  qDebug() << code << line;
 }
 
 void DictClient::parseTextResponse(const QString& text) {

@@ -32,20 +32,21 @@ class DictClient : public QObject {
   Q_OBJECT
 
  public:
+  //explicit DictClient(const QString& hostname = "localhost",
+  //                    quint16 port = kDefaultPort, QObject* parent = 0);
+
   explicit DictClient(QObject* parent = 0);
 
-  void connectToHost(const QString& hostname, quint16 port = kDefaultPort);
-  void close();
+  QString peerName() const;
+  void setPeerName(const QString& name);
 
- public:
-  static const quint16 kDefaultPort = 2628;
+  quint16 peerPort() const;
+  void setPeerPort(quint16 port);
 
  signals:
   void definitionReceived(const Definition& def);
 
  public slots:
-
- private:
   void sendClient();
   void sendDefine(const QString& word, const QString& database = "*");
   void sendHelp();
@@ -59,9 +60,14 @@ class DictClient : public QObject {
   void sendShowStrategies();
   void sendStatus();
 
-  void createConnections();
-  bool readStatusLine(const QString& line);
+ public:
+  static const quint16 kDefaultPort = 2628;
 
+ private:
+  void connectIfdisconnected();
+  void sendRawCommand(const QString& command);
+
+  bool readStatusLine(const QString& line);
   void parseStatusResponse(int code, const QString& line);
   void parseTextResponse(const QString& text);
 
@@ -73,6 +79,9 @@ class DictClient : public QObject {
   void handleError(QAbstractSocket::SocketError error);
 
  private:
+  QString hostname_;
+  quint16 port_;
+
   QTcpSocket socket_;
   QTextStream stream_;
 
