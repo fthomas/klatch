@@ -125,7 +125,7 @@ void DictClient::sendStatus() {
   sendRawCommand("STATUS");
 }
 
-void DictClient::connectIfdisconnected() {
+void DictClient::connectIfDisconnected() {
   const QAbstractSocket::SocketState state = socket_.state();
 
   if (state == QAbstractSocket::UnconnectedState ||
@@ -136,7 +136,7 @@ void DictClient::connectIfdisconnected() {
 }
 
 void DictClient::sendRawCommand(const QString& command) {
-  connectIfdisconnected();
+  connectIfDisconnected();
   stream_ << command << crlf;
 }
 

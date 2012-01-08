@@ -64,7 +64,7 @@ class DictClient : public QObject {
   static const quint16 kDefaultPort = 2628;
 
  private:
-  void connectIfdisconnected();
+  void connectIfDisconnected();
   void sendRawCommand(const QString& command);
 
   bool readStatusLine(const QString& line);
