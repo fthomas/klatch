@@ -32,7 +32,12 @@ class MainWindow : public KXmlGuiWindow {
  public:
   explicit MainWindow(QWidget* parent = 0);
 
+ private slots:
+  void toggleMenuBar();
+
  private:
+  void setupActions();
+
   static QString getInitialWord();
 };
 

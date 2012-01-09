@@ -18,11 +18,29 @@
 #include <QClipboard>
 #include <QString>
 #include <QWidget>
+#include <KActionCollection>
 #include <KApplication>
 #include <KCmdLineArgs>
+#include <KMenuBar>
+#include <KStandardAction>
 
 MainWindow::MainWindow(QWidget* parent) : KXmlGuiWindow(parent) {
+  setupActions();
+}
+
+void MainWindow::setupActions() {
+  KStandardAction::showMenubar(this, SLOT(toggleMenuBar()),
+    actionCollection());
+  KStandardAction::preferences(0, 0,
+    actionCollection());
+  KStandardAction::quit(kapp, SLOT(quit()),
+    actionCollection());
+
   setupGUI();
+}
+
+void MainWindow::toggleMenuBar() {
+  menuBar()->setVisible(menuBar()->isHidden());
 }
 
 QString MainWindow::getInitialWord() {

@@ -19,6 +19,9 @@ set(klatch_HEADERS
     KlatchData.h
     MainWindow.h)
 
+set(klatch_RCS
+    klatchui.rc)
+
 set(klatch_INCLUDE_DIRS
     ${KDE4_INCLUDES}
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -29,7 +32,7 @@ set(klatch_LIBRARIES
     ${QT_QTNETWORK_LIBRARY})
 
 include_directories(${klatch_INCLUDE_DIRS})
-kde4_add_executable(klatch ${klatch_SRCS} ${klatch_HEADERS})
+kde4_add_executable(klatch ${klatch_SRCS} ${klatch_HEADERS} ${klatch_RCS})
 target_link_libraries(klatch ${klatch_LIBRARIES})
 
 install(TARGETS klatch ${INSTALL_TARGETS_DEFAULT_ARGS})
