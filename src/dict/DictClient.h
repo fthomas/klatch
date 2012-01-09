@@ -32,10 +32,9 @@ class DictClient : public QObject {
   Q_OBJECT
 
  public:
-  //explicit DictClient(const QString& hostname = "localhost",
-  //                    quint16 port = kDefaultPort, QObject* parent = 0);
-
   explicit DictClient(QObject* parent = 0);
+  explicit DictClient(const QString& hostname, QObject* parent = 0);
+  DictClient(const QString& hostname, quint16 port, QObject* parent = 0);
 
   QString peerName() const;
   void setPeerName(const QString& name);

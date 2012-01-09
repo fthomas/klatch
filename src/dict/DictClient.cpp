@@ -26,7 +26,17 @@
 #include "utility/stream.h"
 #include "KlatchData.h"
 
-DictClient::DictClient(QObject* parent) : QObject(parent) {
+DictClient::DictClient(QObject* parent)
+  : DictClient("localhost", kDefaultPort, parent) {}
+
+DictClient::DictClient(const QString &hostname, QObject *parent)
+  : DictClient(hostname, kDefaultPort, parent) {}
+
+DictClient::DictClient(const QString& hostname, quint16 port,
+                       QObject* parent) : QObject(parent) {
+  hostname_ = hostname;
+  port_ = port;
+
   stream_.setDevice(&socket_);
   stream_.setCodec("UTF-8");
 
@@ -34,24 +44,6 @@ DictClient::DictClient(QObject* parent) : QObject(parent) {
     this, SLOT(readData()));
   connect(&socket_, SIGNAL(error(QAbstractSocket::SocketError)),
     this, SLOT(handleError(QAbstractSocket::SocketError)));
-
-
-
-  hostname_ = "localhost";
-  port_ = kDefaultPort;
-
-  sendShowDatabases();
-  sendShowServer();
-  //sendShowInfo("fd-deu-eng");
-  //sendShowStrategies();
-  //sendStatus();
-  //sendClient();
-  sendHelp();
-  //sendOptionMime();
-  sendDefine("south");
-  //sendMatch("halte", "prefix");
-  //sendQuit();
-
 }
 
 QString DictClient::peerName() const {
@@ -141,6 +133,8 @@ void DictClient::sendRawCommand(const QString& command) {
 }
 
 void DictClient::readData() {
+  // if the connection is interrupted, awaiting_text and text_buffer
+  // need to be resetted.
   static bool awaiting_text = false;
   static QString text_buffer;
 
