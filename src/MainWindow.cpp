@@ -23,20 +23,23 @@
 #include <KCmdLineArgs>
 #include <KMenuBar>
 #include <KStandardAction>
+#include <KToggleAction>
 
 MainWindow::MainWindow(QWidget* parent) : KXmlGuiWindow(parent) {
   setupActions();
 }
 
 void MainWindow::setupActions() {
-  KStandardAction::showMenubar(this, SLOT(toggleMenuBar()),
-    actionCollection());
-  KStandardAction::preferences(0, 0,
-    actionCollection());
-  KStandardAction::quit(kapp, SLOT(quit()),
-    actionCollection());
+  KToggleAction* const show_menubar =
+    KStandardAction::showMenubar(this, SLOT(toggleMenuBar()),
+      actionCollection());
+
+  KStandardAction::preferences(0, 0, actionCollection());
+  KStandardAction::quit(kapp, SLOT(quit()), actionCollection());
 
   setupGUI();
+
+  show_menubar->setChecked(menuBar()->isVisibleTo(this));
 }
 
 void MainWindow::toggleMenuBar() {
