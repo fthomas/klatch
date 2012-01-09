@@ -19,7 +19,7 @@ You can download Klatch in either `tar.gz`_ or `zip`_ formats.
 .. _zip:    http://github.com/fthomas/klatch/zipball/master
 
 The version control system used for development of Klatch is Git. The
-`Git repository`_ can be inspected and browsed online at `GitHub` and
+`Git repository`_ can be inspected and browsed online at `GitHub`_ and
 it can be cloned by running::
 
   git clone git://github.com/fthomas/klatch.git
