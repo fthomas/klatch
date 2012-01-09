@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget* parent) : KXmlGuiWindow(parent) {
 }
 
 void MainWindow::setupActions() {
-  KToggleAction* const show_menubar =
+  KToggleAction* const action_show_menubar =
     KStandardAction::showMenubar(this, SLOT(toggleMenuBar()),
       actionCollection());
 
@@ -39,7 +39,7 @@ void MainWindow::setupActions() {
 
   setupGUI();
 
-  show_menubar->setChecked(menuBar()->isVisibleTo(this));
+  action_show_menubar->setChecked(menuBar()->isVisibleTo(this));
 }
 
 void MainWindow::toggleMenuBar() {
