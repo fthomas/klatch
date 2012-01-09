@@ -44,6 +44,8 @@ DictClient::DictClient(const QString& hostname, quint16 port,
     this, SLOT(readData()));
   connect(&socket_, SIGNAL(error(QAbstractSocket::SocketError)),
     this, SLOT(handleError(QAbstractSocket::SocketError)));
+  connect(&socket_, SIGNAL(disconnected()),
+    this, SLOT(resetTextBuffer()));
 }
 
 QString DictClient::peerName() const {
@@ -133,30 +135,22 @@ void DictClient::sendRawCommand(const QString& command) {
 }
 
 void DictClient::readData() {
-  // if the connection is interrupted, awaiting_text and text_buffer
-  // need to be resetted.
-  static bool awaiting_text = false;
-  static QString text_buffer;
-
   while (socket_.canReadLine()) {
     QString line = socket_.readLine();
 
-    if (!awaiting_text) {
+    if (!awaiting_text_) {
       if (!readStatusLine(line)) {
         qWarning() << "Failed to read status response:" << line.trimmed();
       }
       parseStatusResponse(last_status_code_, last_status_line_);
-
-      awaiting_text = awaitingText(last_status_code_);
+      awaiting_text_ = awaitingText(last_status_code_);
     } else {
       if (line == ".\r\n") {
-        parseTextResponse(text_buffer);
-
-        awaiting_text = false;
-        text_buffer.clear();
+        parseTextResponse(text_buffer_);
+        resetTextBuffer();
       } else {
         if (line.startsWith("..")) line.remove(0, 1);
-        text_buffer.append(line);
+        text_buffer_.append(line);
       }
     }
   }
@@ -191,6 +185,11 @@ void DictClient::parseTextResponse(const QString& text) {
 void DictClient::handleError(QAbstractSocket::SocketError error) {
   qDebug() << "QAbstractSocket::SocketError:" << error;
   qDebug() << "QAbstractSocket::errorString():" << socket_.errorString();
+}
+
+void DictClient::resetTextBuffer() {
+  awaiting_text_ = false;
+  text_buffer_.clear();
 }
 
 QString DictClient::sanitizeCmd(const QString& cmd) {

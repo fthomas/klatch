@@ -76,6 +76,7 @@ class DictClient : public QObject {
  private slots:
   void readData();
   void handleError(QAbstractSocket::SocketError error);
+  void resetTextBuffer();
 
  private:
   QString hostname_;
@@ -86,6 +87,9 @@ class DictClient : public QObject {
 
   int last_status_code_;
   QString last_status_line_;
+
+  bool awaiting_text_ = false;
+  QString text_buffer_;
 
   static const int kMaxLineLength = 1024 - 2;
 };
