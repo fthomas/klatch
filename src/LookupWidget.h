@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,34 +14,37 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef LOOKUPWIDGET_H
+#define LOOKUPWIDGET_H
 
 #include <QObject>
+#include <QString>
+#include <QWidget>
 #include <QtGlobal>
-#include <KXmlGuiWindow>
 
 QT_BEGIN_NAMESPACE
-class QWidget;
+class QEvent;
 QT_END_NAMESPACE
 
-class LookupWidget;
+namespace Ui {
+  class LookupWidget;
+}
 
-class MainWindow : public KXmlGuiWindow {
+class LookupWidget : public QWidget {
   Q_OBJECT
 
  public:
-  explicit MainWindow(QWidget* parent = 0);
+  explicit LookupWidget(QWidget* parent = 0);
+  ~LookupWidget();
 
- private slots:
-  void toggleMenuBar();
-  void showPreferences();
-
- private:
-  void setupActions();
+ protected:
+  void changeEvent(QEvent* event);
 
  private:
-  LookupWidget* lookup_;
+  static QString getInitialWord();
+
+ private:
+  Ui::LookupWidget* ui_;
 };
 
-#endif // MAINWINDOW_H
+#endif // LOOKUPWIDGET_H
