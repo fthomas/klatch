@@ -46,6 +46,9 @@ DictClient::DictClient(const QString& hostname, quint16 port,
     this, SLOT(handleError(QAbstractSocket::SocketError)));
   connect(&socket_, SIGNAL(disconnected()),
     this, SLOT(resetTextBuffer()));
+
+
+  sendDefine("test");
 }
 
 QString DictClient::peerName() const {
@@ -172,6 +175,13 @@ bool DictClient::readStatusLine(const QString& line) {
 
 void DictClient::parseStatusResponse(int code, const QString& line) {
   qDebug() << code << line;
+
+  switch (code) {
+    case CODE_DEFINITIONS_FOUND:
+      const int count = line.section(' ', 0, 0).toInt();
+      emit definitionsRetrieved(count);
+      break;
+  }
 }
 
 void DictClient::parseTextResponse(const QString& text) {

@@ -43,6 +43,7 @@ class DictClient : public QObject {
   void setPeerPort(quint16 port);
 
  signals:
+  void definitionsRetrieved(int count);
   void definitionReceived(const Definition& def);
 
  public slots:

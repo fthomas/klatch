@@ -22,6 +22,8 @@
 #include "KlatchData.h"
 #include "MainWindow.h"
 
+#include "dict/DictClient.h"
+
 int main(int argc, char* argv[]) {
   KAboutData about = KlatchData::aboutData();
   KCmdLineOptions options;
@@ -37,6 +39,8 @@ int main(int argc, char* argv[]) {
 
   auto window = new MainWindow;
   window->show();
+
+  auto d = new DictClient;
 
   return app.exec();
 }

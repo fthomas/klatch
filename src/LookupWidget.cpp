@@ -27,6 +27,8 @@ LookupWidget::LookupWidget(QWidget* parent)
     : QWidget(parent), ui_(new Ui::LookupWidget) {
   ui_->setupUi(this);
   ui_->klineedit->setText(getInitialWord());
+
+  // change the text color to red when no definitions are found?
 }
 
 LookupWidget::~LookupWidget() {
