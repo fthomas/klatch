@@ -46,9 +46,6 @@ DictClient::DictClient(const QString& hostname, quint16 port,
     this, SLOT(handleError(QAbstractSocket::SocketError)));
   connect(&socket_, SIGNAL(disconnected()),
     this, SLOT(resetTextBuffer()));
-
-
-  sendDefine("test");
 }
 
 QString DictClient::peerName() const {
@@ -139,7 +136,7 @@ void DictClient::sendRawCommand(const QString& command) {
 
 void DictClient::readData() {
   while (socket_.canReadLine()) {
-    QString line = socket_.readLine();
+    QString line = QString::fromUtf8(socket_.readLine());
 
     if (!awaiting_text_) {
       if (!readStatusLine(line)) {
