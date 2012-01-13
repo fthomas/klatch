@@ -42,8 +42,13 @@ class DictClient : public QObject {
   quint16 peerPort() const;
   void setPeerPort(quint16 port);
 
+  constexpr static quint16 defaultPort();
+  constexpr static int maxLineLength();
+
  signals:
-  void definitionsRetrieved(int count);
+  void definitionsFound(int count);
+  void matchesFound(int count);
+
   void definitionReceived(const Definition& def);
 
  public slots:
@@ -59,9 +64,6 @@ class DictClient : public QObject {
   void sendShowServer();
   void sendShowStrategies();
   void sendStatus();
-
- public:
-  static const quint16 kDefaultPort = 2628;
 
  private:
   void connectIfDisconnected();
@@ -91,8 +93,6 @@ class DictClient : public QObject {
 
   bool awaiting_text_ = false;
   QString text_buffer_;
-
-  static const int kMaxLineLength = 1024 - 2;
 };
 
 #endif // DICT_DICTCLIENT_H

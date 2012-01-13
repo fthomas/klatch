@@ -21,6 +21,8 @@
 #include <QString>
 #include <QWidget>
 #include <QtGlobal>
+#include "dict/Definition.h"
+#include "dict/DictClient.h"
 
 QT_BEGIN_NAMESPACE
 class QEvent;
@@ -37,6 +39,9 @@ class LookupWidget : public QWidget {
   explicit LookupWidget(QWidget* parent = 0);
   ~LookupWidget();
 
+ public slots:
+  void showDefinition(const Definition& def);
+
  protected:
   void changeEvent(QEvent* event);
 
@@ -45,6 +50,7 @@ class LookupWidget : public QWidget {
 
  private:
   Ui::LookupWidget* ui_;
+  DictClient* dict_;
 };
 
 #endif // LOOKUPWIDGET_H

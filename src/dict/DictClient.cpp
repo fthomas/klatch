@@ -27,10 +27,10 @@
 #include "KlatchData.h"
 
 DictClient::DictClient(QObject* parent)
-  : DictClient("localhost", kDefaultPort, parent) {}
+  : DictClient("localhost", defaultPort(), parent) {}
 
 DictClient::DictClient(const QString &hostname, QObject *parent)
-  : DictClient(hostname, kDefaultPort, parent) {}
+  : DictClient(hostname, defaultPort(), parent) {}
 
 DictClient::DictClient(const QString& hostname, quint16 port,
                        QObject* parent) : QObject(parent) {
@@ -68,6 +68,14 @@ void DictClient::setPeerPort(quint16 port) {
     port_ = port;
     socket_.disconnectFromHost();
   }
+}
+
+constexpr quint16 DictClient::defaultPort() {
+  return 2628;
+}
+
+constexpr int DictClient::maxLineLength() {
+  return 1024 - 2;
 }
 
 void DictClient::sendClient() {
@@ -174,9 +182,16 @@ void DictClient::parseStatusResponse(int code, const QString& line) {
   qDebug() << code << line;
 
   switch (code) {
-    case CODE_DEFINITIONS_FOUND:
-      const int count = line.section(' ', 0, 0).toInt();
-      emit definitionsRetrieved(count);
+    case CODE_DEFINITIONS_FOUND: {
+        const int count = line.section(' ', 0, 0).toInt();
+        emit definitionsFound(count);
+      }
+      break;
+
+    case CODE_MATCHES_FOUND: {
+        const int count = line.section(' ', 0, 0).toInt();
+        emit matchesFound(count);
+      }
       break;
   }
 }
@@ -201,7 +216,7 @@ void DictClient::resetTextBuffer() {
 
 QString DictClient::sanitizeCmd(const QString& cmd) {
   QString retval = cmd;
-  retval.truncate(kMaxLineLength);
+  retval.truncate(maxLineLength());
   retval.remove('\r').remove('\n');
   return retval;
 }

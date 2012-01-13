@@ -24,15 +24,31 @@
 #include "ui_LookupWidget.h"
 
 LookupWidget::LookupWidget(QWidget* parent)
-    : QWidget(parent), ui_(new Ui::LookupWidget) {
+    : QWidget(parent), ui_(new Ui::LookupWidget), dict_(new DictClient(this)) {
   ui_->setupUi(this);
   ui_->klineedit->setText(getInitialWord());
 
   // change the text color to red when no definitions are found?
+  // set length to DictClient::kMaxLineLength
+
+  // eigenen slot der prüft, ob string leer ist
+  connect(ui_->klineedit, SIGNAL(textChanged(QString)),
+    dict_, SLOT(sendDefine(QString)));
+
+  connect(dict_, SIGNAL(definitionReceived(Definition)),
+    this, SLOT(showDefinition(Definition)));
 }
 
 LookupWidget::~LookupWidget() {
   delete ui_;
+}
+
+void LookupWidget::showDefinition(const Definition& def) {
+  if (ui_->klineedit->text() != def.word()) return;
+
+  ui_->plainTextEdit->appendPlainText(def.word());
+  ui_->plainTextEdit->appendPlainText(def.text());
+  ui_->plainTextEdit->appendPlainText("\n");
 }
 
 void LookupWidget::changeEvent(QEvent* event) {
