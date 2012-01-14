@@ -24,6 +24,7 @@
 #include <QtGlobal>
 
 class Definition;
+class Matches;
 
 /**
  * https://tools.ietf.org/html/rfc2229
@@ -50,12 +51,13 @@ class DictClient : public QObject {
   void matchesFound(int count);
 
   void definitionReceived(const Definition& def);
+  void matchesReceived(const Matches& matches);
 
  public slots:
   void sendClient();
   void sendDefine(const QString& word, const QString& database = "*");
   void sendHelp();
-  void sendMatch(const QString& word, const QString& strategy = "exact",
+  void sendMatch(const QString& word, const QString& strategy = "prefix",
                  const QString& database = "*");
   void sendOptionMime();
   void sendQuit();

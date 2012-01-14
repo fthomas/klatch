@@ -22,6 +22,7 @@
 #include <QTextStream>
 #include <QtDebug>
 #include "dict/Definition.h"
+#include "dict/Matches.h"
 #include "dict/codes.h"
 #include "utility/stream.h"
 #include "KlatchData.h"
@@ -197,9 +198,15 @@ void DictClient::parseStatusResponse(int code, const QString& line) {
 }
 
 void DictClient::parseTextResponse(const QString& text) {
+  qDebug() << text;
+
   switch (last_status_code_) {
     case CODE_DEFINITION_FOLLOWS:
       emit definitionReceived(Definition(last_status_line_, text));
+      break;
+
+    case CODE_MATCHES_FOUND:
+      emit matchesReceived(Matches(last_status_line_, text));
       break;
   }
 }

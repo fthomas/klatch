@@ -3,6 +3,7 @@ configure_file(KlatchData.cpp.in KlatchData.cpp)
 set(klatch_SOURCES
     dict/Definition.cpp
     dict/DictClient.cpp
+    dict/Matches.cpp
     utility/stream.cpp
     utility/string.cpp
     KlatchData.cpp.in
@@ -14,6 +15,7 @@ set(klatch_SOURCES
 set(klatch_HEADERS
     dict/Definition.h
     dict/DictClient.h
+    dict/Matches.h
     dict/codes.h
     utility/stream.h
     utility/string.h
