@@ -14,6 +14,7 @@ endif()
 
 enable_testing()
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
+set(CMAKE_COPY ${CMAKE_COMMAND} -E copy)
 
 find_package(KDE4 REQUIRED)
 include(KDE4Defaults)
@@ -24,3 +25,4 @@ list(REMOVE_ITEM CMAKE_CXX_FLAGS "-ansi")
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 
 add_subdirectory(src)
+add_subdirectory(tests)

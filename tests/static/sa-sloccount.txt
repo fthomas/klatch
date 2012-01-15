@@ -1,0 +1,54 @@
+Have a non-directory at the top, so creating directory top_dir
+Adding CMakeLists.txt to top_dir
+Adding CMakeLists.txt.user to top_dir
+Adding COPYING to top_dir
+Adding COPYRIGHT to top_dir
+Adding README.rst to top_dir
+Creating filelist for tests
+Have a non-directory at the top, so creating directory src_top_dir
+Adding src/CMakeLists.txt to src_top_dir
+Creating filelist for src_dict
+Adding src/KlatchData.cpp.in to src_top_dir
+Adding src/KlatchData.h to src_top_dir
+Adding src/klatchui.rc to src_top_dir
+Adding src/LookupWidget.cpp to src_top_dir
+Adding src/LookupWidget.h to src_top_dir
+Adding src/LookupWidget.ui to src_top_dir
+Adding src/main.cpp to src_top_dir
+Adding src/MainWindow.cpp to src_top_dir
+Adding src/MainWindow.h to src_top_dir
+Creating filelist for src_utility
+Categorizing files.
+Finding a working MD5 command....
+Found a working MD5 command.
+Computing results.
+
+
+SLOC	Directory	SLOC-by-Language (Sorted)
+365     src_dict        cpp=365
+178     src_top_dir     cpp=178
+51      src_utility     cpp=51
+0       tests           (none)
+0       top_dir         (none)
+
+
+Totals grouped by language (dominant language first):
+cpp:            594 (100.00%)
+
+
+
+
+Total Physical Source Lines of Code (SLOC)                = 594
+Development Effort Estimate, Person-Years (Person-Months) = 0.12 (1.39)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 0.24 (2.83)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 0.49
+Total Estimated Cost to Develop                           = $ 15,636
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
+SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
+SLOCCount comes with ABSOLUTELY NO WARRANTY, and you are welcome to
+redistribute it under certain conditions as specified by the GNU GPL license;
+see the documentation for details.
+Please credit this data as "generated using David A. Wheeler's 'SLOCCount'."

@@ -1,0 +1,8 @@
+In file included from src/dict/DictClient.cpp:17:
+src/dict/DictClient.h:46:28: error: non-literal type 'DictClient' cannot have constexpr members
+  constexpr static quint16 defaultPort();
+                           ^
+src/dict/DictClient.h:32:7: note: 'DictClient' is not literal because it is not an aggregate and has no constexpr constructors other than copy or move constructors
+class DictClient : public QObject {
+      ^
+1 error generated.
