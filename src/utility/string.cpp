@@ -18,6 +18,14 @@
 #include <QChar>
 #include <QString>
 
+QString left_trimmed(const QString& str) {
+  QString retval = str;
+  while (retval.length() > 0 && retval.at(0).isSpace()) {
+    retval.remove(0, 1);
+  }
+  return retval;
+}
+
 QString cut_section(QString& str, QChar sep) {
   while (str.startsWith(sep)) str.remove(0, 1);
 
