@@ -18,7 +18,7 @@
 #include <QChar>
 #include <QString>
 
-QString left_trimmed(const QString& str) {
+QString trimmed_left(const QString& str) {
   QString retval = str;
   while (retval.length() > 0 && retval.at(0).isSpace()) {
     retval.remove(0, 1);

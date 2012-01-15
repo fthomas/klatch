@@ -14,16 +14,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef UTILITY_STRING_H
-#define UTILITY_STRING_H
+#include <cstdlib>
+#include <QApplication>
+#include <QtTest/QtTest>
+#include "utility/string_t.h"
 
-#include <QChar>
-#include <QString>
+int g_argc;
+char** g_argv;
 
-QString trimmed_left(const QString& str);
+template<class Test>
+void exec() {
+  Test test;
+  const int retval = QTest::qExec(&test, g_argc, g_argv);
 
-QString cut_section(QString& str, QChar sep);
+  if (retval != 0) {
+    std::exit(EXIT_FAILURE);
+  }
+}
 
-QString remove_quotes(const QString& str);
+int main(int argc, char* argv[]) {
+  g_argc = argc;
+  g_argv = argv;
 
-#endif // UTILITY_STRING_H
+  QApplication app(argc, argv);
+  exec<test_utility_string>();
+
+  std::exit(EXIT_SUCCESS);
+}

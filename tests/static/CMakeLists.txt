@@ -6,8 +6,6 @@ foreach(DIR ${klatch_INCLUDE_DIRS})
     set(INCLUDE_ARGS ${INCLUDE_ARGS} -I${DIR})
 endforeach()
 
-set(CURR_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-set(CURR_BIN_DIR ${CMAKE_CURRENT_BINARY_DIR})
 string(REPLACE "/" "\\/" ESC_SRC_DIR ${CMAKE_SOURCE_DIR}/)
 
 function(run_static_analyzer CMD ARGS OUTFILE)
@@ -19,9 +17,10 @@ function(run_static_analyzer CMD ARGS OUTFILE)
           OUTPUT ${OUTFILE}
           COMMAND ${ANALYZER_${CMD}} ${ARGS} > ${OUTFILE} 2>&1 || true
           COMMAND ${SED_EXEC} -i 's/${ESC_SRC_DIR}//' ${OUTFILE}
-          COMMAND ${CMAKE_COPY} ${OUTFILE} ${CURR_SRC_DIR}/
+          COMMAND ${CMAKE_COPY} ${OUTFILE} ${CMAKE_CURRENT_SOURCE_DIR}/
           DEPENDS ${klatch_SOURCES} ${klatch_HEADERS})
-        set(RESULTS ${RESULTS};${CURR_BIN_DIR}/${OUTFILE} PARENT_SCOPE)
+        set(RESULTS ${RESULTS};${CMAKE_CURRENT_BINARY_DIR}/${OUTFILE}
+          PARENT_SCOPE)
     endif()
 endfunction()
 
@@ -40,4 +39,4 @@ run_static_analyzer(g++ "${g++_ARGS}" sa-g++-effc++.txt)
 set(sloccount_ARGS ${CMAKE_SOURCE_DIR})
 run_static_analyzer(sloccount "${sloccount_ARGS}" sa-sloccount.txt)
 
-add_custom_target(static-analyses DEPENDS ${RESULTS})
+add_custom_target(static_analyses DEPENDS ${RESULTS})

@@ -14,16 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef UTILITY_STRING_H
-#define UTILITY_STRING_H
+#ifndef UTILITY_STRING_T_H
+#define UTILITY_STRING_T_H
 
-#include <QChar>
-#include <QString>
+#include <QObject>
 
-QString trimmed_left(const QString& str);
+class test_utility_string : public QObject {
+  Q_OBJECT
 
-QString cut_section(QString& str, QChar sep);
+ private slots:
+  void test_trimmed_left();
+  void test_trimmed_left_data();
+};
 
-QString remove_quotes(const QString& str);
-
-#endif // UTILITY_STRING_H
+#endif // UTILITY_STRING_T_H
