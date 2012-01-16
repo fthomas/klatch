@@ -19,11 +19,12 @@
 
 #include <QChar>
 #include <QString>
-
-QString trimmed_left(const QString& str);
-
-QString cut_section(QString& str, QChar sep);
+#include <QStringList>
 
 QString remove_quotes(const QString& str);
+
+QStringList split_arguments(const QString& str);
+
+QString trimmed_left(const QString& str);
 
 #endif // UTILITY_STRING_H
