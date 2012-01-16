@@ -16,6 +16,7 @@
 
 #include "utility/string_t.h"
 #include <QString>
+#include <QStringList>
 #include <QtTest/QtTest>
 #include "utility/string.h"
 
@@ -43,4 +44,44 @@ void test_utility_string::test_trimmed_left_data() {
   QTest::newRow("one trailing space") << "test " << "test ";
   QTest::newRow("two trailing spaces") << "test  " << "test  ";
   QTest::newRow("trailing CR LF") << "test\r\n" << "test\r\n";
+}
+
+void test_utility_string::test_split_arguments() {
+  QFETCH(QString, input);
+  QFETCH(QStringList, result);
+
+  QCOMPARE(split_arguments(input), result);
+}
+
+void test_utility_string::test_split_arguments_data() {
+  QTest::addColumn<QString>("input");
+  QTest::addColumn<QStringList>("result");
+
+  QTest::newRow("one quoted string") << "one two"
+    << (QStringList() << "one" << "two");
+  QTest::newRow("one quoted string") << "'one' two"
+    << (QStringList() << "one" << "two");
+  QTest::newRow("one quoted string") << "\"one\" two"
+    << (QStringList() << "one" << "two");
+
+  QTest::newRow("two quoted strings") << "\"one\" 'two' 3"
+    << (QStringList() << "one" << "two" << "3");
+  QTest::newRow("two quoted strings") << "one \"two\" '3'"
+    << (QStringList() << "one" << "two" << "3");
+  QTest::newRow("two quoted strings") << "'one' two \"3\""
+    << (QStringList() << "one" << "two" << "3");
+
+  QTest::newRow("spaces in quotes") << " one \"two 3\""
+    << (QStringList() << "one" << "two 3");
+  QTest::newRow("spaces in quotes") << "\"one two 3\""
+    << (QStringList() << "one two 3");
+  QTest::newRow("spaces in quotes") << " \"one two\"  3  "
+    << (QStringList() << "one two" << "3");
+
+  QTest::newRow("quotes in quotes") << "\"one 'two'\"  3"
+    << (QStringList() << "one 'two'" << "3");
+  QTest::newRow("quotes in quotes") << "\"'one' 'two'\" 3"
+    << (QStringList() << "'one' 'two'" << "3");
+  QTest::newRow("quotes in quotes") << "\"'one  two'\" 3"
+    << (QStringList() << "'one  two'" << "3");
 }

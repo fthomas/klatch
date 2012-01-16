@@ -25,6 +25,10 @@ class test_utility_string : public QObject {
  private slots:
   void test_trimmed_left();
   void test_trimmed_left_data();
+
+  void test_split_arguments();
+  void test_split_arguments_data();
+
 };
 
 #endif // UTILITY_STRING_T_H
