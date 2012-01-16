@@ -35,11 +35,10 @@ void Matches::parseStatusLine(const QString& line) {
 void Matches::parseText(const QString& text) {
   QStringList lines = text.split("\r\n", QString::SkipEmptyParts);
   foreach (QString line, lines) {
-    line = line.trimmed();
+    QStringList args = split_arguments(line);
 
-    const QString database = cut_section(line, ' ');
-    const QString match = remove_quotes(line.trimmed());
-
-    matches_.insert(database, match);
+    if (args.size() >= 2) {
+      matches_.insert(args.at(0), args.at(1));
+    }
   }
 }
