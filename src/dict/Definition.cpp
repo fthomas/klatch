@@ -16,6 +16,7 @@
 
 #include "dict/Definition.h"
 #include <QString>
+#include <QStringList>
 #include "utility/string.h"
 
 Definition::Definition(const QString& status, const QString& text) {
@@ -39,8 +40,10 @@ QString Definition::text() const {
   return text_;
 }
 
-void Definition::parseStatusLine(QString line) {
-  word_ = remove_quotes(cut_section(line, ' '));
-  database_ = remove_quotes(cut_section(line, ' '));
-  db_description_ = remove_quotes(line.trimmed());
+void Definition::parseStatusLine(const QString& line) {
+  const QStringList args = split_arguments(line);
+
+  if (args.size() > 0) word_ = args.at(0);
+  if (args.size() > 1) database_ = args.at(1);
+  if (args.size() > 2) db_description_ = args.at(2);
 }

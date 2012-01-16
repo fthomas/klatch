@@ -29,7 +29,7 @@ class Definition {
   QString text() const;
 
  private:
-  void parseStatusLine(QString line);
+  void parseStatusLine(const QString& line);
 
  private:
   QString word_;
