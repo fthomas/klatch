@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Klatch
+Exec=klatch
+Type=Application
+Terminal=false

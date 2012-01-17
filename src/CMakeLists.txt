@@ -59,3 +59,4 @@ set_target_properties(klatch PROPERTIES
 
 install(TARGETS klatch ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES klatchui.rc DESTINATION ${DATA_INSTALL_DIR}/klatch)
+install(PROGRAMS klatch.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
