@@ -84,4 +84,9 @@ void test_utility_string::test_split_arguments_data() {
     << (QStringList() << "'one' 'two'" << "3");
   QTest::newRow("quotes in quotes") << "\"'one  two'\" 3"
     << (QStringList() << "'one  two'" << "3");
+
+  QTest::newRow("escaped sq") << "'one\\'two' 3"
+    << (QStringList() << "one\\'two" << "3");
+  QTest::newRow("escaped dq") << "\"one \\\" two\" 3"
+    << (QStringList() << "one \\\" two" << "3");
 }

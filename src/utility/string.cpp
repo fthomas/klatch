@@ -51,14 +51,14 @@ QStringList split_arguments(const QString& str) {
       continue;
     }
 
-    const bool closing_quote = (c == quote) && !escaped;
+    const bool closing_quote = (c == quote) && !escaped && !quote.isNull();
     const bool unquoted_space = c.isSpace() && quote.isNull();
 
     if (!closing_quote && !unquoted_space) {
       arg.append(c);
       continue;
     }
-    if(arg.length() > 0) {
+    if (arg.length() > 0) {
       retval << arg;
 
       quote = QChar();
