@@ -29,14 +29,20 @@ set(klatch_UIS
 set(klatch_RCS
   ${CMAKE_CURRENT_SOURCE_DIR}/klatchui.rc)
 
+set(klatch_KCFGS
+  ${CMAKE_CURRENT_SOURCE_DIR}/klatch.kcfg)
+
 kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
+
+kde4_add_kcfg_files(klatch_GENERATED_KCFGCS klatchconfig.kcfgc)
 
 set(klatch_ALL_SOURCES
   ${klatch_SOURCES}
   ${klatch_HEADERS}
   ${klatch_UIS}
   ${klatch_RCS}
-  ${klatch_GENERATED_UIS})
+  ${klatch_GENERATED_UIS}
+  ${klatch_GENERATED_KCFGCS})
 
 set(klatch_INCLUDE_DIRS
   ${KDE4_INCLUDES}
@@ -46,6 +52,7 @@ set(klatch_INCLUDE_DIRS
 set(klatch_LIBRARIES
   ${KDE4_KDEUI_LIBS}
   ${QT_QTNETWORK_LIBRARY})
+
 
 include_directories(${klatch_INCLUDE_DIRS})
 kde4_add_executable(klatch ${klatch_ALL_SOURCES})
@@ -58,5 +65,8 @@ set_target_properties(klatch PROPERTIES
   klatch_LIBRARIES "${klatch_LIBRARIES}")
 
 install(TARGETS klatch ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES klatchui.rc DESTINATION ${DATA_INSTALL_DIR}/klatch)
-install(PROGRAMS klatch.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES ${klatch_RCS} DESTINATION ${DATA_INSTALL_DIR}/klatch)
+install(FILES ${klatch_KCFGS} DESTINATION ${KCFG_INSTALL_DIR})
+install(FILES klatch.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+
+add_custom_target(dummy SOURCES ${klatch_KCFGS} klatch.desktop)
