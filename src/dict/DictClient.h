@@ -43,8 +43,8 @@ class DictClient : public QObject {
   quint16 peerPort() const;
   void setPeerPort(quint16 port);
 
-  constexpr static quint16 defaultPort();
-  constexpr static int maxLineLength();
+  static quint16 defaultPort();
+  static int maxLineLength();
 
  signals:
   void definitionsFound(int count);

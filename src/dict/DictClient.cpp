@@ -71,11 +71,11 @@ void DictClient::setPeerPort(quint16 port) {
   }
 }
 
-constexpr quint16 DictClient::defaultPort() {
+quint16 DictClient::defaultPort() {
   return 2628;
 }
 
-constexpr int DictClient::maxLineLength() {
+int DictClient::maxLineLength() {
   return 1024 - 2;
 }
 

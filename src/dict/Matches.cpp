@@ -34,7 +34,7 @@ void Matches::parseStatusLine(const QString& line) {
 
 void Matches::parseText(const QString& text) {
   const QStringList lines = text.split("\r\n", QString::SkipEmptyParts);
-  foreach (const QString line, lines) {
+  for (const QString& line : lines) {
     const QStringList args = split_arguments(line);
 
     if (args.size() >= 2) {
