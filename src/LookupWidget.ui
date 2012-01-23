@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="KLineEdit" name="klineedit">
+    <widget class="KLineEdit" name="word_input">
      <property name="showClearButton" stdset="0">
       <bool>true</bool>
      </property>

@@ -21,34 +21,50 @@
 #include <QWidget>
 #include <KApplication>
 #include <KCmdLineArgs>
+#include <KCompletion>
+#include "dict/Definition.h"
+#include "dict/DictClient.h"
+#include "dict/Matches.h"
 #include "ui_LookupWidget.h"
 
 LookupWidget::LookupWidget(QWidget* parent)
     : QWidget(parent), ui_(new Ui::LookupWidget), dict_(new DictClient(this)) {
   ui_->setupUi(this);
-  ui_->klineedit->setText(getInitialWord());
+  ui_->word_input->setText(getInitialWord());
 
   // change the text color to red when no definitions are found?
   // set length to DictClient::kMaxLineLength
 
-  // eigenen slot der prüft, ob string leer ist
-  connect(ui_->klineedit, SIGNAL(textChanged(QString)),
-    dict_, SLOT(sendDefine(QString)));
+  connect(ui_->word_input, SIGNAL(textChanged(QString)),
+    this, SLOT(lookupWord(QString)));
 
   connect(dict_, SIGNAL(definitionReceived(Definition)),
     this, SLOT(showDefinition(Definition)));
+
+  connect(dict_, SIGNAL(matchesReceived(Matches)),
+    this, SLOT(setCompletionItems(Matches)));
 }
 
 LookupWidget::~LookupWidget() {
   delete ui_;
 }
 
-void LookupWidget::showDefinition(const Definition& def) {
-  if (ui_->klineedit->text() != def.word()) return;
+void LookupWidget::lookupWord(const QString& word) {
+  if (word.isEmpty()) return;
+  if (word.length() >= 3) dict_->sendMatch(word);
+  dict_->sendDefine(word);
+}
 
-  ui_->plainTextEdit->appendPlainText(def.word());
+void LookupWidget::showDefinition(const Definition& def) {
+  if (ui_->word_input->text() != def.word()) return;
+
+  ui_->plainTextEdit->appendHtml(QString("<b>%1</b>").arg(def.word()));
   ui_->plainTextEdit->appendPlainText(def.text());
   ui_->plainTextEdit->appendPlainText("\n");
+}
+
+void LookupWidget::setCompletionItems(const Matches& matches) {
+  ui_->word_input->completionObject()->setItems(matches.words());
 }
 
 void LookupWidget::changeEvent(QEvent* event) {

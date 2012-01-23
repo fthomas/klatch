@@ -21,12 +21,14 @@
 #include <QString>
 #include <QWidget>
 #include <QtGlobal>
-#include "dict/Definition.h"
-#include "dict/DictClient.h"
 
 QT_BEGIN_NAMESPACE
 class QEvent;
 QT_END_NAMESPACE
+
+class Definition;
+class DictClient;
+class Matches;
 
 namespace Ui {
   class LookupWidget;
@@ -40,7 +42,9 @@ class LookupWidget : public QWidget {
   ~LookupWidget();
 
  public slots:
+  void lookupWord(const QString& word);
   void showDefinition(const Definition& def);
+  void setCompletionItems(const Matches& matches);
 
  protected:
   void changeEvent(QEvent* event);
