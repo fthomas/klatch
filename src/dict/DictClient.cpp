@@ -17,6 +17,7 @@
 #include "dict/DictClient.h"
 #include <QAbstractSocket>
 #include <QList>
+#include <QMap>
 #include <QObject>
 #include <QString>
 #include <QStringList>
@@ -80,6 +81,14 @@ quint16 DictClient::defaultPort() {
 
 int DictClient::maxLineLength() {
   return 1024 - 2;
+}
+
+QMap<QString, QString> DictClient::databases() const {
+  return databases_;
+}
+
+QMap<QString, QString> DictClient::searchStrategies() const {
+  return search_strategies_;
 }
 
 void DictClient::sendClient() {

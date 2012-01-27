@@ -47,6 +47,9 @@ class DictClient : public QObject {
   static quint16 defaultPort();
   static int maxLineLength();
 
+  QMap<QString, QString> databases() const;
+  QMap<QString, QString> searchStrategies() const;
+
  signals:
   void definitionsFound(int count);
   void matchesFound(int count);
