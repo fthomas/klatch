@@ -18,8 +18,12 @@
 #define UTILITY_STRING_H
 
 #include <QChar>
+#include <QList>
 #include <QString>
 #include <QStringList>
+
+
+QList<QStringList> parse_table(const QString& multiline_str);
 
 QString remove_quotes(const QString& str);
 

@@ -15,6 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dict/Matches.h"
+#include <QList>
 #include <QString>
 #include <QStringList>
 #include "utility/string.h"
@@ -33,10 +34,8 @@ void Matches::parseStatusLine(const QString& line) {
 }
 
 void Matches::parseText(const QString& text) {
-  const QStringList lines = text.split("\r\n", QString::SkipEmptyParts);
-  for (const QString& line : lines) {
-    const QStringList args = split_arguments(line);
-
+  const QList<QStringList> matches = parse_table(text);
+  for (const QStringList& args : matches) {
     if (args.size() >= 2) {
       matches_.insert(args.at(0), args.at(1));
     }

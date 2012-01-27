@@ -16,8 +16,10 @@
 
 #include "dict/DictClient.h"
 #include <QAbstractSocket>
+#include <QList>
 #include <QObject>
 #include <QString>
+#include <QStringList>
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtDebug>
@@ -25,6 +27,7 @@
 #include "dict/Matches.h"
 #include "dict/codes.h"
 #include "utility/stream.h"
+#include "utility/string.h"
 #include "KlatchData.h"
 
 DictClient::DictClient(QObject* parent)
@@ -46,7 +49,7 @@ DictClient::DictClient(const QString& hostname, quint16 port,
   connect(&socket_, SIGNAL(error(QAbstractSocket::SocketError)),
     this, SLOT(handleError(QAbstractSocket::SocketError)));
   connect(&socket_, SIGNAL(disconnected()),
-    this, SLOT(resetTextBuffer()));
+    this, SLOT(resetCache()));
 }
 
 QString DictClient::peerName() const {
@@ -135,6 +138,8 @@ void DictClient::connectIfDisconnected() {
       state == QAbstractSocket::ClosingState) {
     socket_.connectToHost(peerName(), peerPort());
     sendClient();
+    sendShowDatabases();
+    sendShowStrategies();
   }
 }
 
@@ -201,6 +206,14 @@ void DictClient::parseTextResponse(const QString& text) {
   qDebug() << text;
 
   switch (last_status_code_) {
+    case CODE_DATABASE_LIST:
+      parseDatabaseList(text);
+      break;
+
+    case CODE_STRATEGY_LIST:
+      parseStrategyList(text);
+      break;
+
     case CODE_DEFINITION_FOLLOWS:
       emit definitionReceived(Definition(last_status_line_, text));
       break;
@@ -208,6 +221,24 @@ void DictClient::parseTextResponse(const QString& text) {
     case CODE_MATCHES_FOUND:
       emit matchesReceived(Matches(last_status_line_, text));
       break;
+  }
+}
+
+void DictClient::parseDatabaseList(const QString& text) {
+  const QList<QStringList> databases = parse_table(text);
+  for (const QStringList& args : databases) {
+    if (args.size() >= 2) {
+      databases_.insert(args.at(0), args.at(1));
+    }
+  }
+}
+
+void DictClient::parseStrategyList(const QString& text) {
+  const QList<QStringList> strategies = parse_table(text);
+  for (const QStringList& args : strategies) {
+    if (args.size() >= 2) {
+      search_strategies_.insert(args.at(0), args.at(1));
+    }
   }
 }
 
@@ -219,6 +250,12 @@ void DictClient::handleError(QAbstractSocket::SocketError error) {
 void DictClient::resetTextBuffer() {
   awaiting_text_ = false;
   text_buffer_.clear();
+}
+
+void DictClient::resetCache() {
+  resetTextBuffer();
+  databases_.clear();
+  search_strategies_.clear();
 }
 
 QString DictClient::sanitizeCmd(const QString& cmd) {

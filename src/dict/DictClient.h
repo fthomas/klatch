@@ -17,6 +17,7 @@
 #ifndef DICT_DICTCLIENT_H
 #define DICT_DICTCLIENT_H
 
+#include <QMap>
 #include <QObject>
 #include <QString>
 #include <QTcpSocket>
@@ -74,6 +75,10 @@ class DictClient : public QObject {
   bool readStatusLine(const QString& line);
   void parseStatusResponse(int code, const QString& line);
   void parseTextResponse(const QString& text);
+  void resetTextBuffer();
+
+  void parseDatabaseList(const QString& text);
+  void parseStrategyList(const QString& text);
 
   static QString sanitizeCmd(const QString& cmd);
   static bool awaitingText(int status_code);
@@ -81,7 +86,7 @@ class DictClient : public QObject {
  private slots:
   void readData();
   void handleError(QAbstractSocket::SocketError error);
-  void resetTextBuffer();
+  void resetCache();
 
  private:
   QString hostname_;
@@ -95,6 +100,9 @@ class DictClient : public QObject {
 
   bool awaiting_text_ = false;
   QString text_buffer_;
+
+  QMap<QString, QString> databases_;
+  QMap<QString, QString> search_strategies_;
 };
 
 #endif // DICT_DICTCLIENT_H

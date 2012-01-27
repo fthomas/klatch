@@ -16,8 +16,22 @@
 
 #include "utility/string.h"
 #include <QChar>
+#include <QList>
 #include <QString>
 #include <QStringList>
+
+QList<QStringList> parse_table(const QString& multiline_str) {
+  const QStringList lines =
+    multiline_str.split('\n', QString::SkipEmptyParts);
+
+  QList<QStringList> table;
+  table.reserve(lines.size());
+
+  for (const QString& line : lines) {
+    table << split_arguments(line);
+  }
+  return table;
+}
 
 QString remove_quotes(const QString& str) {
   static const auto remove_enclosing = [](QChar c, QString& s) {
