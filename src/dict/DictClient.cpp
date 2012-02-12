@@ -24,6 +24,7 @@
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtDebug>
+#include "dict/DatabaseInfo.h"
 #include "dict/Definition.h"
 #include "dict/Matches.h"
 #include "dict/codes.h"
@@ -32,13 +33,13 @@
 #include "KlatchData.h"
 
 DictClient::DictClient(QObject* parent)
-  : DictClient("localhost", defaultPort(), parent) {}
+  : DictClient{"localhost", defaultPort(), parent} {}
 
 DictClient::DictClient(const QString &hostname, QObject *parent)
-  : DictClient(hostname, defaultPort(), parent) {}
+  : DictClient{hostname, defaultPort(), parent} {}
 
 DictClient::DictClient(const QString& hostname, quint16 port,
-                       QObject* parent) : QObject(parent) {
+                       QObject* parent) : QObject{parent} {
   hostname_ = hostname;
   port_ = port;
 
@@ -96,7 +97,7 @@ void DictClient::sendClient() {
 }
 
 void DictClient::sendDefine(const QString& word, const QString& database) {
-  const QString cmd = QString("DEFINE \"%1\" \"%2\"").arg(database, word);
+  const QString cmd = QString{"DEFINE \"%1\" \"%2\""}.arg(database, word);
   sendRawCommand(sanitizeCmd(cmd));
 }
 
@@ -107,7 +108,7 @@ void DictClient::sendHelp() {
 void DictClient::sendMatch(const QString& word, const QString& strategy,
                            const QString& database) {
   const QString cmd =
-    QString("MATCH \"%1\" \"%2\" \"%3\"").arg(database, strategy, word);
+    QString{"MATCH \"%1\" \"%2\" \"%3\""}.arg(database, strategy, word);
   sendRawCommand(sanitizeCmd(cmd));
 }
 
@@ -124,7 +125,7 @@ void DictClient::sendShowDatabases() {
 }
 
 void DictClient::sendShowInfo(const QString& database) {
-  const QString cmd = QString("SHOW INFO \"%1\"").arg(database);
+  const QString cmd = QString{"SHOW INFO \"%1\""}.arg(database);
   sendRawCommand(sanitizeCmd(cmd));
 }
 
@@ -223,12 +224,24 @@ void DictClient::parseTextResponse(const QString& text) {
       parseStrategyList(text);
       break;
 
+    case CODE_DATABASE_INFO:
+      emit databaseInfoReceived(DatabaseInfo{last_status_line_, text});
+      break;
+
+    case CODE_HELP:
+      emit helpTextReceived(text);
+      break;
+
+    case CODE_SERVER_INFO:
+      emit serverInfoReceived(text);
+      break;
+
     case CODE_DEFINITION_FOLLOWS:
-      emit definitionReceived(Definition(last_status_line_, text));
+      emit definitionReceived(Definition{last_status_line_, text});
       break;
 
     case CODE_MATCHES_FOUND:
-      emit matchesReceived(Matches(last_status_line_, text));
+      emit matchesReceived(Matches{last_status_line_, text});
       break;
   }
 }

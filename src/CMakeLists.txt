@@ -1,6 +1,7 @@
 configure_file(KlatchData.cpp.in KlatchData.cpp)
 
 set(klatch_SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Definition.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches.cpp
@@ -13,6 +14,7 @@ set(klatch_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
 set(klatch_HEADERS
+  ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Definition.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches.h

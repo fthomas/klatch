@@ -45,7 +45,7 @@ KLocalizedString KlatchData::shortDescription() {
 }
 
 KAboutData KlatchData::aboutData() {
-  KAboutData about(appName(), 0, displayName(), version());
+  KAboutData about{appName(), 0, displayName(), version()};
   about.setHomepage(homepage());
   about.setLicense(KAboutData::License_GPL_V3);
   about.setShortDescription(shortDescription());

@@ -24,6 +24,7 @@
 #include <QTextStream>
 #include <QtGlobal>
 
+class DatabaseInfo;
 class Definition;
 class Matches;
 
@@ -56,6 +57,10 @@ class DictClient : public QObject {
 
   void definitionReceived(const Definition& def);
   void matchesReceived(const Matches& matches);
+
+  void databaseInfoReceived(const DatabaseInfo& info);
+  void helpTextReceived(const QString& help);
+  void serverInfoReceived(const QString& info);
 
  public slots:
   void sendClient();

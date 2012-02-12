@@ -14,30 +14,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <cstdlib>
-#include <QApplication>
-#include <QtTest/QtTest>
-#include "utility/string_t.h"
+#include "dict/DatabaseInfo.h"
+#include <QString>
+#include <QStringList>
+#include "utility/string.h"
 
-int g_argc;
-char** g_argv;
-
-template<class Test>
-void exec() {
-  Test test;
-  const int retval = QTest::qExec(&test, g_argc, g_argv);
-
-  if (retval != 0) {
-    std::exit(EXIT_FAILURE);
-  }
+DatabaseInfo::DatabaseInfo(const QString& status, const QString& text) {
+  parseStatusLine(status);
+  text_ = text;
 }
 
-int main(int argc, char* argv[]) {
-  g_argc = argc;
-  g_argv = argv;
+QString DatabaseInfo::database() const {
+  return database_;
+}
 
-  QApplication app{argc, argv};
-  exec<test_utility_string>();
+QString DatabaseInfo::text() const {
+  return text_;
+}
 
-  std::exit(EXIT_SUCCESS);
+void DatabaseInfo::parseStatusLine(const QString& line) {
+  const QStringList args = split_arguments(line);
+  if (args.size() > 2) database_ = args.at(2);
 }
