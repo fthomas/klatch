@@ -6,29 +6,10 @@
   <include>dict/DictClient.h</include>
   <kcfgfile name="klatchrc"/>
   <group name="dict">
-    <entry name="Hostname0" type="String">
+    <entry name="Hostname" type="String">
       <default>localhost</default>
     </entry>
-    <entry name="Hostname1" type="String">
-    </entry>
-    <entry name="Hostname2" type="String">
-    </entry>
-    <entry name="Hostname3" type="String">
-    </entry>
-    <entry name="Hostname4" type="String">
-    </entry>
-    <entry name="Hostname5" type="String">
-    </entry>
-    <entry name="Hostname6" type="String">
-    </entry>
-    <entry name="Hostname7" type="String">
-    </entry>
-    <entry name="Hostname8" type="String">
-    </entry>
-    <entry name="Hostname9" type="String">
-    </entry>
-
-    <entry name="Port0" type="UInt">
+    <entry name="Port" type="UInt">
       <default code="true">DictClient::defaultPort()</default>
       <min>0</min>
       <max>65535</max>
