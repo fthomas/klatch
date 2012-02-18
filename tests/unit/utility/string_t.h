@@ -23,6 +23,9 @@ class test_string : public QObject {
   Q_OBJECT
 
  private slots:
+  void test_parse_table();
+  void test_parse_table_data();
+
   void test_split_arguments();
   void test_split_arguments_data();
 

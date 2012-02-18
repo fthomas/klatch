@@ -15,10 +15,46 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "utility/string_t.h"
+#include <QList>
 #include <QString>
 #include <QStringList>
 #include <QtTest/QtTest>
 #include "utility/string.h"
+
+using QTest::addColumn;
+using QTest::newRow;
+
+Q_DECLARE_METATYPE(QList<QStringList>)
+
+void test_string::test_parse_table() {
+  QFETCH(QString, input);
+  QFETCH(QList<QStringList>, result);
+
+  QCOMPARE(parse_table(input), result);
+}
+
+void test_string::test_parse_table_data() {
+  addColumn<QString>("input");
+  addColumn<QList<QStringList>>("result");
+
+  newRow("empty input") << "" << QList<QStringList>();
+
+  newRow("one cell") << "A"
+    << (QList<QStringList>() << (QStringList() << "A"));
+  newRow("three cells") << "A B C"
+    << (QList<QStringList>() << (QStringList() << "A" << "B" << "C"));
+
+  newRow("two rows") << "A B \n C D"
+    << (QList<QStringList>()
+      << (QStringList() << "A" << "B")
+      << (QStringList() << "C" << "D"));
+
+  newRow("three rows") << "A B \n C D E \n F G H I"
+    << (QList<QStringList>()
+      << (QStringList() << "A" << "B")
+      << (QStringList() << "C" << "D" << "E")
+      << (QStringList() << "F" << "G" << "H" << "I"));
+}
 
 void test_string::test_split_arguments() {
   QFETCH(QString, input);
@@ -28,40 +64,40 @@ void test_string::test_split_arguments() {
 }
 
 void test_string::test_split_arguments_data() {
-  QTest::addColumn<QString>("input");
-  QTest::addColumn<QStringList>("result");
+  addColumn<QString>("input");
+  addColumn<QStringList>("result");
 
-  QTest::newRow("one quoted string") << "one two"
+  newRow("one quoted string") << "one two"
     << (QStringList() << "one" << "two");
-  QTest::newRow("one quoted string") << "'one' two"
+  newRow("one quoted string") << "'one' two"
     << (QStringList() << "one" << "two");
-  QTest::newRow("one quoted string") << "\"one\" two"
+  newRow("one quoted string") << "\"one\" two"
     << (QStringList() << "one" << "two");
 
-  QTest::newRow("two quoted strings") << "\"one\" 'two' 3"
+  newRow("two quoted strings") << "\"one\" 'two' 3"
     << (QStringList() << "one" << "two" << "3");
-  QTest::newRow("two quoted strings") << "one \"two\" '3'"
+  newRow("two quoted strings") << "one \"two\" '3'"
     << (QStringList() << "one" << "two" << "3");
-  QTest::newRow("two quoted strings") << "'one' two \"3\""
+  newRow("two quoted strings") << "'one' two \"3\""
     << (QStringList() << "one" << "two" << "3");
 
-  QTest::newRow("spaces in quotes") << " one \"two 3\""
+  newRow("spaces in quotes") << " one \"two 3\""
     << (QStringList() << "one" << "two 3");
-  QTest::newRow("spaces in quotes") << "\"one two 3\""
+  newRow("spaces in quotes") << "\"one two 3\""
     << (QStringList() << "one two 3");
-  QTest::newRow("spaces in quotes") << " \"one two\"  3  "
+  newRow("spaces in quotes") << " \"one two\"  3  "
     << (QStringList() << "one two" << "3");
 
-  QTest::newRow("quotes in quotes") << "\"one 'two'\"  3"
+  newRow("quotes in quotes") << "\"one 'two'\"  3"
     << (QStringList() << "one 'two'" << "3");
-  QTest::newRow("quotes in quotes") << "\"'one' 'two'\" 3"
+  newRow("quotes in quotes") << "\"'one' 'two'\" 3"
     << (QStringList() << "'one' 'two'" << "3");
-  QTest::newRow("quotes in quotes") << "\"'one  two'\" 3"
+  newRow("quotes in quotes") << "\"'one  two'\" 3"
     << (QStringList() << "'one  two'" << "3");
 
-  QTest::newRow("escaped sq") << "'one\\'two' 3"
+  newRow("escaped sq") << "'one\\'two' 3"
     << (QStringList() << "one\\'two" << "3");
-  QTest::newRow("escaped dq") << "\"one \\\" two\" 3"
+  newRow("escaped dq") << "\"one \\\" two\" 3"
     << (QStringList() << "one \\\" two" << "3");
 }
 
@@ -73,20 +109,20 @@ void test_string::test_trimmed_left() {
 }
 
 void test_string::test_trimmed_left_data() {
-  QTest::addColumn<QString>("input");
-  QTest::addColumn<QString>("result");
+  addColumn<QString>("input");
+  addColumn<QString>("result");
 
-  QTest::newRow("no space") << "test" << "test";
-  QTest::newRow("one space") << " test" << "test";
-  QTest::newRow("two spaces") << "  test" << "test";
+  newRow("no space") << "test" << "test";
+  newRow("one space") << " test" << "test";
+  newRow("two spaces") << "  test" << "test";
 
-  QTest::newRow("one tab") << "\t test" << "test";
-  QTest::newRow("two tabs") << "\t\t test" << "test";
+  newRow("one tab") << "\t test" << "test";
+  newRow("two tabs") << "\t\t test" << "test";
 
-  QTest::newRow("CR LF") << "\r\n test" << "test";
-  QTest::newRow("LF CR") << "\n\r test" << "test";
+  newRow("CR LF") << "\r\n test" << "test";
+  newRow("LF CR") << "\n\r test" << "test";
 
-  QTest::newRow("one trailing space") << "test " << "test ";
-  QTest::newRow("two trailing spaces") << "test  " << "test  ";
-  QTest::newRow("trailing CR LF") << "test\r\n" << "test\r\n";
+  newRow("one trailing space") << "test " << "test ";
+  newRow("two trailing spaces") << "test  " << "test  ";
+  newRow("trailing CR LF") << "test\r\n" << "test\r\n";
 }
