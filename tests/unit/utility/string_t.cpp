@@ -54,6 +54,11 @@ void test_string::test_parse_table_data() {
       << (QStringList() << "A" << "B")
       << (QStringList() << "C" << "D" << "E")
       << (QStringList() << "F" << "G" << "H" << "I"));
+
+  newRow("empty row") << "A B \n \n C D"
+    << (QList<QStringList>()
+      << (QStringList() << "A" << "B")
+      << (QStringList() << "C" << "D"));
 }
 
 void test_string::test_split_arguments() {

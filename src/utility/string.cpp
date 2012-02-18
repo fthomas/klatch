@@ -28,7 +28,9 @@ QList<QStringList> parse_table(const QString& multiline_str) {
   table.reserve(lines.size());
 
   for (const QString& line : lines) {
-    table << split_arguments(line);
+    if (!line.trimmed().isEmpty()) {
+      table << split_arguments(line);
+    }
   }
   return table;
 }
