@@ -23,16 +23,14 @@
 
 class Matches {
  public:
-  Matches(const QString& status, const QString& text);
+  Matches(const QString& text);
 
   QStringList words() const;
 
  private:
-  void parseStatusLine(const QString& line);
   void parseText(const QString& text);
 
  private:
-  int count_ = 0;
   QMultiMap<QString, QString> matches_;
 };
 

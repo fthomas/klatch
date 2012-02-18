@@ -20,17 +20,12 @@
 #include <QStringList>
 #include "utility/string.h"
 
-Matches::Matches(const QString& status, const QString& text) {
-  parseStatusLine(status);
+Matches::Matches(const QString& text) {
   parseText(text);
 }
 
 QStringList Matches::words() const {
   return matches_.values();
-}
-
-void Matches::parseStatusLine(const QString& line) {
-  count_ = line.section(' ', 0, 0).toInt();
 }
 
 void Matches::parseText(const QString& text) {

@@ -241,7 +241,7 @@ void DictClient::parseTextResponse(const QString& text) {
       break;
 
     case CODE_MATCHES_FOUND:
-      emit matchesReceived(Matches{last_status_line_, text});
+      emit matchesReceived(Matches{text});
       break;
   }
 }
