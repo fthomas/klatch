@@ -26,7 +26,7 @@
 #include "LookupWidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
-    : KXmlGuiWindow(parent), lookup_(new LookupWidget(this)) {
+    : KXmlGuiWindow{parent}, lookup_{new LookupWidget{this}} {
   setupActions();
   setCentralWidget(lookup_);
 }

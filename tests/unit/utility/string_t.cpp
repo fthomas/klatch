@@ -37,28 +37,28 @@ void test_string::test_parse_table_data() {
   addColumn<QString>("input");
   addColumn<QList<QStringList>>("result");
 
-  newRow("empty input") << "" << QList<QStringList>();
+  newRow("empty input") << "" << QList<QStringList>{};
 
   newRow("one cell") << "A"
-    << (QList<QStringList>() << (QStringList() << "A"));
+    << (QList<QStringList>{} << (QStringList{} << "A"));
   newRow("three cells") << "A B C"
-    << (QList<QStringList>() << (QStringList() << "A" << "B" << "C"));
+    << (QList<QStringList>{} << (QStringList{} << "A" << "B" << "C"));
 
   newRow("two rows") << "A B \n C D"
-    << (QList<QStringList>()
-      << (QStringList() << "A" << "B")
-      << (QStringList() << "C" << "D"));
+    << (QList<QStringList>{}
+      << (QStringList{} << "A" << "B")
+      << (QStringList{} << "C" << "D"));
 
   newRow("three rows") << "A B \n C D E \n F G H I"
-    << (QList<QStringList>()
-      << (QStringList() << "A" << "B")
-      << (QStringList() << "C" << "D" << "E")
-      << (QStringList() << "F" << "G" << "H" << "I"));
+    << (QList<QStringList>{}
+      << (QStringList{} << "A" << "B")
+      << (QStringList{} << "C" << "D" << "E")
+      << (QStringList{} << "F" << "G" << "H" << "I"));
 
   newRow("empty row") << "A B \n \n C D"
-    << (QList<QStringList>()
-      << (QStringList() << "A" << "B")
-      << (QStringList() << "C" << "D"));
+    << (QList<QStringList>{}
+      << (QStringList{} << "A" << "B")
+      << (QStringList{} << "C" << "D"));
 }
 
 void test_string::test_split_arguments() {
@@ -73,37 +73,37 @@ void test_string::test_split_arguments_data() {
   addColumn<QStringList>("result");
 
   newRow("one quoted string") << "one two"
-    << (QStringList() << "one" << "two");
+    << (QStringList{} << "one" << "two");
   newRow("one quoted string") << "'one' two"
-    << (QStringList() << "one" << "two");
+    << (QStringList{} << "one" << "two");
   newRow("one quoted string") << "\"one\" two"
-    << (QStringList() << "one" << "two");
+    << (QStringList{} << "one" << "two");
 
   newRow("two quoted strings") << "\"one\" 'two' 3"
-    << (QStringList() << "one" << "two" << "3");
+    << (QStringList{} << "one" << "two" << "3");
   newRow("two quoted strings") << "one \"two\" '3'"
-    << (QStringList() << "one" << "two" << "3");
+    << (QStringList{} << "one" << "two" << "3");
   newRow("two quoted strings") << "'one' two \"3\""
-    << (QStringList() << "one" << "two" << "3");
+    << (QStringList{} << "one" << "two" << "3");
 
   newRow("spaces in quotes") << " one \"two 3\""
-    << (QStringList() << "one" << "two 3");
+    << (QStringList{} << "one" << "two 3");
   newRow("spaces in quotes") << "\"one two 3\""
-    << (QStringList() << "one two 3");
+    << (QStringList{} << "one two 3");
   newRow("spaces in quotes") << " \"one two\"  3  "
-    << (QStringList() << "one two" << "3");
+    << (QStringList{} << "one two" << "3");
 
   newRow("quotes in quotes") << "\"one 'two'\"  3"
-    << (QStringList() << "one 'two'" << "3");
+    << (QStringList{} << "one 'two'" << "3");
   newRow("quotes in quotes") << "\"'one' 'two'\" 3"
-    << (QStringList() << "'one' 'two'" << "3");
+    << (QStringList{} << "'one' 'two'" << "3");
   newRow("quotes in quotes") << "\"'one  two'\" 3"
-    << (QStringList() << "'one  two'" << "3");
+    << (QStringList{} << "'one  two'" << "3");
 
   newRow("escaped sq") << "'one\\'two' 3"
-    << (QStringList() << "one\\'two" << "3");
+    << (QStringList{} << "one\\'two" << "3");
   newRow("escaped dq") << "\"one \\\" two\" 3"
-    << (QStringList() << "one \\\" two" << "3");
+    << (QStringList{} << "one \\\" two" << "3");
 }
 
 void test_string::test_trimmed_left() {
