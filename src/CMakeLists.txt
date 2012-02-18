@@ -63,6 +63,7 @@ set_target_properties(klatch PROPERTIES
   klatch_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}"
   klatch_SOURCES "${klatch_SOURCES}"
   klatch_HEADERS "${klatch_HEADERS}"
+  klatch_UIS "${klatch_UIS}"
   klatch_INCLUDE_DIRS "${klatch_INCLUDE_DIRS}"
   klatch_LIBRARIES "${klatch_LIBRARIES}")
 
