@@ -19,16 +19,15 @@
 
 #include <QObject>
 
-class test_utility_string : public QObject {
+class test_string : public QObject {
   Q_OBJECT
 
  private slots:
-  void test_trimmed_left();
-  void test_trimmed_left_data();
-
   void test_split_arguments();
   void test_split_arguments_data();
 
+  void test_trimmed_left();
+  void test_trimmed_left_data();
 };
 
 #endif // UTILITY_STRING_T_H

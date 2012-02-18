@@ -20,40 +20,14 @@
 #include <QtTest/QtTest>
 #include "utility/string.h"
 
-void test_utility_string::test_trimmed_left() {
-  QFETCH(QString, input);
-  QFETCH(QString, result);
-
-  QCOMPARE(trimmed_left(input), result);
-}
-
-void test_utility_string::test_trimmed_left_data() {
-  QTest::addColumn<QString>("input");
-  QTest::addColumn<QString>("result");
-
-  QTest::newRow("no space") << "test" << "test";
-  QTest::newRow("one space") << " test" << "test";
-  QTest::newRow("two spaces") << "  test" << "test";
-
-  QTest::newRow("one tab") << "\t test" << "test";
-  QTest::newRow("two tabs") << "\t\t test" << "test";
-
-  QTest::newRow("CR LF") << "\r\n test" << "test";
-  QTest::newRow("LF CR") << "\n\r test" << "test";
-
-  QTest::newRow("one trailing space") << "test " << "test ";
-  QTest::newRow("two trailing spaces") << "test  " << "test  ";
-  QTest::newRow("trailing CR LF") << "test\r\n" << "test\r\n";
-}
-
-void test_utility_string::test_split_arguments() {
+void test_string::test_split_arguments() {
   QFETCH(QString, input);
   QFETCH(QStringList, result);
 
   QCOMPARE(split_arguments(input), result);
 }
 
-void test_utility_string::test_split_arguments_data() {
+void test_string::test_split_arguments_data() {
   QTest::addColumn<QString>("input");
   QTest::addColumn<QStringList>("result");
 
@@ -89,4 +63,30 @@ void test_utility_string::test_split_arguments_data() {
     << (QStringList() << "one\\'two" << "3");
   QTest::newRow("escaped dq") << "\"one \\\" two\" 3"
     << (QStringList() << "one \\\" two" << "3");
+}
+
+void test_string::test_trimmed_left() {
+  QFETCH(QString, input);
+  QFETCH(QString, result);
+
+  QCOMPARE(trimmed_left(input), result);
+}
+
+void test_string::test_trimmed_left_data() {
+  QTest::addColumn<QString>("input");
+  QTest::addColumn<QString>("result");
+
+  QTest::newRow("no space") << "test" << "test";
+  QTest::newRow("one space") << " test" << "test";
+  QTest::newRow("two spaces") << "  test" << "test";
+
+  QTest::newRow("one tab") << "\t test" << "test";
+  QTest::newRow("two tabs") << "\t\t test" << "test";
+
+  QTest::newRow("CR LF") << "\r\n test" << "test";
+  QTest::newRow("LF CR") << "\n\r test" << "test";
+
+  QTest::newRow("one trailing space") << "test " << "test ";
+  QTest::newRow("two trailing spaces") << "test  " << "test  ";
+  QTest::newRow("trailing CR LF") << "test\r\n" << "test\r\n";
 }

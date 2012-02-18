@@ -14,32 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <cstdlib>
-#include <QCoreApplication>
-#include <QtTest/QtTest>
-#include "dict/Matches_t.h"
-#include "utility/string_t.h"
+#ifndef DICT_MATCHES_T_H
+#define DICT_MATCHES_T_H
 
-int g_argc;
-char** g_argv;
+#include <QObject>
 
-template<class TestClass>
-void exec() {
-  TestClass test;
-  const int retval = QTest::qExec(&test, g_argc, g_argv);
+class test_Matches : public QObject {
+  Q_OBJECT
 
-  if (retval != 0) {
-    std::exit(EXIT_FAILURE);
-  }
-}
+ private slots:
 
-int main(int argc, char* argv[]) {
-  g_argc = argc;
-  g_argv = argv;
+};
 
-  QCoreApplication app{argc, argv};
-  exec<test_Matches>();
-  exec<test_string>();
-
-  std::exit(EXIT_SUCCESS);
-}
+#endif // DICT_MATCHES_T_H
