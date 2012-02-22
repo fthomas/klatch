@@ -32,11 +32,11 @@ set(klatch_RCS
   ${CMAKE_CURRENT_SOURCE_DIR}/klatchui.rc)
 
 set(klatch_KCFGS
-  ${CMAKE_CURRENT_SOURCE_DIR}/klatch.kcfg)
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/klatch.kcfg)
 
 kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
 
-kde4_add_kcfg_files(klatch_GENERATED_KCFGCS klatchconfig.kcfgc)
+kde4_add_kcfg_files(klatch_GENERATED_KCFGCS config/klatchconfig.kcfgc)
 
 set(klatch_ALL_SOURCES
   ${klatch_SOURCES}
