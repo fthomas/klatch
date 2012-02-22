@@ -37,9 +37,12 @@ set(klatch_RCS
 set(klatch_KCFGS
   ${CMAKE_CURRENT_SOURCE_DIR}/config/klatch.kcfg)
 
+set(klatch_KCFGCS
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/klatchconfig.kcfgc)
+
 kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
 
-kde4_add_kcfg_files(klatch_GENERATED_KCFGCS config/klatchconfig.kcfgc)
+kde4_add_kcfg_files(klatch_GENERATED_KCFGCS ${klatch_KCFGCS})
 
 set(klatch_ALL_SOURCES
   ${klatch_SOURCES}
@@ -67,6 +70,7 @@ set_target_properties(klatch PROPERTIES
   klatch_SOURCES "${klatch_SOURCES}"
   klatch_HEADERS "${klatch_HEADERS}"
   klatch_UIS "${klatch_UIS}"
+  klatch_KCFGCS "${klatch_KCFGCS}"
   klatch_INCLUDE_DIRS "${klatch_INCLUDE_DIRS}"
   klatch_LIBRARIES "${klatch_LIBRARIES}")
 

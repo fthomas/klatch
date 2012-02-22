@@ -2,6 +2,7 @@ get_target_property(klatch_SOURCE_DIR   klatch klatch_SOURCE_DIR)
 get_target_property(klatch_SOURCES      klatch klatch_SOURCES)
 get_target_property(klatch_HEADERS      klatch klatch_HEADERS)
 get_target_property(klatch_UIS          klatch klatch_UIS)
+get_target_property(klatch_KCFGCS       klatch klatch_KCFGCS)
 get_target_property(klatch_INCLUDE_DIRS klatch klatch_INCLUDE_DIRS)
 get_target_property(klatch_LIBRARIES    klatch klatch_LIBRARIES)
 list(REMOVE_ITEM klatch_SOURCES "${klatch_SOURCE_DIR}/main.cpp")
@@ -17,13 +18,16 @@ set(ut_HEADERS
 
 kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
 
+kde4_add_kcfg_files(klatch_GENERATED_KCFGCS ${klatch_KCFGCS})
+
 set(ut_ALL_SOURCES
   ${ut_SOURCES}
   ${ut_HEADERS}
   ${klatch_SOURCES}
   ${klatch_HEADERS}
   ${klatch_UIS}
-  ${klatch_GENERATED_UIS})
+  ${klatch_GENERATED_UIS}
+  ${klatch_GENERATED_KCFGCS})
 
 set(ut_INCLUDE_DIRS
   ${klatch_INCLUDE_DIRS}
