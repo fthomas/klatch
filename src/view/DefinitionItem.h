@@ -19,6 +19,7 @@
 
 #include <QFrame>
 #include <QtGlobal>
+#include "dict/Definition.h"
 
 QT_BEGIN_NAMESPACE
 class QEvent;
@@ -34,13 +35,21 @@ class DefinitionItem : public QFrame {
 
  public:
   explicit DefinitionItem(QWidget* parent = 0);
+  explicit DefinitionItem(const Definition& def, QWidget* parent = 0);
   ~DefinitionItem();
+
+  Definition definition() const;
+  void setDefinition(const Definition& def);
 
  protected:
   void changeEvent(QEvent* event);
 
  private:
+  void updateUi();
+
+ private:
   Ui::DefinitionItem* ui_;
+  Definition def_;
 };
 
 #endif // VIEW_DEFINITIONITEM_H

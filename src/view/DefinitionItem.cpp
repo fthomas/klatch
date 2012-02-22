@@ -18,15 +18,30 @@
 #include <QEvent>
 #include <QFrame>
 #include <QWidget>
+#include "dict/Definition.h"
 #include "ui_DefinitionItem.h"
 
 DefinitionItem::DefinitionItem(QWidget* parent)
-    : QFrame{parent}, ui_{new Ui::DefinitionItem} {
+    : DefinitionItem{Definition{}, parent} {
+}
+
+DefinitionItem::DefinitionItem(const Definition& def, QWidget* parent)
+    : QFrame{parent}, ui_{new Ui::DefinitionItem}, def_{def} {
   ui_->setupUi(this);
+  updateUi();
 }
 
 DefinitionItem::~DefinitionItem() {
   delete ui_;
+}
+
+Definition DefinitionItem::definition() const {
+  return def_;
+}
+
+void DefinitionItem::setDefinition(const Definition& def) {
+  def_ = def;
+  updateUi();
 }
 
 void DefinitionItem::changeEvent(QEvent* event) {
@@ -37,5 +52,20 @@ void DefinitionItem::changeEvent(QEvent* event) {
       break;
     default:
       break;
+  }
+}
+
+void DefinitionItem::updateUi() {
+  if(def_.isEmpty()) {
+    ui_->word->clear();
+    ui_->database->clear();
+    ui_->text->clear();
+  } else {
+    const QString db_text = !def_.databaseDescription().isEmpty() ?
+      def_.databaseDescription() : def_.database();
+
+    ui_->word->setText(def_.text());
+    ui_->database->setText(db_text);
+    ui_->text->setPlainText(def_.text());
   }
 }
