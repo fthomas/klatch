@@ -20,10 +20,14 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KApplication>
+#include <KConfigDialog>
+#include <KLocalizedString>
 #include <KMenuBar>
 #include <KStandardAction>
 #include <KToggleAction>
+#include "config/DictPage.h"
 #include "LookupWidget.h"
+#include "klatchconfig.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : KXmlGuiWindow{parent}, lookup_{new LookupWidget{this}} {
@@ -51,5 +55,14 @@ void MainWindow::toggleMenuBar() {
 }
 
 void MainWindow::showPreferences() {
-  qDebug() << "MainWindow::showPreferences()";
+  const QString preferences = "preferences";
+  if (KConfigDialog::showDialog(preferences)) return;
+
+  KConfigDialog* const dialog =
+    new KConfigDialog(this, preferences, KlatchConfig::self());
+
+  DictPage* const dict_page = new DictPage;
+  dialog->addPage(dict_page, i18n("Dict"), "Dict");
+
+  dialog->show();
 }

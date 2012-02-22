@@ -1,3 +1,4 @@
 File=klatch.kcfg
 ClassName=KlatchConfig
 Singleton=true
+Mutators=true

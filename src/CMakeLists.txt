@@ -1,6 +1,7 @@
 configure_file(KlatchData.cpp.in KlatchData.cpp)
 
 set(klatch_SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/DictPage.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Definition.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.cpp
@@ -14,6 +15,7 @@ set(klatch_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
 set(klatch_HEADERS
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/DictPage.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Definition.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.h
@@ -26,6 +28,7 @@ set(klatch_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/MainWindow.h)
 
 set(klatch_UIS
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/DictPage.ui
   ${CMAKE_CURRENT_SOURCE_DIR}/LookupWidget.ui)
 
 set(klatch_RCS
