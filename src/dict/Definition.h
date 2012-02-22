@@ -21,12 +21,15 @@
 
 class Definition {
  public:
+  Definition();
   Definition(const QString& status, const QString& text);
 
   QString word() const;
   QString database() const;
   QString databaseDescription() const;
   QString text() const;
+
+  bool isEmpty() const;
 
  private:
   void parseStatusLine(const QString& line);
@@ -36,6 +39,7 @@ class Definition {
   QString database_;
   QString db_description_;
   QString text_;
+  bool empty_ = true;
 };
 
 #endif // DICT_DEFINITION_H

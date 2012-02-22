@@ -19,9 +19,15 @@
 #include <QStringList>
 #include "utility/string.h"
 
+Definition::Definition() {
+}
+
 Definition::Definition(const QString& status, const QString& text) {
   parseStatusLine(status);
   text_ = text;
+
+  empty_ = word_.isEmpty() && database_.isEmpty() &&
+    db_description_.isEmpty() && text_.isEmpty();
 }
 
 QString Definition::word() const {
@@ -38,6 +44,10 @@ QString Definition::databaseDescription() const {
 
 QString Definition::text() const {
   return text_;
+}
+
+bool Definition::isEmpty() const {
+  return empty_;
 }
 
 void Definition::parseStatusLine(const QString& line) {
