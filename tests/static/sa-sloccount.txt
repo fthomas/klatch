@@ -7,9 +7,11 @@ Adding README.rst to top_dir
 Creating filelist for tests
 Have a non-directory at the top, so creating directory src_top_dir
 Adding src/CMakeLists.txt to src_top_dir
+Creating filelist for src_config
 Creating filelist for src_dict
 Adding src/KlatchData.cpp.in to src_top_dir
 Adding src/KlatchData.h to src_top_dir
+Adding src/klatch.desktop to src_top_dir
 Adding src/klatchui.rc to src_top_dir
 Adding src/LookupWidget.cpp to src_top_dir
 Adding src/LookupWidget.h to src_top_dir
@@ -25,26 +27,27 @@ Computing results.
 
 
 SLOC	Directory	SLOC-by-Language (Sorted)
-365     src_dict        cpp=365
-178     src_top_dir     cpp=178
-51      src_utility     cpp=51
-0       tests           (none)
+454     src_dict        cpp=454
+188     src_top_dir     cpp=188
+139     tests           cpp=139
+89      src_utility     cpp=89
+43      src_config      cpp=43
 0       top_dir         (none)
 
 
 Totals grouped by language (dominant language first):
-cpp:            594 (100.00%)
+cpp:            913 (100.00%)
 
 
 
 
-Total Physical Source Lines of Code (SLOC)                = 594
-Development Effort Estimate, Person-Years (Person-Months) = 0.12 (1.39)
+Total Physical Source Lines of Code (SLOC)                = 913
+Development Effort Estimate, Person-Years (Person-Months) = 0.18 (2.18)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.24 (2.83)
+Schedule Estimate, Years (Months)                         = 0.28 (3.36)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 0.49
-Total Estimated Cost to Develop                           = $ 15,636
+Estimated Average Number of Developers (Effort/Schedule)  = 0.65
+Total Estimated Cost to Develop                           = $ 24,555
  (average salary = $56,286/year, overhead = 2.40).
 SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
 SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
