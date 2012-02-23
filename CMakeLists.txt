@@ -26,3 +26,8 @@ add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 
 add_subdirectory(src)
 add_subdirectory(tests)
+
+add_custom_target(dummy SOURCES
+  COPYING
+  COPYRIGHT
+  README.rst)
