@@ -10,6 +10,20 @@ Dependencies
 Building
 --------
 
+To compile and install Klatch, run these commands in its source tree::
+
+  mkdir build
+  cd build
+  cmake ..
+  make
+  sudo make install
+
+If this fails because of missing C++11 support, you need to use a newer
+compiler. For example, on Debian g++ from the gcc-snapshot package can
+be used by adding the following option to the CMake invocation::
+
+  -DCMAKE_CXX_COMPILER=/usr/lib/gcc-snapshot/bin/g++
+
 Download
 --------
 
