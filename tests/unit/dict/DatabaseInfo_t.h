@@ -14,34 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "dict/DatabaseInfo.h"
-#include <QString>
-#include <QStringList>
-#include "utility/string.h"
+#ifndef DICT_DATABASEINFO_T_H
+#define DICT_DATABASEINFO_T_H
 
-DatabaseInfo::DatabaseInfo() {
-}
+#include <QObject>
 
-DatabaseInfo::DatabaseInfo(const QString& status, const QString& text) {
-  parseStatusLine(status);
-  text_ = text;
+class test_DatabaseInfo : public QObject {
+  Q_OBJECT
 
-  empty_ = database_.isEmpty() && text_.isEmpty();
-}
+ private slots:
+  void test_isEmpty();
+};
 
-QString DatabaseInfo::database() const {
-  return database_;
-}
-
-QString DatabaseInfo::text() const {
-  return text_;
-}
-
-bool DatabaseInfo::isEmpty() const {
-  return empty_;
-}
-
-void DatabaseInfo::parseStatusLine(const QString& line) {
-  const QStringList args = split_arguments(line);
-  if (args.size() > 2) database_ = args.at(2);
-}
+#endif // DICT_DATABASEINFO_T_H

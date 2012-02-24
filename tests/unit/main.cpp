@@ -17,6 +17,7 @@
 #include <cstdlib>
 #include <QCoreApplication>
 #include <QtTest/QtTest>
+#include "dict/DatabaseInfo_t.h"
 #include "dict/Matches_t.h"
 #include "utility/string_t.h"
 
@@ -38,6 +39,7 @@ int main(int argc, char* argv[]) {
   g_argv = argv;
 
   QCoreApplication app{argc, argv};
+  exec<test_DatabaseInfo>();
   exec<test_Matches>();
   exec<test_string>();
 

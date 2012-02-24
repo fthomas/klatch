@@ -21,10 +21,13 @@
 
 class DatabaseInfo {
  public:
+  DatabaseInfo();
   DatabaseInfo(const QString& status, const QString& text);
 
   QString database() const;
   QString text() const;
+
+  bool isEmpty() const;
 
  private:
   void parseStatusLine(const QString& line);
@@ -32,6 +35,7 @@ class DatabaseInfo {
  private:
   QString database_;
   QString text_;
+  bool empty_ = true;
 };
 
 #endif // DICT_DATABASEINFO_H

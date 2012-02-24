@@ -14,34 +14,23 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "dict/DatabaseInfo_t.h"
+#include <QtTest/QtTest>
 #include "dict/DatabaseInfo.h"
-#include <QString>
-#include <QStringList>
-#include "utility/string.h"
 
-DatabaseInfo::DatabaseInfo() {
-}
+void test_DatabaseInfo::test_isEmpty() {
+  DatabaseInfo db_info0;
+  QVERIFY(db_info0.isEmpty());
 
-DatabaseInfo::DatabaseInfo(const QString& status, const QString& text) {
-  parseStatusLine(status);
-  text_ = text;
+  DatabaseInfo db_info1{"", ""};
+  QVERIFY(db_info1.isEmpty());
 
-  empty_ = database_.isEmpty() && text_.isEmpty();
-}
+  DatabaseInfo db_info2{"test", ""};
+  QVERIFY(db_info2.isEmpty());
 
-QString DatabaseInfo::database() const {
-  return database_;
-}
+  DatabaseInfo db_info3{"test test test", ""};
+  QVERIFY(!db_info3.isEmpty());
 
-QString DatabaseInfo::text() const {
-  return text_;
-}
-
-bool DatabaseInfo::isEmpty() const {
-  return empty_;
-}
-
-void DatabaseInfo::parseStatusLine(const QString& line) {
-  const QStringList args = split_arguments(line);
-  if (args.size() > 2) database_ = args.at(2);
+  DatabaseInfo db_info4{"", "test"};
+  QVERIFY(!db_info4.isEmpty());
 }
