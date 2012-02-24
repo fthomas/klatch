@@ -14,36 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <cstdlib>
-#include <QCoreApplication>
-#include <QtTest/QtTest>
-#include "dict/DatabaseInfo_t.h"
-#include "dict/Matches_t.h"
-#include "results/ResultList_t.h"
-#include "utility/string_t.h"
+#ifndef RESULTS_RESULTLIST_H
+#define RESULTS_RESULTLIST_H
 
-int g_argc;
-char** g_argv;
+#include <QAbstractListModel>
+#include <QObject>
+#include <QVariant>
+#include <Qt>
+#include <QtGlobal>
 
-template<class TestClass>
-void exec() {
-  TestClass test;
-  const int retval = QTest::qExec(&test, g_argc, g_argv);
+QT_BEGIN_NAMESPACE
+class QModelIndex;
+QT_END_NAMESPACE
 
-  if (retval != 0) {
-    std::exit(EXIT_FAILURE);
-  }
-}
+class ResultList : public QAbstractListModel {
+  Q_OBJECT
 
-int main(int argc, char* argv[]) {
-  g_argc = argc;
-  g_argv = argv;
+ public:
+  explicit ResultList(QObject* parent = 0);
 
-  QCoreApplication app{argc, argv};
-  exec<test_DatabaseInfo>();
-  exec<test_Matches>();
-  exec<test_ResultList>();
-  exec<test_string>();
+  QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
 
-  std::exit(EXIT_SUCCESS);
-}
+  int rowCount(const QModelIndex& parent = QModelIndex{}) const;
+};
+
+#endif // RESULTS_RESULTLIST_H

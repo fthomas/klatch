@@ -6,6 +6,7 @@ set(klatch_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Definition.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/stream.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/string.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/view/DefinitionItem.cpp
@@ -22,6 +23,7 @@ set(klatch_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/codes.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList.h
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/stream.h
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/string.h
   ${CMAKE_CURRENT_SOURCE_DIR}/view/DefinitionItem.h

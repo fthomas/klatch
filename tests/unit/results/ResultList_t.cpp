@@ -14,36 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <cstdlib>
-#include <QCoreApplication>
-#include <QtTest/QtTest>
-#include "dict/DatabaseInfo_t.h"
-#include "dict/Matches_t.h"
 #include "results/ResultList_t.h"
-#include "utility/string_t.h"
+#include <QtTest/QtTest>
+#include "results/ResultList.h"
 
-int g_argc;
-char** g_argv;
-
-template<class TestClass>
-void exec() {
-  TestClass test;
-  const int retval = QTest::qExec(&test, g_argc, g_argv);
-
-  if (retval != 0) {
-    std::exit(EXIT_FAILURE);
-  }
-}
-
-int main(int argc, char* argv[]) {
-  g_argc = argc;
-  g_argv = argv;
-
-  QCoreApplication app{argc, argv};
-  exec<test_DatabaseInfo>();
-  exec<test_Matches>();
-  exec<test_ResultList>();
-  exec<test_string>();
-
-  std::exit(EXIT_SUCCESS);
+void test_ResultList::test_rowCount() {
+  ResultList list;
 }

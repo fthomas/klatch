@@ -10,12 +10,14 @@ list(REMOVE_ITEM klatch_SOURCES "${klatch_SOURCE_DIR}/main.cpp")
 set(ut_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo_t.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches_t.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList_t.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/string_t.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
 set(ut_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo_t.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches_t.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList_t.h
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/string_t.h)
 
 kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
