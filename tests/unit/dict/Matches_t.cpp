@@ -15,4 +15,43 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dict/Matches_t.h"
+#include <QString>
+#include <QStringList>
+#include <QtTest/QtTest>
 #include "dict/Matches.h"
+
+using QTest::addColumn;
+using QTest::newRow;
+
+void test_Matches::test_words() {
+  QFETCH(QString, input);
+  QFETCH(QStringList, result);
+
+  QCOMPARE(Matches{input}.words(), result);
+}
+
+void test_Matches::test_words_data() {
+  addColumn<QString>("input");
+  addColumn<QStringList>("result");
+
+  newRow("no matches") << ""
+    << QStringList{};
+  newRow("one match") << "key0 value0"
+    << (QStringList{} << "value0");
+  newRow("two matches") << " \n key0 value0 \n key1 value1 \n "
+    << (QStringList{} << "value0" << "value1");
+}
+
+void test_Matches::test_isEmpty() {
+  Matches matches0;
+  QVERIFY(matches0.isEmpty());
+
+  Matches matches1{""};
+  QVERIFY(matches1.isEmpty());
+
+  Matches matches2{"test"};
+  QVERIFY(matches2.isEmpty());
+
+  Matches matches3{"test test"};
+  QVERIFY(!matches3.isEmpty());
+}

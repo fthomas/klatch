@@ -23,7 +23,10 @@ class test_Matches : public QObject {
   Q_OBJECT
 
  private slots:
+  void test_words();
+  void test_words_data();
 
+  void test_isEmpty();
 };
 
 #endif // DICT_MATCHES_T_H

@@ -20,12 +20,19 @@
 #include <QStringList>
 #include "utility/string.h"
 
+Matches::Matches() {
+}
+
 Matches::Matches(const QString& text) {
   parseText(text);
 }
 
 QStringList Matches::words() const {
   return matches_.values();
+}
+
+bool Matches::isEmpty() const {
+  return matches_.isEmpty();
 }
 
 void Matches::parseText(const QString& text) {

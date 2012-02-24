@@ -23,9 +23,12 @@
 
 class Matches {
  public:
+  Matches();
   Matches(const QString& text);
 
   QStringList words() const;
+
+  bool isEmpty() const;
 
  private:
   void parseText(const QString& text);
