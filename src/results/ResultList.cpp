@@ -18,12 +18,32 @@
 #include <algorithm>
 #include <QModelIndex>
 #include <QObject>
+#include <QString>
+#include <QVariant>
+#include <Qt>
 #include "dict/Definition.h"
 
 ResultList::ResultList(QObject* parent) : QAbstractListModel{parent} {
 }
 
 QVariant ResultList::data(const QModelIndex& index, int role) const {
+  if (!index.isValid() || index.row() >= definitions_.size()) {
+    return QVariant{};
+  }
+
+  if  (role == Qt::DisplayRole) {
+    const Definition& def = definitions_.at(index.row());
+
+    QString text = def.text().trimmed();
+    text.prepend("  ");
+    text.replace("\n", "\n  ");
+
+    return QString{"%1 %2 [%3]:\n\n%4\n"}
+      .arg(tr("From"))
+      .arg(def.databaseDescription())
+      .arg(def.database())
+      .arg(text);
+  }
   return QVariant{};
 }
 
@@ -36,21 +56,30 @@ QString ResultList::word() const {
 }
 
 void ResultList::setWord(const QString& word) {
-  word_ = word;
-  removeNonMatchingResults();
-}
-
-void ResultList::appendResult(const Definition& def) {
-  if (def.word() == word_) {
-    definitions_ << def;
+  if (word != word_) {
+    word_ = word;
+    removeNonMatchingResults();
   }
 }
 
+void ResultList::appendResult(const Definition& def) {
+  if (def.word() != word_) return;
+
+  const int row = definitions_.size();
+  beginInsertRows(QModelIndex{}, row, row);
+  definitions_ << def;
+  endInsertRows();
+}
+
 void ResultList::removeNonMatchingResults() {
+  if (definitions_.isEmpty()) return;
+
+  beginResetModel();
   auto new_end = std::remove_if(definitions_.begin(), definitions_.end(),
     [&](const Definition& def) {
       return def.word() != word_;
     });
 
   definitions_.erase(new_end, definitions_.end());
+  endResetModel();
 }
