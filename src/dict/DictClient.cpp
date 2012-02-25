@@ -174,6 +174,7 @@ void DictClient::readData() {
         resetTextBuffer();
       } else {
         if (line.startsWith("..")) line.remove(0, 1);
+        line.replace("\r\n", "\n");
         text_buffer_.append(line);
       }
     }
