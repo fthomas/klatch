@@ -15,8 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "results/ResultList.h"
+#include <algorithm>
 #include <QModelIndex>
 #include <QObject>
+#include "dict/Definition.h"
 
 ResultList::ResultList(QObject* parent) : QAbstractListModel{parent} {
 }
@@ -26,5 +28,29 @@ QVariant ResultList::data(const QModelIndex& index, int role) const {
 }
 
 int ResultList::rowCount(const QModelIndex& parent) const {
-  return 0;
+  return parent.isValid() ? 0 : definitions_.size();
+}
+
+QString ResultList::word() const {
+  return word_;
+}
+
+void ResultList::setWord(const QString& word) {
+  word_ = word;
+  removeNonMatchingResults();
+}
+
+void ResultList::appendResult(const Definition& def) {
+  if (def.word() == word_) {
+    definitions_ << def;
+  }
+}
+
+void ResultList::removeNonMatchingResults() {
+  auto new_end = std::remove_if(definitions_.begin(), definitions_.end(),
+    [&](const Definition& def) {
+      return def.word() != word_;
+    });
+
+  definitions_.erase(new_end, definitions_.end());
 }

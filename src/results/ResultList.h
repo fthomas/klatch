@@ -18,14 +18,13 @@
 #define RESULTS_RESULTLIST_H
 
 #include <QAbstractListModel>
+#include <QList>
+#include <QModelIndex>
 #include <QObject>
+#include <QString>
 #include <QVariant>
 #include <Qt>
-#include <QtGlobal>
-
-QT_BEGIN_NAMESPACE
-class QModelIndex;
-QT_END_NAMESPACE
+#include "dict/Definition.h"
 
 class ResultList : public QAbstractListModel {
   Q_OBJECT
@@ -34,8 +33,20 @@ class ResultList : public QAbstractListModel {
   explicit ResultList(QObject* parent = 0);
 
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-
   int rowCount(const QModelIndex& parent = QModelIndex{}) const;
+
+  QString word() const;
+
+ public slots:
+  void setWord(const QString& word);
+  void appendResult(const Definition& def);
+
+ private:
+  void removeNonMatchingResults();
+
+ private:
+  QString word_;
+  QList<Definition> definitions_;
 };
 
 #endif // RESULTS_RESULTLIST_H

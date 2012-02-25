@@ -24,6 +24,8 @@ class test_ResultList : public QObject {
 
  private slots:
   void test_rowCount();
+  void test_setWord();
+  void test_appendResult();
 };
 
 #endif // RESULTS_RESULTLIST_T_H

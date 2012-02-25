@@ -16,8 +16,40 @@
 
 #include "results/ResultList_t.h"
 #include <QtTest/QtTest>
+#include "dict/Definition.h"
 #include "results/ResultList.h"
 
 void test_ResultList::test_rowCount() {
   ResultList list;
+  QCOMPARE(list.rowCount(), 0);
+
+  list.appendResult(Definition{});
+  QCOMPARE(list.rowCount(), 1);
+
+  list.appendResult(Definition{});
+  QCOMPARE(list.rowCount(), 2);
+
+  list.setWord("test");
+  QCOMPARE(list.rowCount(), 0);
+}
+
+void test_ResultList::test_setWord() {
+  ResultList list;
+  QCOMPARE(list.word(), QString{});
+
+  list.setWord("test");
+  QCOMPARE(list.word(), QString{"test"});
+}
+
+void test_ResultList::test_appendResult() {
+  ResultList list;
+  QCOMPARE(list.rowCount(), 0);
+
+  list.appendResult(Definition{"word", "text"});
+  QCOMPARE(list.rowCount(), 0);
+
+  list.setWord("word");
+
+  list.appendResult(Definition{"word", "text"});
+  QCOMPARE(list.rowCount(), 1);
 }
