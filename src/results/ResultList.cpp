@@ -53,17 +53,17 @@ QString ResultList::word() const {
 }
 
 void ResultList::setWord(const QString& word) {
-  if (word != word_) {
-    word_ = word;
-    removeNonMatchingResults();
-  }
+  if (word == word_) return;
+
+  word_ = word;
+  removeNonMatchingResults();
 }
 
 void ResultList::appendResult(const Definition& def) {
-  if (def.word() != word_) return;
+  if (def.word().compare(word_, Qt::CaseInsensitive) != 0) return;
 
-  const int row = definitions_.size();
-  beginInsertRows(QModelIndex{}, row, row);
+  const int new_row = definitions_.size();
+  beginInsertRows(QModelIndex{}, new_row, new_row);
   definitions_ << def;
   endInsertRows();
 }
@@ -74,7 +74,7 @@ void ResultList::removeNonMatchingResults() {
   beginResetModel();
   auto new_end = std::remove_if(definitions_.begin(), definitions_.end(),
     [&](const Definition& def) {
-      return def.word() != word_;
+      return def.word().compare(word_, Qt::CaseInsensitive) != 0;
     });
 
   definitions_.erase(new_end, definitions_.end());

@@ -36,11 +36,8 @@ LookupWidget::LookupWidget(QWidget* parent)
   ui_->setupUi(this);
 
   createConnections();
-
   initWordInput();
   initResultView();
-
-  // change the text color to red when no definitions are found?
 }
 
 LookupWidget::~LookupWidget() {
