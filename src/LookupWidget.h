@@ -26,9 +26,9 @@ QT_BEGIN_NAMESPACE
 class QEvent;
 QT_END_NAMESPACE
 
-class Definition;
 class DictClient;
 class Matches;
+class ResultList;
 
 namespace Ui {
   class LookupWidget;
@@ -43,17 +43,21 @@ class LookupWidget : public QWidget {
 
  public slots:
   void lookupWord(const QString& word);
-  void showDefinition(const Definition& def);
   void setCompletionItems(const Matches& matches);
 
  protected:
   void changeEvent(QEvent* event);
 
  private:
+  void createConnections();
+  void initWordInput();
+  void initResultView();
+
   static QString getInitialWord();
 
  private:
   Ui::LookupWidget* ui_;
+  ResultList* results_;
   DictClient* dict_;
 };
 

@@ -25,24 +25,22 @@
 #include "dict/Definition.h"
 #include "dict/DictClient.h"
 #include "dict/Matches.h"
+#include "results/ResultList.h"
 #include "ui_LookupWidget.h"
 
 LookupWidget::LookupWidget(QWidget* parent)
-    : QWidget(parent), ui_(new Ui::LookupWidget), dict_(new DictClient(this)) {
+    : QWidget{parent},
+      ui_{new Ui::LookupWidget},
+      results_{new ResultList{this}},
+      dict_{new DictClient{this}} {
   ui_->setupUi(this);
-  ui_->word_input->setText(getInitialWord());
+
+  createConnections();
+
+  initWordInput();
+  initResultView();
 
   // change the text color to red when no definitions are found?
-  // set length to DictClient::kMaxLineLength
-
-  connect(ui_->word_input, SIGNAL(textChanged(QString)),
-    this, SLOT(lookupWord(QString)));
-
-  connect(dict_, SIGNAL(definitionReceived(Definition)),
-    this, SLOT(showDefinition(Definition)));
-
-  connect(dict_, SIGNAL(matchesReceived(Matches)),
-    this, SLOT(setCompletionItems(Matches)));
 }
 
 LookupWidget::~LookupWidget() {
@@ -50,17 +48,11 @@ LookupWidget::~LookupWidget() {
 }
 
 void LookupWidget::lookupWord(const QString& word) {
+  results_->setWord(word);
   if (word.isEmpty()) return;
+  // do not call sendMatch if the last word was a prefix of  word
   if (word.length() >= 3) dict_->sendMatch(word);
   dict_->sendDefine(word);
-}
-
-void LookupWidget::showDefinition(const Definition& def) {
-  if (ui_->word_input->text() != def.word()) return;
-
-  ui_->plainTextEdit->appendHtml(QString("<b>%1</b>").arg(def.word()));
-  ui_->plainTextEdit->appendPlainText(def.text());
-  ui_->plainTextEdit->appendPlainText("\n");
 }
 
 void LookupWidget::setCompletionItems(const Matches& matches) {
@@ -76,6 +68,27 @@ void LookupWidget::changeEvent(QEvent* event) {
     default:
       break;
   }
+}
+
+void LookupWidget::createConnections() {
+  connect(ui_->word_input, SIGNAL(textChanged(QString)),
+    this, SLOT(lookupWord(QString)));
+
+  connect(dict_, SIGNAL(definitionReceived(Definition)),
+    results_, SLOT(appendResult(Definition)));
+
+  connect(dict_, SIGNAL(matchesReceived(Matches)),
+    this, SLOT(setCompletionItems(Matches)));
+}
+
+void LookupWidget::initWordInput() {
+  ui_->word_input->setMaxLength(DictClient::maxLineLength());
+  ui_->word_input->setText(getInitialWord());
+  ui_->word_input->selectAll();
+}
+
+void LookupWidget::initResultView() {
+  ui_->result_view->setModel(results_);
 }
 
 QString LookupWidget::getInitialWord() {
