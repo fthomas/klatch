@@ -94,6 +94,8 @@ void LookupWidget::initResultView() {
 QString LookupWidget::getInitialWord() {
   const auto args = KCmdLineArgs::parsedArgs();
 
-  return (args->count()) ? args->arg(0)
+  const auto retval = (args->count()) ? args->arg(0)
     : KApplication::clipboard()->text(QClipboard::Selection);
+
+  return retval.trimmed();
 }
