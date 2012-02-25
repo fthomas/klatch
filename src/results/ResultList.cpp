@@ -22,6 +22,7 @@
 #include <QVariant>
 #include <Qt>
 #include "dict/Definition.h"
+#include "utility/string.h"
 
 ResultList::ResultList(QObject* parent) : QAbstractListModel{parent} {
 }
@@ -34,15 +35,11 @@ QVariant ResultList::data(const QModelIndex& index, int role) const {
   if  (role == Qt::DisplayRole) {
     const Definition& def = definitions_.at(index.row());
 
-    QString text = def.text().trimmed();
-    text.prepend("  ");
-    text.replace("\n", "\n  ");
-
     return QString{"%1 %2 [%3]:\n\n%4\n"}
       .arg(tr("From"))
       .arg(def.databaseDescription())
       .arg(def.database())
-      .arg(text);
+      .arg(indent(def.text().trimmed()));
   }
   return QVariant{};
 }
