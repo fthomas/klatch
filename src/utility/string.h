@@ -22,6 +22,7 @@
 #include <QString>
 #include <QStringList>
 
+QString indent(const QString& str, int count = 2, QChar indent_char = ' ');
 
 QList<QStringList> parse_table(const QString& multiline_str);
 

@@ -26,6 +26,22 @@ using QTest::newRow;
 
 Q_DECLARE_METATYPE(QList<QStringList>)
 
+void test_string::test_indent() {
+  QFETCH(QString, input);
+  QFETCH(QString, result);
+
+  QCOMPARE(indent(input), result);
+}
+
+void test_string::test_indent_data() {
+  addColumn<QString>("input");
+  addColumn<QString>("result");
+
+  newRow("indent one line") << "foo" << "  foo";
+  newRow("indent two lines") << "foo\nbar" << "  foo\n  bar";
+  newRow("indent blank lines") << "foo\n\nbar" << "  foo\n  \n  bar";
+}
+
 void test_string::test_parse_table() {
   QFETCH(QString, input);
   QFETCH(QList<QStringList>, result);

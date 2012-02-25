@@ -20,6 +20,14 @@
 #include <QString>
 #include <QStringList>
 
+QString indent(const QString& str, int count, QChar indent_char) {
+  QString retval = str;
+  const QString prefix = QString{count, indent_char};
+  retval.prepend(prefix);
+  retval.replace('\n', QString{"\n"} + prefix);
+  return retval;
+}
+
 QList<QStringList> parse_table(const QString& multiline_str) {
   const QStringList lines =
     multiline_str.split('\n', QString::SkipEmptyParts);
