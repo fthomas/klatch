@@ -45,11 +45,13 @@ KLocalizedString KlatchData::shortDescription() {
 }
 
 KAboutData KlatchData::aboutData() {
+  const QByteArray mail = "frank@timepit.eu";
+
   KAboutData about{appName(), 0, displayName(), version()};
+  about.setBugAddress(mail);
   about.setHomepage(homepage());
   about.setLicense(KAboutData::License_GPL_V3);
   about.setShortDescription(shortDescription());
-  about.addAuthor(
-    ki18n("Frank S. Thomas"), ki18n("Author"), "frank@timepit.eu");
+  about.addAuthor(ki18n("Frank S. Thomas"), ki18n("Author"), mail);
   return about;
 }
