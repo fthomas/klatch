@@ -9,7 +9,6 @@ set(klatch_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/stream.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/string.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/view/DefinitionItem.cpp
   ${CMAKE_CURRENT_BINARY_DIR}/KlatchData.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/KlatchData.cpp.in
   ${CMAKE_CURRENT_SOURCE_DIR}/LookupWidget.cpp
@@ -26,14 +25,12 @@ set(klatch_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList.h
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/stream.h
   ${CMAKE_CURRENT_SOURCE_DIR}/utility/string.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/view/DefinitionItem.h
   ${CMAKE_CURRENT_SOURCE_DIR}/KlatchData.h
   ${CMAKE_CURRENT_SOURCE_DIR}/LookupWidget.h
   ${CMAKE_CURRENT_SOURCE_DIR}/MainWindow.h)
 
 set(klatch_UIS
   ${CMAKE_CURRENT_SOURCE_DIR}/config/DictPage.ui
-  ${CMAKE_CURRENT_SOURCE_DIR}/view/DefinitionItem.ui
   ${CMAKE_CURRENT_SOURCE_DIR}/LookupWidget.ui)
 
 set(klatch_RCS
