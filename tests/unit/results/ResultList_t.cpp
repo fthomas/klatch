@@ -52,4 +52,7 @@ void test_ResultList::test_appendResult() {
 
   list.appendResult(Definition{"word", "text"});
   QCOMPARE(list.rowCount(), 1);
+
+  list.appendResult(Definition{"WORD", "text"});
+  QCOMPARE(list.rowCount(), 2);
 }
