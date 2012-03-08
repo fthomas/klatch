@@ -1,46 +1,51 @@
 configure_file(KlatchData.cpp.in KlatchData.cpp)
 
+set(CSD ${CMAKE_CURRENT_SOURCE_DIR})
+set(CBD ${CMAKE_CURRENT_BINARY_DIR})
+
 set(klatch_SOURCES
-  ${CMAKE_CURRENT_SOURCE_DIR}/config/DictPage.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/Definition.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/utility/stream.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/utility/string.cpp
-  ${CMAKE_CURRENT_BINARY_DIR}/KlatchData.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/KlatchData.cpp.in
-  ${CMAKE_CURRENT_SOURCE_DIR}/LookupWidget.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/MainWindow.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+  ${CSD}/config/DictPage.cpp
+  ${CSD}/dict/ClientPool.cpp
+  ${CSD}/dict/DatabaseInfo.cpp
+  ${CSD}/dict/Definition.cpp
+  ${CSD}/dict/DictClient.cpp
+  ${CSD}/dict/Matches.cpp
+  ${CSD}/results/ResultList.cpp
+  ${CSD}/utility/stream.cpp
+  ${CSD}/utility/string.cpp
+  ${CBD}/KlatchData.cpp
+  ${CSD}/KlatchData.cpp.in
+  ${CSD}/LookupWidget.cpp
+  ${CSD}/MainWindow.cpp
+  ${CSD}/main.cpp)
 
 set(klatch_HEADERS
-  ${CMAKE_CURRENT_SOURCE_DIR}/config/DictPage.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/Definition.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/DictClient.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/dict/codes.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/utility/stream.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/utility/string.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/KlatchData.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/LookupWidget.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/MainWindow.h)
+  ${CSD}/config/DictPage.h
+  ${CSD}/dict/ClientPool.h
+  ${CSD}/dict/DatabaseInfo.h
+  ${CSD}/dict/Definition.h
+  ${CSD}/dict/DictClient.h
+  ${CSD}/dict/Matches.h
+  ${CSD}/dict/codes.h
+  ${CSD}/results/ResultList.h
+  ${CSD}/utility/stream.h
+  ${CSD}/utility/string.h
+  ${CSD}/KlatchData.h
+  ${CSD}/LookupWidget.h
+  ${CSD}/MainWindow.h)
 
 set(klatch_UIS
-  ${CMAKE_CURRENT_SOURCE_DIR}/config/DictPage.ui
-  ${CMAKE_CURRENT_SOURCE_DIR}/LookupWidget.ui)
+  ${CSD}/config/DictPage.ui
+  ${CSD}/LookupWidget.ui)
 
 set(klatch_RCS
-  ${CMAKE_CURRENT_SOURCE_DIR}/klatchui.rc)
+  ${CSD}/klatchui.rc)
 
 set(klatch_KCFGS
-  ${CMAKE_CURRENT_SOURCE_DIR}/config/klatch.kcfg)
+  ${CSD}/config/klatch.kcfg)
 
 set(klatch_KCFGCS
-  ${CMAKE_CURRENT_SOURCE_DIR}/config/klatchconfig.kcfgc)
+  ${CSD}/config/klatchconfig.kcfgc)
 
 kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
 
