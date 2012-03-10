@@ -9,7 +9,7 @@ set(klatch_VERSION "${klatch_VERSION_MAJOR}.${klatch_VERSION_MINOR}")
 
 # Enable more warnings if g++ or clang is used.
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER MATCHES clang)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
 endif()
 
 enable_testing()
