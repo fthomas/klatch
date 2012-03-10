@@ -31,3 +31,9 @@ add_custom_target(dummy SOURCES
   COPYING
   COPYRIGHT
   README.rst)
+
+set(ARCHIVE_FILE_NAME "${PROJECT_NAME_LOWER}-${klatch_VERSION}")
+add_custom_target(dist
+  COMMAND git archive --format=tar --prefix=${ARCHIVE_FILE_NAME}/ HEAD |
+    bzip2 -9 > ${CMAKE_BINARY_DIR}/${ARCHIVE_FILE_NAME}.tar.bz2
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
