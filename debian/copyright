@@ -1,0 +1,14 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Klatch
+Upstream-Contact: Frank S. Thomas <frank@timepit.eu>
+Source: https://github.com/fthomas/klatch
+
+Files: *
+Copyright: © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+License: GPL-3+
+
+Files: src/codes.h
+Copyright: 1997, 2000 Rickard E. Faith (faith@dict.org)
+           2002-2008 Aleksey Cheusov (vle@gmx.net)
+License: GPL-2+
+ This file has been taken from the dictd-1.12.0 distribution.
