@@ -1,9 +1,0 @@
-#!/usr/bin/make -f
-
-# Comment out to compile/test with gcc-snapshot.
-export  CC=/usr/lib/gcc-snapshot/bin/gcc
-export CXX=/usr/lib/gcc-snapshot/bin/g++
-export CPP=/usr/lib/gcc-snapshot/bin/cpp
-
-%:
-	dh $@
