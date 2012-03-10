@@ -16,12 +16,21 @@
 
 #include "config/DictPage.h"
 #include <QEvent>
+#include <QItemSelection>
 #include <QWidget>
+#include <KIcon>
 #include "ui_DictPage.h"
 
 DictPage::DictPage(QWidget* parent)
     : QWidget{parent}, ui_{new Ui::DictPage} {
   ui_->setupUi(this);
+
+  ui_->add->setIcon(KIcon("list-add"));
+  ui_->modify->setIcon(KIcon("configure"));
+  ui_->remove->setIcon(KIcon("list-remove"));
+
+  server_selection_ = ui_->servers_view->selectionModel();
+  createConnections();
 }
 
 DictPage::~DictPage() {
@@ -37,4 +46,17 @@ void DictPage::changeEvent(QEvent* event) {
     default:
       break;
   }
+}
+
+void DictPage::updateButtons(const QItemSelection& selected) {
+  const bool enable = !selected.isEmpty();
+
+  ui_->modify->setEnabled(enable);
+  ui_->remove->setEnabled(enable);
+}
+
+void DictPage::createConnections() {
+  connect(server_selection_,
+      SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+    this, SLOT(updateButtons(QItemSelection)));
 }

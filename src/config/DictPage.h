@@ -23,6 +23,8 @@
 
 QT_BEGIN_NAMESPACE
 class QEvent;
+class QItemSelection;
+class QItemSelectionModel;
 QT_END_NAMESPACE
 
 namespace Ui {
@@ -39,8 +41,15 @@ class DictPage : public QWidget {
  protected:
   void changeEvent(QEvent* event);
 
+ private slots:
+  void updateButtons(const QItemSelection& selected);
+
+ private:
+  void createConnections();
+
  private:
   Ui::DictPage* ui_;
+  QItemSelectionModel* server_selection_;
 };
 
 #endif // CONFIG_DICTPAGE_H
