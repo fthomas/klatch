@@ -14,38 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <cstdlib>
-#include <QCoreApplication>
-#include <QtTest/QtTest>
-#include "dict/DatabaseInfo_t.h"
-#include "dict/Matches_t.h"
-#include "results/ResultList_t.h"
-#include "utility/algorithm_t.h"
-#include "utility/string_t.h"
+#ifndef UTILITY_ALGORITHM_H
+#define UTILITY_ALGORITHM_H
 
-int g_argc;
-char** g_argv;
+#include <algorithm>
 
-template<class TestClass>
-void exec() {
-  TestClass test;
-  const int retval = QTest::qExec(&test, g_argc, g_argv);
-
-  if (retval != 0) {
-    std::exit(EXIT_FAILURE);
-  }
+template<class Container, class UnaryPredicate>
+void erase_if(Container& c, UnaryPredicate p) {
+  c.erase(std::remove_if(c.begin(), c.end(), p), c.end());
 }
 
-int main(int argc, char* argv[]) {
-  g_argc = argc;
-  g_argv = argv;
-
-  QCoreApplication app{argc, argv};
-  exec<test_DatabaseInfo>();
-  exec<test_Matches>();
-  exec<test_ResultList>();
-  exec<test_algorithm>();
-  exec<test_string>();
-
-  std::exit(EXIT_SUCCESS);
-}
+#endif // UTILITY_ALGORITHM_H

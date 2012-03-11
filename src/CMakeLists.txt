@@ -28,6 +28,7 @@ set(klatch_HEADERS
   ${CSD}/dict/Matches.h
   ${CSD}/dict/codes.h
   ${CSD}/results/ResultList.h
+  ${CSD}/utility/algorithm.h
   ${CSD}/utility/stream.h
   ${CSD}/utility/string.h
   ${CSD}/KlatchData.h

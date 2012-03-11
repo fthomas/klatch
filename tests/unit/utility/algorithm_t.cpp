@@ -14,38 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <cstdlib>
-#include <QCoreApplication>
-#include <QtTest/QtTest>
-#include "dict/DatabaseInfo_t.h"
-#include "dict/Matches_t.h"
-#include "results/ResultList_t.h"
 #include "utility/algorithm_t.h"
-#include "utility/string_t.h"
+#include <QList>
+#include <QtTest/QtTest>
+#include "utility/algorithm.h"
 
-int g_argc;
-char** g_argv;
+void test_algorithm::test_erase_if() {
+  QList<int> l1; l1 << 1 << 2 << 3 << 4;
 
-template<class TestClass>
-void exec() {
-  TestClass test;
-  const int retval = QTest::qExec(&test, g_argc, g_argv);
+  erase_if(l1, [](int i) { return i > 2; });
+  QCOMPARE(l1, (QList<int>{} << 1 << 2));
 
-  if (retval != 0) {
-    std::exit(EXIT_FAILURE);
-  }
-}
+  erase_if(l1, [](int i) { return i > 0; });
+  QCOMPARE(l1, QList<int>{});
 
-int main(int argc, char* argv[]) {
-  g_argc = argc;
-  g_argv = argv;
-
-  QCoreApplication app{argc, argv};
-  exec<test_DatabaseInfo>();
-  exec<test_Matches>();
-  exec<test_ResultList>();
-  exec<test_algorithm>();
-  exec<test_string>();
-
-  std::exit(EXIT_SUCCESS);
+  erase_if(l1, [](int i) { return i > 0; });
+  QCOMPARE(l1, QList<int>{});
 }

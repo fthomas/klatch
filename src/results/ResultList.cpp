@@ -15,13 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "results/ResultList.h"
-#include <algorithm>
 #include <QModelIndex>
 #include <QObject>
 #include <QString>
 #include <QVariant>
 #include <Qt>
 #include "dict/Definition.h"
+#include "utility/algorithm.h"
 #include "utility/string.h"
 
 ResultList::ResultList(QObject* parent) : QAbstractListModel{parent} {
@@ -71,12 +71,11 @@ void ResultList::appendResult(const Definition& def) {
 void ResultList::removeNonMatchingResults() {
   if (definitions_.isEmpty()) return;
 
-  beginResetModel();
-  auto new_end = std::remove_if(definitions_.begin(), definitions_.end(),
-    [&](const Definition& def) {
-      return def.word().compare(word_, Qt::CaseInsensitive) != 0;
-    });
+  const auto def_does_not_match = [&](const Definition& def) {
+    return def.word().compare(word_, Qt::CaseInsensitive) != 0;
+  };
 
-  definitions_.erase(new_end, definitions_.end());
+  beginResetModel();
+  erase_if(definitions_, def_does_not_match);
   endResetModel();
 }
