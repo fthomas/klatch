@@ -7,8 +7,9 @@
 #include <QObject>
 #include <QVariant>
 #include <Qt>
-#include <KConfig>
 #include "config/DictServerItem.h"
+
+class KConfig;
 
 class DictServerList : public QAbstractListModel {
   Q_OBJECT

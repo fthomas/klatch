@@ -43,10 +43,10 @@ class DictServerItem {
   KConfigGroup group_;
 
   QString hostname_;
-  QString hostname_key_ = "Hostname";
+  const QString hostname_key_ = "Hostname";
 
   quint16 port_;
-  QString port_key_ = "Port";
+  const QString port_key_ = "Port";
 };
 
 #endif // CONFIG_DICTSERVERITEM_H

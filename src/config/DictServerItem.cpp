@@ -52,6 +52,7 @@ void DictServerItem::setHostName(const QString& name) {
   hostname_ = name;
   if (group_.isValid()) {
     group_.writeEntry(hostname_key_, hostname_);
+    group_.sync();
   }
 }
 
@@ -63,5 +64,6 @@ void DictServerItem::setPort(quint16 port) {
   port_ = port;
   if (group_.isValid()) {
     group_.writeEntry(port_key_, int{port_});
+    group_.sync();
   }
 }
