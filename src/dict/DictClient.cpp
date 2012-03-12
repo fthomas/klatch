@@ -24,6 +24,7 @@
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtDebug>
+#include <QtGlobal>
 #include "dict/DatabaseInfo.h"
 #include "dict/Definition.h"
 #include "dict/Matches.h"

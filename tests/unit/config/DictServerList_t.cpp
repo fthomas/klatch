@@ -14,42 +14,23 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <cstdlib>
-#include <QCoreApplication>
-#include <QtTest/QtTest>
-#include "config/DictServerItem_t.h"
 #include "config/DictServerList_t.h"
-#include "dict/DatabaseInfo_t.h"
-#include "dict/Matches_t.h"
-#include "results/ResultList_t.h"
-#include "utility/algorithm_t.h"
-#include "utility/string_t.h"
+#include <QCoreApplication>
+#include <QFile>
+#include <QtTest/QtTest>
+#include <KConfig>
+#include "config/DictServerList.h"
 
-int g_argc;
-char** g_argv;
-
-template<class TestClass>
-void exec() {
-  TestClass test;
-  const int retval = QTest::qExec(&test, g_argc, g_argv);
-
-  if (retval != 0) {
-    std::exit(EXIT_FAILURE);
-  }
+void test_DictServerList::initTestCase() {
+  rcfile_ = QCoreApplication::applicationDirPath()
+    + "/test_DictServerList.rc";
 }
 
-int main(int argc, char* argv[]) {
-  g_argc = argc;
-  g_argv = argv;
+void test_DictServerList::test_ctor() {
+  QFile::remove(rcfile_);
+  KConfig config{rcfile_, KConfig::SimpleConfig};
 
-  QCoreApplication app{argc, argv};
-  exec<test_DictServerItem>();
-  exec<test_DictServerList>();
-  exec<test_DatabaseInfo>();
-  exec<test_Matches>();
-  exec<test_ResultList>();
-  exec<test_algorithm>();
-  exec<test_string>();
-
-  std::exit(EXIT_SUCCESS);
+  DictServerList list{&config};
+  QCOMPARE(list.rowCount(), 0);
+  QCOMPARE(list.columnCount(), 2);
 }

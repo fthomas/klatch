@@ -5,6 +5,8 @@ set(CBD ${CMAKE_CURRENT_BINARY_DIR})
 
 set(klatch_SOURCES
   ${CSD}/config/DictPage.cpp
+  ${CSD}/config/DictServerItem.cpp
+  ${CSD}/config/DictServerList.cpp
   ${CSD}/dict/ClientPool.cpp
   ${CSD}/dict/DatabaseInfo.cpp
   ${CSD}/dict/Definition.cpp
@@ -21,6 +23,8 @@ set(klatch_SOURCES
 
 set(klatch_HEADERS
   ${CSD}/config/DictPage.h
+  ${CSD}/config/DictServerItem.h
+  ${CSD}/config/DictServerList.h
   ${CSD}/dict/ClientPool.h
   ${CSD}/dict/DatabaseInfo.h
   ${CSD}/dict/Definition.h
