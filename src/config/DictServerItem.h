@@ -24,10 +24,9 @@
 
 class DictServerItem {
  public:
+  explicit DictServerItem(KConfigGroup group);
   explicit DictServerItem(const QString& hostname = "",
                           quint16 port = DictClient::defaultPort());
-
-  explicit DictServerItem(KConfigGroup group);
 
   KConfigGroup configGroup() const;
   void setConfigGroup(KConfigGroup group);
@@ -43,10 +42,10 @@ class DictServerItem {
   KConfigGroup group_;
 
   QString hostname_;
-  const QString hostname_key_ = "Hostname";
+  QString hostname_key_ = "Hostname";
 
   quint16 port_;
-  const QString port_key_ = "Port";
+  QString port_key_ = "Port";
 };
 
 #endif // CONFIG_DICTSERVERITEM_H

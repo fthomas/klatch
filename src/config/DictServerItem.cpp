@@ -20,13 +20,12 @@
 #include <KConfigGroup>
 #include "dict/DictClient.h"
 
+DictServerItem::DictServerItem(KConfigGroup group) : group_{group} {
+  readConfigGroup();
+}
 
 DictServerItem::DictServerItem(const QString& hostname, quint16 port)
     : hostname_{hostname}, port_{port} {
-}
-
-DictServerItem::DictServerItem(KConfigGroup group) : group_{group} {
-  readConfigGroup();
 }
 
 KConfigGroup DictServerItem::configGroup() const {
