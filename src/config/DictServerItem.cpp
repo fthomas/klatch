@@ -66,3 +66,23 @@ void DictServerItem::setPort(quint16 port) {
     group_.sync();
   }
 }
+
+bool DictServerItem::lessByHostName(const DictServerItem& a,
+                                    const DictServerItem& b) {
+  return a.hostName() < b.hostName();
+}
+
+bool DictServerItem::greaterByHostName(const DictServerItem& a,
+                                       const DictServerItem& b) {
+  return !lessByHostName(a, b);
+}
+
+bool DictServerItem::lessByPort(const DictServerItem& a,
+                                const DictServerItem& b) {
+  return a.port() < b.port();
+}
+
+bool DictServerItem::greaterByPort(const DictServerItem& a,
+                                   const DictServerItem& b) {
+  return !lessByPort(a, b);
+}

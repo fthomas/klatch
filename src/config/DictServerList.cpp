@@ -20,6 +20,7 @@
 #include <QString>
 #include <QStringList>
 #include <QVariant>
+#include <QtAlgorithms>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
@@ -67,19 +68,39 @@ int DictServerList::columnCount(const QModelIndex&) const {
   return 2;
 }
 
-bool DictServerList::insertRow(const DictServerItem& server) {
+void DictServerList::appendServer(const DictServerItem& server) {
   KConfigGroup subgroup =
     config_->group(dict_name_).group(newSubgroupName());
 
   DictServerItem my_server = server;
   my_server.setConfigGroup(subgroup);
 
-  const int new_row = servers_.size();
-  beginInsertRows(QModelIndex{}, new_row, new_row);
+  const int row = servers_.size();
+  beginInsertRows(QModelIndex{}, row, row);
   servers_ << my_server;
   endInsertRows();
+}
 
-  return true;
+void DictServerList::sort(int column, Qt::SortOrder order) {
+  auto comp_fn = DictServerItem::lessByHostName;
+
+  if (column == 0) {
+    if (order == Qt::DescendingOrder) {
+      comp_fn = DictServerItem::greaterByHostName;
+    }
+  }
+  else if (column == 1) {
+    if (order == Qt::AscendingOrder) {
+      comp_fn = DictServerItem::lessByPort;
+    }
+    else if (order == Qt::DescendingOrder) {
+      comp_fn = DictServerItem::greaterByPort;
+    }
+  }
+
+  emit layoutAboutToBeChanged();
+  qSort(servers_.begin(), servers_.end(), comp_fn);
+  emit layoutChanged();
 }
 
 void DictServerList::readConfig() {

@@ -38,6 +38,16 @@ class DictServerItem {
   quint16 port() const;
   void setPort(quint16 port);
 
+  static bool lessByHostName(
+    const DictServerItem& a, const DictServerItem& b);
+  static bool greaterByHostName(
+    const DictServerItem& a, const DictServerItem& b);
+
+  static bool lessByPort(
+    const DictServerItem& a, const DictServerItem& b);
+  static bool greaterByPort(
+    const DictServerItem& a, const DictServerItem& b);
+
  private:
   KConfigGroup group_;
 

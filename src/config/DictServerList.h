@@ -24,7 +24,9 @@ class DictServerList : public QAbstractListModel {
   int rowCount(const QModelIndex& parent = QModelIndex{}) const;
   int columnCount(const QModelIndex& parent = QModelIndex{}) const;
 
-  bool insertRow(const DictServerItem& server);
+  void appendServer(const DictServerItem& server);
+
+  void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
  private:
   void readConfig();
