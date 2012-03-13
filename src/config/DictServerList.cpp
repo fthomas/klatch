@@ -88,12 +88,10 @@ void DictServerList::sort(int column, Qt::SortOrder order) {
     if (order == Qt::DescendingOrder) {
       comp_fn = DictServerItem::greaterByHostName;
     }
-  }
-  else if (column == 1) {
+  } else if (column == 1) {
     if (order == Qt::AscendingOrder) {
       comp_fn = DictServerItem::lessByPort;
-    }
-    else if (order == Qt::DescendingOrder) {
+    } else if (order == Qt::DescendingOrder) {
       comp_fn = DictServerItem::greaterByPort;
     }
   }

@@ -69,6 +69,9 @@ void DictServerItem::setPort(quint16 port) {
 
 bool DictServerItem::lessByHostName(const DictServerItem& a,
                                     const DictServerItem& b) {
+  if (a.hostName() == b.hostName()) {
+    return a.port() < b.port();
+  }
   return a.hostName() < b.hostName();
 }
 
@@ -79,6 +82,9 @@ bool DictServerItem::greaterByHostName(const DictServerItem& a,
 
 bool DictServerItem::lessByPort(const DictServerItem& a,
                                 const DictServerItem& b) {
+  if (a.port() == b.port()) {
+    return a.hostName() < b.hostName();
+  }
   return a.port() < b.port();
 }
 
