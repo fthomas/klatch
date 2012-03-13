@@ -34,3 +34,17 @@ void test_DictServerList::test_ctor() {
   QCOMPARE(list.rowCount(), 0);
   QCOMPARE(list.columnCount(), 2);
 }
+
+void test_DictServerList::test_appendServer() {
+  QFile::remove(rcfile_);
+  KConfig config{rcfile_, KConfig::SimpleConfig};
+
+  DictServerList list{&config};
+  list.appendServer(DictServerItem{"test1", 123});
+  QCOMPARE(list.rowCount(), 1);
+  QVERIFY(config.group("Dict").hasGroup("Server0"));
+
+  list.appendServer(DictServerItem{"test2", 234});
+  QCOMPARE(list.rowCount(), 2);
+  QVERIFY(config.group("Dict").hasGroup("Server0"));
+}

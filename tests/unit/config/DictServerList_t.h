@@ -26,6 +26,7 @@ class test_DictServerList : public QObject {
  private slots:
   void initTestCase();
   void test_ctor();
+  void test_appendServer();
 
  private:
   QString rcfile_;

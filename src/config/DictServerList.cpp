@@ -68,7 +68,7 @@ int DictServerList::columnCount(const QModelIndex&) const {
   return 2;
 }
 
-void DictServerList::appendServer(const DictServerItem& server) {
+bool DictServerList::appendServer(const DictServerItem& server) {
   KConfigGroup subgroup =
     config_->group(dict_name_).group(newSubgroupName());
 
@@ -79,6 +79,24 @@ void DictServerList::appendServer(const DictServerItem& server) {
   beginInsertRows(QModelIndex{}, row, row);
   servers_ << my_server;
   endInsertRows();
+
+  return true;
+}
+
+bool DictServerList::removeRows(int row, int count,
+                                const QModelIndex& parent) {
+  const int last = row + count;
+  if (parent.isValid() || count < 1 || last > servers_.size()) {
+    return false;
+  }
+
+  auto it = servers_.begin() + row;
+
+  beginRemoveRows(QModelIndex{}, row, last - 1);
+  servers_.erase(it, it + last);
+  endRemoveRows();
+
+  return true;
 }
 
 void DictServerList::sort(int column, Qt::SortOrder order) {

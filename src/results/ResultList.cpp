@@ -59,13 +59,17 @@ void ResultList::setWord(const QString& word) {
   removeNonMatchingResults();
 }
 
-void ResultList::appendResult(const Definition& def) {
-  if (def.word().compare(word_, Qt::CaseInsensitive) != 0) return;
+bool ResultList::appendResult(const Definition& def) {
+  if (def.word().compare(word_, Qt::CaseInsensitive) != 0) {
+    return false;
+  }
 
-  const int new_row = definitions_.size();
-  beginInsertRows(QModelIndex{}, new_row, new_row);
+  const int row = definitions_.size();
+  beginInsertRows(QModelIndex{}, row, row);
   definitions_ << def;
   endInsertRows();
+
+  return true;
 }
 
 void ResultList::removeNonMatchingResults() {

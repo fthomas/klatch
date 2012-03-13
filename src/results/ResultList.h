@@ -39,7 +39,7 @@ class ResultList : public QAbstractListModel {
 
  public slots:
   void setWord(const QString& word);
-  void appendResult(const Definition& def);
+  bool appendResult(const Definition& def);
 
  private:
   void removeNonMatchingResults();
