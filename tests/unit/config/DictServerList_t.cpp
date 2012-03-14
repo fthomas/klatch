@@ -19,6 +19,7 @@
 #include <QFile>
 #include <QtTest/QtTest>
 #include <KConfig>
+#include <KConfigGroup>
 #include "config/DictServerList.h"
 
 void test_DictServerList::initTestCase() {
@@ -26,8 +27,11 @@ void test_DictServerList::initTestCase() {
     + "/test_DictServerList.rc";
 }
 
-void test_DictServerList::test_ctor() {
+void test_DictServerList::init() {
   QFile::remove(rcfile_);
+}
+
+void test_DictServerList::test_ctor() {
   KConfig config{rcfile_, KConfig::SimpleConfig};
 
   DictServerList list{&config};
@@ -36,7 +40,6 @@ void test_DictServerList::test_ctor() {
 }
 
 void test_DictServerList::test_appendServer() {
-  QFile::remove(rcfile_);
   KConfig config{rcfile_, KConfig::SimpleConfig};
 
   DictServerList list{&config};
@@ -50,10 +53,10 @@ void test_DictServerList::test_appendServer() {
 }
 
 void test_DictServerList::test_removeRows() {
-  QFile::remove(rcfile_);
   KConfig config{rcfile_, KConfig::SimpleConfig};
 
   DictServerList list{&config};
+  KConfigGroup dict_group = config.group("Dict");
 
   list.appendServer(DictServerItem{"test1", 1});
   list.appendServer(DictServerItem{"test2", 2});
@@ -63,11 +66,23 @@ void test_DictServerList::test_removeRows() {
   QVERIFY(!list.removeRows(0, 4));
   QCOMPARE(list.rowCount(), 3);
 
+  QVERIFY(dict_group.hasGroup("Server0"));
+  QVERIFY(dict_group.hasGroup("Server1"));
+  QVERIFY(dict_group.hasGroup("Server2"));
+
   QVERIFY(list.removeRows(1, 1));
   QCOMPARE(list.rowCount(), 2);
 
+  QVERIFY(dict_group.hasGroup("Server0"));
+  QVERIFY(!dict_group.hasGroup("Server1"));
+  QVERIFY(dict_group.hasGroup("Server2"));
+
   QVERIFY(list.removeRows(0, 2));
   QCOMPARE(list.rowCount(), 0);
+
+  QVERIFY(!dict_group.hasGroup("Server0"));
+  QVERIFY(!dict_group.hasGroup("Server1"));
+  QVERIFY(!dict_group.hasGroup("Server2"));
 
   QVERIFY(!list.removeRows(0, 1));
   QCOMPARE(list.rowCount(), 0);

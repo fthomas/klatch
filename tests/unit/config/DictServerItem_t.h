@@ -25,6 +25,7 @@ class test_DictServerItem : public QObject {
 
  private slots:
   void initTestCase();
+
   void test_setConfigGroup();
   void test_readConfigGroup();
   void test_setters();

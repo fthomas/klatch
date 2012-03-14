@@ -25,6 +25,8 @@ class test_DictServerList : public QObject {
 
  private slots:
   void initTestCase();
+  void init();
+
   void test_ctor();
   void test_appendServer();
   void test_removeRows();
