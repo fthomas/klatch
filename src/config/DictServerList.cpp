@@ -140,10 +140,10 @@ QString DictServerList::newSubgroupName() const {
   KConfigGroup dict_group = config_->group(dict_name_);
 
   QString name;
-  int i = 0;
+  int i = -1;
 
   do {
-    name = QString{"%1%2"}.arg(server_prefix_).arg(i++);
+    name = QString{"%1%2"}.arg(server_prefix_).arg(++i);
   } while (dict_group.hasGroup(name));
   return name;
 }
