@@ -69,10 +69,11 @@ void DictServerItem::setPort(quint16 port) {
 
 bool DictServerItem::lessByHostName(const DictServerItem& a,
                                     const DictServerItem& b) {
-  if (a.hostName() == b.hostName()) {
+  const int comp = QString::compare(a.hostName(), b.hostName());
+  if (comp == 0) {
     return a.port() < b.port();
   }
-  return a.hostName() < b.hostName();
+  return comp < 0;
 }
 
 bool DictServerItem::greaterByHostName(const DictServerItem& a,
