@@ -1,13 +1,997 @@
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
-cc1plus: error: unrecognized command line option ‘-std=c++11’
+src/config/DictPage.cpp:22:25: fatal error: ui_DictPage.h: No such file or directory
+compilation terminated.
+In file included from /usr/include/qt4/QtCore/qchar.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:45,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/config/DictServerItem.h:20,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/config/DictServerItem.h:20,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qbytearray.h:45,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/config/DictServerItem.h:20,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/config/DictServerItem.h:20,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qmetatype.h:49,
+                 from /usr/include/qt4/QtCore/qvariant.h:48,
+                 from /usr/include/qt4/QtCore/QVariant:1,
+                 from /usr/include/KDE/../kconfiggroup.h:32,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QVariant:1:0,
+                 from /usr/include/KDE/../kconfiggroup.h:32,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(float)':
+/usr/include/qt4/QtCore/qvariant.h:192:5: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::Private::Private()':
+/usr/include/qt4/QtCore/qvariant.h:357:16: warning: 'QVariant::Private::data' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(void*)':
+/usr/include/qt4/QtCore/qvariant.h:433:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(bool, int)':
+/usr/include/qt4/QtCore/qvariant.h:440:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant()':
+/usr/include/qt4/QtCore/qvariant.h:488:8: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from /usr/include/KDE/../kconfiggroup.h:33,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qstringlist.h: At global scope:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtGui/QColor:1:0,
+                 from /usr/include/KDE/../conversion_check.h:26,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor()':
+/usr/include/qt4/QtGui/qcolor.h:279:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:279:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor(int, int, int, int)':
+/usr/include/qt4/QtGui/qcolor.h:282:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:282:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor(const char*)':
+/usr/include/qt4/QtGui/qcolor.h:285:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:285:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor(const QString&)':
+/usr/include/qt4/QtGui/qcolor.h:288:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:288:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In copy constructor 'QColor::QColor(const QColor&)':
+/usr/include/qt4/QtGui/qcolor.h:291:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qsharedpointer.h:52:0,
+                 from /usr/include/qt4/QtGui/qfont.h:47,
+                 from /usr/include/qt4/QtGui/QFont:1,
+                 from /usr/include/KDE/../conversion_check.h:27,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qsharedpointer_impl.h: In constructor 'QtSharedPointer::ExternalRefCountData::ExternalRefCountData()':
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:188:16: warning: 'QtSharedPointer::ExternalRefCountData::weakref' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:188:16: warning: 'QtSharedPointer::ExternalRefCountData::strongref' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsharedpointer_impl.h: In constructor 'QtSharedPointer::ExternalRefCountData::ExternalRefCountData(Qt::Initialization)':
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:193:16: warning: 'QtSharedPointer::ExternalRefCountData::weakref' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:193:16: warning: 'QtSharedPointer::ExternalRefCountData::strongref' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QDate:1:0,
+                 from /usr/include/KDE/../conversion_check.h:28,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qdatetime.h: In constructor 'QDate::QDate()':
+/usr/include/qt4/QtCore/qdatetime.h:63:5: warning: 'QDate::jd' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QPoint:1:0,
+                 from /usr/include/KDE/../conversion_check.h:29,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qpoint.h: In constructor 'QPoint::QPoint()':
+/usr/include/qt4/QtCore/qpoint.h:111:8: warning: 'QPoint::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h:111:8: warning: 'QPoint::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h: In constructor 'QPoint::QPoint(int, int)':
+/usr/include/qt4/QtCore/qpoint.h:114:8: warning: 'QPoint::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h:114:8: warning: 'QPoint::yp' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QSize:1:0,
+                 from /usr/include/KDE/../conversion_check.h:30,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSize::QSize()':
+/usr/include/qt4/QtCore/qsize.h:111:8: warning: 'QSize::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:111:8: warning: 'QSize::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSize::QSize(int, int)':
+/usr/include/qt4/QtCore/qsize.h:114:8: warning: 'QSize::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:114:8: warning: 'QSize::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSizeF::QSizeF()':
+/usr/include/qt4/QtCore/qsize.h:264:8: warning: 'QSizeF::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:264:8: warning: 'QSizeF::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSizeF::QSizeF(qreal, qreal)':
+/usr/include/qt4/QtCore/qsize.h:272:8: warning: 'QSizeF::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:272:8: warning: 'QSizeF::ht' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QRect:1:0,
+                 from /usr/include/KDE/../conversion_check.h:31,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect()':
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect(int, int, int, int)':
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect(const QPoint&, const QPoint&)':
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect(const QPoint&, const QSize&)':
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRectF::QRectF()':
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::w' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::h' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRectF::QRectF(const QPointF&, const QSizeF&)':
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::w' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::h' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRectF::QRectF(const QPointF&, const QPointF&)':
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::w' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::h' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qdebug.h:50:0,
+                 from /usr/include/qt4/QtNetwork/qabstractsocket.h:48,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/config/DictServerItem.h:23,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFI, int)':
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFC, QChar)':
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtNetwork/qabstractsocket.h:48:0,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/config/DictServerItem.h:23,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QIODevice*)':
+/usr/include/qt4/QtCore/qdebug.h:65:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QString*)':
+/usr/include/qt4/QtCore/qdebug.h:66:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtNetwork/qabstractsocket.h:48:0,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/config/DictServerItem.h:23,
+                 from src/config/DictServerItem.cpp:17:
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QtMsgType)':
+/usr/include/qt4/QtCore/qdebug.h:67:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+src/config/DictServerItem.cpp: In constructor 'DictServerItem::DictServerItem(KConfigGroup)':
+src/config/DictServerItem.cpp:23:1: warning: 'DictServerItem::hostname_' should be initialized in the member initialization list [-Weffc++]
+src/config/DictServerItem.cpp:23:1: warning: 'DictServerItem::port_' should be initialized in the member initialization list [-Weffc++]
+src/config/DictServerItem.cpp: In constructor 'DictServerItem::DictServerItem(const QString&, quint16)':
+src/config/DictServerItem.cpp:27:1: warning: 'DictServerItem::group_' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:45:0,
+                 from /usr/include/qt4/QtCore/qvariant.h:45,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/config/DictServerList.h:4,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qvariant.h:45:0,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/config/DictServerList.h:4,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qvariant.h:45,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/config/DictServerList.h:4,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qvariant.h:45:0,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/config/DictServerList.h:4,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qmetatype.h:49,
+                 from /usr/include/qt4/QtCore/qvariant.h:48,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/config/DictServerList.h:4,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qabstractitemmodel.h:45:0,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/config/DictServerList.h:4,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(float)':
+/usr/include/qt4/QtCore/qvariant.h:192:5: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::Private::Private()':
+/usr/include/qt4/QtCore/qvariant.h:357:16: warning: 'QVariant::Private::data' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(void*)':
+/usr/include/qt4/QtCore/qvariant.h:433:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(bool, int)':
+/usr/include/qt4/QtCore/qvariant.h:440:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant()':
+/usr/include/qt4/QtCore/qvariant.h:488:8: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QAbstractListModel:1:0,
+                 from src/config/DictServerList.h:4,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qabstractitemmodel.h: At global scope:
+/usr/include/qt4/QtCore/qabstractitemmodel.h:58:21: warning: 'class QModelIndex' has pointer data members [-Weffc++]
+/usr/include/qt4/QtCore/qabstractitemmodel.h:58:21: warning:   but does not override 'operator=(const QModelIndex&)' [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from /usr/include/KDE/../kconfiggroup.h:33,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtGui/QColor:1:0,
+                 from /usr/include/KDE/../conversion_check.h:26,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor()':
+/usr/include/qt4/QtGui/qcolor.h:279:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:279:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor(int, int, int, int)':
+/usr/include/qt4/QtGui/qcolor.h:282:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:282:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor(const char*)':
+/usr/include/qt4/QtGui/qcolor.h:285:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:285:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In constructor 'QColor::QColor(const QString&)':
+/usr/include/qt4/QtGui/qcolor.h:288:8: warning: 'QColor::cspec' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h:288:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtGui/qcolor.h: In copy constructor 'QColor::QColor(const QColor&)':
+/usr/include/qt4/QtGui/qcolor.h:291:8: warning: 'QColor::ct' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qsharedpointer.h:52:0,
+                 from /usr/include/qt4/QtGui/qfont.h:47,
+                 from /usr/include/qt4/QtGui/QFont:1,
+                 from /usr/include/KDE/../conversion_check.h:27,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qsharedpointer_impl.h: In constructor 'QtSharedPointer::ExternalRefCountData::ExternalRefCountData()':
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:188:16: warning: 'QtSharedPointer::ExternalRefCountData::weakref' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:188:16: warning: 'QtSharedPointer::ExternalRefCountData::strongref' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsharedpointer_impl.h: In constructor 'QtSharedPointer::ExternalRefCountData::ExternalRefCountData(Qt::Initialization)':
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:193:16: warning: 'QtSharedPointer::ExternalRefCountData::weakref' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsharedpointer_impl.h:193:16: warning: 'QtSharedPointer::ExternalRefCountData::strongref' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QDate:1:0,
+                 from /usr/include/KDE/../conversion_check.h:28,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qdatetime.h: In constructor 'QDate::QDate()':
+/usr/include/qt4/QtCore/qdatetime.h:63:5: warning: 'QDate::jd' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QPoint:1:0,
+                 from /usr/include/KDE/../conversion_check.h:29,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qpoint.h: In constructor 'QPoint::QPoint()':
+/usr/include/qt4/QtCore/qpoint.h:111:8: warning: 'QPoint::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h:111:8: warning: 'QPoint::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h: In constructor 'QPoint::QPoint(int, int)':
+/usr/include/qt4/QtCore/qpoint.h:114:8: warning: 'QPoint::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h:114:8: warning: 'QPoint::yp' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QSize:1:0,
+                 from /usr/include/KDE/../conversion_check.h:30,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSize::QSize()':
+/usr/include/qt4/QtCore/qsize.h:111:8: warning: 'QSize::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:111:8: warning: 'QSize::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSize::QSize(int, int)':
+/usr/include/qt4/QtCore/qsize.h:114:8: warning: 'QSize::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:114:8: warning: 'QSize::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSizeF::QSizeF()':
+/usr/include/qt4/QtCore/qsize.h:264:8: warning: 'QSizeF::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:264:8: warning: 'QSizeF::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSizeF::QSizeF(qreal, qreal)':
+/usr/include/qt4/QtCore/qsize.h:272:8: warning: 'QSizeF::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:272:8: warning: 'QSizeF::ht' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QRect:1:0,
+                 from /usr/include/KDE/../conversion_check.h:31,
+                 from /usr/include/KDE/../kconfiggroup.h:718,
+                 from /usr/include/KDE/KConfigGroup:1,
+                 from src/config/DictServerItem.h:22,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect()':
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:61:5: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect(int, int, int, int)':
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:207:8: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect(const QPoint&, const QPoint&)':
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:215:8: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRect::QRect(const QPoint&, const QSize&)':
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::x1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::y1' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::x2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:223:8: warning: 'QRect::y2' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRectF::QRectF()':
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::w' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:514:5: warning: 'QRectF::h' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRectF::QRectF(const QPointF&, const QSizeF&)':
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::w' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:634:8: warning: 'QRectF::h' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h: In constructor 'QRectF::QRectF(const QPointF&, const QPointF&)':
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::w' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qrect.h:642:8: warning: 'QRectF::h' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qdebug.h:50:0,
+                 from /usr/include/qt4/QtNetwork/qabstractsocket.h:48,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/config/DictServerItem.h:23,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFI, int)':
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFC, QChar)':
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtNetwork/qabstractsocket.h:48:0,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/config/DictServerItem.h:23,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QIODevice*)':
+/usr/include/qt4/QtCore/qdebug.h:65:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QString*)':
+/usr/include/qt4/QtCore/qdebug.h:66:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtNetwork/qabstractsocket.h:48:0,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/config/DictServerItem.h:23,
+                 from src/config/DictServerList.h:10,
+                 from src/config/DictServerList.cpp:17:
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QtMsgType)':
+/usr/include/qt4/QtCore/qdebug.h:67:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+In file included from src/config/DictServerList.cpp:17:0:
+src/config/DictServerList.h: At global scope:
+src/config/DictServerList.h:14:7: warning: 'class DictServerList' has pointer data members [-Weffc++]
+src/config/DictServerList.h:14:7: warning:   but does not override 'DictServerList(const DictServerList&)' [-Weffc++]
+src/config/DictServerList.h:14:7: warning:   or 'operator=(const DictServerList&)' [-Weffc++]
+In file included from /usr/include/KDE/KConfig:2:0,
+                 from src/config/DictServerList.cpp:24:
+/usr/include/KDE/../ksharedconfig.h:40:22: warning: base class 'class QSharedData' has a non-virtual destructor [-Weffc++]
+src/config/DictServerList.cpp: In constructor 'DictServerList::DictServerList(KConfig*, QObject*)':
+src/config/DictServerList.cpp:29:1: warning: 'DictServerList::servers_' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qnamespace.h:45:0,
+                 from /usr/include/qt4/QtCore/qobjectdefs.h:45,
+                 from /usr/include/qt4/QtCore/qobject.h:47,
+                 from /usr/include/qt4/QtCore/QObject:1,
+                 from src/dict/ClientPool.h:4,
+                 from src/dict/ClientPool.cpp:1:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/QObject:1,
+                 from src/dict/ClientPool.h:4,
+                 from src/dict/ClientPool.cpp:1:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/qobject.h:48,
+                 from /usr/include/qt4/QtCore/QObject:1,
+                 from src/dict/ClientPool.h:4,
+                 from src/dict/ClientPool.cpp:1:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qbytearray.h:45,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/qobject.h:48,
+                 from /usr/include/qt4/QtCore/QObject:1,
+                 from src/dict/ClientPool.h:4,
+                 from src/dict/ClientPool.cpp:1:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/qobject.h:48,
+                 from /usr/include/qt4/QtCore/QObject:1,
+                 from src/dict/ClientPool.h:4,
+                 from src/dict/ClientPool.cpp:1:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qchar.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:45,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/DatabaseInfo.h:20,
+                 from src/dict/DatabaseInfo.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/DatabaseInfo.h:20,
+                 from src/dict/DatabaseInfo.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qbytearray.h:45,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/DatabaseInfo.h:20,
+                 from src/dict/DatabaseInfo.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/DatabaseInfo.h:20,
+                 from src/dict/DatabaseInfo.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qstringlist.h:46,
+                 from /usr/include/qt4/QtCore/QStringList:1,
+                 from src/dict/DatabaseInfo.cpp:19:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from src/dict/DatabaseInfo.cpp:19:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+src/dict/DatabaseInfo.cpp: In constructor 'DatabaseInfo::DatabaseInfo()':
+src/dict/DatabaseInfo.cpp:22:1: warning: 'DatabaseInfo::database_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DatabaseInfo.cpp:22:1: warning: 'DatabaseInfo::text_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DatabaseInfo.cpp: In constructor 'DatabaseInfo::DatabaseInfo(const QString&, const QString&)':
+src/dict/DatabaseInfo.cpp:25:1: warning: 'DatabaseInfo::database_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DatabaseInfo.cpp:25:1: warning: 'DatabaseInfo::text_' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qchar.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:45,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/Definition.h:20,
+                 from src/dict/Definition.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/Definition.h:20,
+                 from src/dict/Definition.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qbytearray.h:45,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/Definition.h:20,
+                 from src/dict/Definition.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/QString:1,
+                 from src/dict/Definition.h:20,
+                 from src/dict/Definition.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qstringlist.h:46,
+                 from /usr/include/qt4/QtCore/QStringList:1,
+                 from src/dict/Definition.cpp:19:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from src/dict/Definition.cpp:19:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+src/dict/Definition.cpp: In constructor 'Definition::Definition()':
+src/dict/Definition.cpp:22:1: warning: 'Definition::word_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Definition.cpp:22:1: warning: 'Definition::database_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Definition.cpp:22:1: warning: 'Definition::db_description_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Definition.cpp:22:1: warning: 'Definition::text_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Definition.cpp: In constructor 'Definition::Definition(const QString&, const QString&)':
+src/dict/Definition.cpp:25:1: warning: 'Definition::word_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Definition.cpp:25:1: warning: 'Definition::database_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Definition.cpp:25:1: warning: 'Definition::db_description_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Definition.cpp:25:1: warning: 'Definition::text_' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:45:0,
+                 from /usr/include/qt4/QtCore/qmap.h:45,
+                 from /usr/include/qt4/QtCore/QMap:1,
+                 from src/dict/DictClient.h:20,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qmap.h:45:0,
+                 from /usr/include/qt4/QtCore/QMap:1,
+                 from src/dict/DictClient.h:20,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qmap.h:45,
+                 from /usr/include/qt4/QtCore/QMap:1,
+                 from src/dict/DictClient.h:20,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qmap.h:45:0,
+                 from /usr/include/qt4/QtCore/QMap:1,
+                 from src/dict/DictClient.h:20,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/QObject:1,
+                 from src/dict/DictClient.h:21,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qdebug.h:50:0,
+                 from /usr/include/qt4/QtNetwork/qabstractsocket.h:48,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFI, int)':
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFC, QChar)':
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtNetwork/qabstractsocket.h:48:0,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QIODevice*)':
+/usr/include/qt4/QtCore/qdebug.h:65:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QString*)':
+/usr/include/qt4/QtCore/qdebug.h:66:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtNetwork/qabstractsocket.h:48:0,
+                 from /usr/include/qt4/QtNetwork/qtcpsocket.h:45,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qdebug.h: In constructor 'QDebug::Stream::Stream(QtMsgType)':
+/usr/include/qt4/QtCore/qdebug.h:67:9: warning: 'QDebug::Stream::buffer' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtNetwork/qtcpsocket.h:46:0,
+                 from /usr/include/qt4/QtNetwork/QTcpSocket:1,
+                 from src/dict/DictClient.h:23,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(float)':
+/usr/include/qt4/QtCore/qvariant.h:192:5: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::Private::Private()':
+/usr/include/qt4/QtCore/qvariant.h:357:16: warning: 'QVariant::Private::data' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(void*)':
+/usr/include/qt4/QtCore/qvariant.h:433:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(bool, int)':
+/usr/include/qt4/QtCore/qvariant.h:440:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant()':
+/usr/include/qt4/QtCore/qvariant.h:488:8: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from src/dict/DictClient.cpp:23:
+/usr/include/qt4/QtCore/qstringlist.h: At global scope:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QMap:1:0,
+                 from src/dict/DictClient.h:20,
+                 from src/dict/DictClient.cpp:17:
+/usr/include/qt4/QtCore/qmap.h: In instantiation of 'class QMultiMap<QString, QString>':
+src/dict/Matches.h:37:31:   required from here
+/usr/include/qt4/QtCore/qmap.h:969:7: warning: base class 'class QMap<QString, QString>' has a non-virtual destructor [-Weffc++]
+src/dict/DictClient.cpp: In constructor 'DictClient::DictClient(const QString&, quint16, QObject*)':
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::hostname_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::port_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::socket_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::stream_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::last_status_code_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::last_status_line_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::text_buffer_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::databases_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:42:1: warning: 'DictClient::search_strategies_' should be initialized in the member initialization list [-Weffc++]
+src/dict/DictClient.cpp:50:21: error: inconsistent user-defined literal suffixes '__FILE__' and 'QTOSTRING' in string literal
+src/dict/DictClient.cpp:50:21: error: unable to find string literal operator 'operator"" __FILE__'
+src/dict/DictClient.cpp:51:11: error: inconsistent user-defined literal suffixes '__FILE__' and 'QTOSTRING' in string literal
+src/dict/DictClient.cpp:51:11: error: unable to find string literal operator 'operator"" __FILE__'
+src/dict/DictClient.cpp:52:21: error: inconsistent user-defined literal suffixes '__FILE__' and 'QTOSTRING' in string literal
+src/dict/DictClient.cpp:52:21: error: unable to find string literal operator 'operator"" __FILE__'
+src/dict/DictClient.cpp:53:11: error: inconsistent user-defined literal suffixes '__FILE__' and 'QTOSTRING' in string literal
+src/dict/DictClient.cpp:53:11: error: unable to find string literal operator 'operator"" __FILE__'
+src/dict/DictClient.cpp:54:21: error: inconsistent user-defined literal suffixes '__FILE__' and 'QTOSTRING' in string literal
+src/dict/DictClient.cpp:54:21: error: unable to find string literal operator 'operator"" __FILE__'
+src/dict/DictClient.cpp:55:11: error: inconsistent user-defined literal suffixes '__FILE__' and 'QTOSTRING' in string literal
+src/dict/DictClient.cpp:55:11: error: unable to find string literal operator 'operator"" __FILE__'
+In file included from /usr/include/qt4/QtCore/qatomic.h:45:0,
+                 from /usr/include/qt4/QtCore/qmap.h:45,
+                 from /usr/include/qt4/QtCore/QMultiMap:1,
+                 from src/dict/Matches.h:20,
+                 from src/dict/Matches.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qmap.h:45:0,
+                 from /usr/include/qt4/QtCore/QMultiMap:1,
+                 from src/dict/Matches.h:20,
+                 from src/dict/Matches.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qmap.h:45,
+                 from /usr/include/qt4/QtCore/QMultiMap:1,
+                 from src/dict/Matches.h:20,
+                 from src/dict/Matches.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qmap.h:45:0,
+                 from /usr/include/qt4/QtCore/QMultiMap:1,
+                 from src/dict/Matches.h:20,
+                 from src/dict/Matches.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qstringlist.h:46,
+                 from /usr/include/qt4/QtCore/QStringList:1,
+                 from src/dict/Matches.h:22,
+                 from src/dict/Matches.cpp:17:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from src/dict/Matches.h:22,
+                 from src/dict/Matches.cpp:17:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QMultiMap:1:0,
+                 from src/dict/Matches.h:20,
+                 from src/dict/Matches.cpp:17:
+/usr/include/qt4/QtCore/qmap.h: In instantiation of 'class QMultiMap<QString, QString>':
+src/dict/Matches.h:37:31:   required from here
+/usr/include/qt4/QtCore/qmap.h:969:7: warning: base class 'class QMap<QString, QString>' has a non-virtual destructor [-Weffc++]
+src/dict/Matches.cpp: In constructor 'Matches::Matches()':
+src/dict/Matches.cpp:23:1: warning: 'Matches::matches_' should be initialized in the member initialization list [-Weffc++]
+src/dict/Matches.cpp: In constructor 'Matches::Matches(const QString&)':
+src/dict/Matches.cpp:26:1: warning: 'Matches::matches_' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:45:0,
+                 from /usr/include/qt4/QtCore/qvariant.h:45,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/results/ResultList.h:20,
+                 from src/results/ResultList.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qvariant.h:45:0,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/results/ResultList.h:20,
+                 from src/results/ResultList.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qvariant.h:45,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/results/ResultList.h:20,
+                 from src/results/ResultList.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qvariant.h:45:0,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/results/ResultList.h:20,
+                 from src/results/ResultList.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qmetatype.h:49,
+                 from /usr/include/qt4/QtCore/qvariant.h:48,
+                 from /usr/include/qt4/QtCore/qabstractitemmodel.h:45,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/results/ResultList.h:20,
+                 from src/results/ResultList.cpp:17:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qabstractitemmodel.h:45:0,
+                 from /usr/include/qt4/QtCore/QAbstractListModel:1,
+                 from src/results/ResultList.h:20,
+                 from src/results/ResultList.cpp:17:
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(float)':
+/usr/include/qt4/QtCore/qvariant.h:192:5: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::Private::Private()':
+/usr/include/qt4/QtCore/qvariant.h:357:16: warning: 'QVariant::Private::data' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(void*)':
+/usr/include/qt4/QtCore/qvariant.h:433:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant(bool, int)':
+/usr/include/qt4/QtCore/qvariant.h:440:12: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qvariant.h: In constructor 'QVariant::QVariant()':
+/usr/include/qt4/QtCore/qvariant.h:488:8: warning: 'QVariant::d' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QAbstractListModel:1:0,
+                 from src/results/ResultList.h:20,
+                 from src/results/ResultList.cpp:17:
+/usr/include/qt4/QtCore/qabstractitemmodel.h: At global scope:
+/usr/include/qt4/QtCore/qabstractitemmodel.h:58:21: warning: 'class QModelIndex' has pointer data members [-Weffc++]
+/usr/include/qt4/QtCore/qabstractitemmodel.h:58:21: warning:   but does not override 'operator=(const QModelIndex&)' [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from src/utility/string.h:23,
+                 from src/results/ResultList.cpp:25:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+src/results/ResultList.cpp: In constructor 'ResultList::ResultList(QObject*)':
+src/results/ResultList.cpp:27:1: warning: 'ResultList::word_' should be initialized in the member initialization list [-Weffc++]
+src/results/ResultList.cpp:27:1: warning: 'ResultList::definitions_' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QtGlobal:1:0,
+                 from src/utility/stream.h:20,
+                 from src/utility/stream.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qtextstream.h:45,
+                 from /usr/include/qt4/QtCore/QTextStream:1,
+                 from src/utility/stream.cpp:18:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/qobject.h:48,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qtextstream.h:45,
+                 from /usr/include/qt4/QtCore/QTextStream:1,
+                 from src/utility/stream.cpp:18:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qbytearray.h:45,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/qobject.h:48,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qtextstream.h:45,
+                 from /usr/include/qt4/QtCore/QTextStream:1,
+                 from src/utility/stream.cpp:18:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/qstring.h:46,
+                 from /usr/include/qt4/QtCore/qobject.h:48,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qtextstream.h:45,
+                 from /usr/include/qt4/QtCore/QTextStream:1,
+                 from src/utility/stream.cpp:18:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/QTextStream:1:0,
+                 from src/utility/stream.cpp:18:
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFI, int)':
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:276:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h: In constructor 'QTextStreamManipulator::QTextStreamManipulator(QTSMFC, QChar)':
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mf' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::mc' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::arg' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qtextstream.h:277:5: warning: 'QTextStreamManipulator::ch' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qchar.h:45:0,
+                 from /usr/include/qt4/QtCore/QChar:1,
+                 from src/utility/string.h:20,
+                 from src/utility/string.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qlist.h:46:0,
+                 from /usr/include/qt4/QtCore/QList:1,
+                 from src/utility/string.h:21,
+                 from src/utility/string.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qlist.h:46,
+                 from /usr/include/qt4/QtCore/QList:1,
+                 from src/utility/string.h:21,
+                 from src/utility/string.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qlist.h:46:0,
+                 from /usr/include/qt4/QtCore/QList:1,
+                 from src/utility/string.h:21,
+                 from src/utility/string.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+In file included from /usr/include/qt4/QtCore/qobject.h:47:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qstringlist.h:46,
+                 from /usr/include/qt4/QtCore/QStringList:1,
+                 from src/utility/string.h:23,
+                 from src/utility/string.cpp:17:
+/usr/include/qt4/QtCore/qobjectdefs.h: At global scope:
+/usr/include/qt4/QtCore/qobjectdefs.h:262:21: warning: base class 'class QGenericArgument' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/QStringList:1:0,
+                 from src/utility/string.h:23,
+                 from src/utility/string.cpp:17:
+/usr/include/qt4/QtCore/qstringlist.h:66:7: warning: base class 'class QList<QString>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:45:0,
+                 from /usr/include/qt4/QtCore/qbytearray.h:45,
+                 from /usr/include/qt4/QtCore/QByteArray:1,
+                 from src/KlatchData.h:20,
+                 from /home/frank/code/klatch/build-area/src/KlatchData.cpp:17:
+/usr/include/qt4/QtCore/qglobal.h: In instantiation of 'struct QIntegerForSizeof<void*>':
+/usr/include/qt4/QtCore/qglobal.h:891:33:   required from here
+/usr/include/qt4/QtCore/qglobal.h:890:27: warning: base class 'struct QIntegerForSize<8>' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/QByteArray:1,
+                 from src/KlatchData.h:20,
+                 from /home/frank/code/klatch/build-area/src/KlatchData.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h:55:21: warning: base class 'class QBasicAtomicInt' has a non-virtual destructor [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qatomic.h:46:0,
+                 from /usr/include/qt4/QtCore/qbytearray.h:45,
+                 from /usr/include/qt4/QtCore/QByteArray:1,
+                 from src/KlatchData.h:20,
+                 from /home/frank/code/klatch/build-area/src/KlatchData.cpp:17:
+/usr/include/qt4/QtCore/qbasicatomic.h: In constructor 'QBasicAtomicInt::QBasicAtomicInt()':
+/usr/include/qt4/QtCore/qbasicatomic.h:53:21: warning: 'QBasicAtomicInt::_q_value' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtCore/qbytearray.h:45:0,
+                 from /usr/include/qt4/QtCore/QByteArray:1,
+                 from src/KlatchData.h:20,
+                 from /home/frank/code/klatch/build-area/src/KlatchData.cpp:17:
+/usr/include/qt4/QtCore/qatomic.h: In constructor 'QAtomicInt::QAtomicInt(int)':
+/usr/include/qt4/QtCore/qatomic.h:59:5: note: synthesized method 'QBasicAtomicInt::QBasicAtomicInt()' first required here 
+src/LookupWidget.cpp:29:29: fatal error: ui_LookupWidget.h: No such file or directory
+compilation terminated.
+src/MainWindow.cpp:29:26: fatal error: klatchconfig.h: No such file or directory
+compilation terminated.
+In file included from /usr/include/qt4/QtCore/qcoreapplication.h:46:0,
+                 from /usr/include/qt4/QtGui/qapplication.h:45,
+                 from /usr/include/qt4/QtGui/QApplication:1,
+                 from /usr/include/KDE/../kapplication.h:45,
+                 from /usr/include/KDE/KApplication:1,
+                 from src/main.cpp:18:
+/usr/include/qt4/QtCore/qcoreevent.h:56:21: warning: 'class QEvent' has pointer data members [-Weffc++]
+/usr/include/qt4/QtCore/qcoreevent.h:56:21: warning:   but does not override 'QEvent(const QEvent&)' [-Weffc++]
+/usr/include/qt4/QtCore/qcoreevent.h:56:21: warning:   or 'operator=(const QEvent&)' [-Weffc++]
+/usr/include/qt4/QtCore/qcoreevent.h:349:21: warning: 'class QChildEvent' has pointer data members [-Weffc++]
+/usr/include/qt4/QtCore/qcoreevent.h:349:21: warning:   but does not override 'QChildEvent(const QChildEvent&)' [-Weffc++]
+/usr/include/qt4/QtCore/qcoreevent.h:349:21: warning:   or 'operator=(const QChildEvent&)' [-Weffc++]
+In file included from /usr/include/qt4/QtGui/qapplication.h:47:0,
+                 from /usr/include/qt4/QtGui/QApplication:1,
+                 from /usr/include/KDE/../kapplication.h:45,
+                 from /usr/include/KDE/KApplication:1,
+                 from src/main.cpp:18:
+/usr/include/qt4/QtCore/qpoint.h: In constructor 'QPoint::QPoint()':
+/usr/include/qt4/QtCore/qpoint.h:111:8: warning: 'QPoint::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h:111:8: warning: 'QPoint::yp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h: In constructor 'QPoint::QPoint(int, int)':
+/usr/include/qt4/QtCore/qpoint.h:114:8: warning: 'QPoint::xp' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qpoint.h:114:8: warning: 'QPoint::yp' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/qt4/QtGui/qapplication.h:48:0,
+                 from /usr/include/qt4/QtGui/QApplication:1,
+                 from /usr/include/KDE/../kapplication.h:45,
+                 from /usr/include/KDE/KApplication:1,
+                 from src/main.cpp:18:
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSize::QSize()':
+/usr/include/qt4/QtCore/qsize.h:111:8: warning: 'QSize::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:111:8: warning: 'QSize::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSize::QSize(int, int)':
+/usr/include/qt4/QtCore/qsize.h:114:8: warning: 'QSize::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:114:8: warning: 'QSize::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSizeF::QSizeF()':
+/usr/include/qt4/QtCore/qsize.h:264:8: warning: 'QSizeF::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:264:8: warning: 'QSizeF::ht' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h: In constructor 'QSizeF::QSizeF(qreal, qreal)':
+/usr/include/qt4/QtCore/qsize.h:272:8: warning: 'QSizeF::wd' should be initialized in the member initialization list [-Weffc++]
+/usr/include/qt4/QtCore/qsize.h:272:8: warning: 'QSizeF::ht' should be initialized in the member initialization list [-Weffc++]
+In file included from /usr/include/KDE/KCmdLineArgs:1:0,
+                 from src/main.cpp:19:
+/usr/include/KDE/../kcmdlineargs.h: At global scope:
+/usr/include/KDE/../kcmdlineargs.h:281:22: warning: 'class KCmdLineArgs' has pointer data members [-Weffc++]
+/usr/include/KDE/../kcmdlineargs.h:281:22: warning:   but does not override 'KCmdLineArgs(const KCmdLineArgs&)' [-Weffc++]
+/usr/include/KDE/../kcmdlineargs.h:281:22: warning:   or 'operator=(const KCmdLineArgs&)' [-Weffc++]
+In file included from /usr/include/KDE/../kxmlguiwindow.h:32:0,
+                 from /usr/include/KDE/KXmlGuiWindow:1,
+                 from src/MainWindow.h:22,
+                 from src/main.cpp:23:
+/usr/include/KDE/../kxmlguiclient.h:46:20: warning: 'class KXMLGUIClient' has pointer data members [-Weffc++]
+/usr/include/KDE/../kxmlguiclient.h:46:20: warning:   but does not override 'KXMLGUIClient(const KXMLGUIClient&)' [-Weffc++]
+/usr/include/KDE/../kxmlguiclient.h:46:20: warning:   or 'operator=(const KXMLGUIClient&)' [-Weffc++]
+In file included from /usr/include/KDE/../kxmlguiwindow.h:33:0,
+                 from /usr/include/KDE/KXmlGuiWindow:1,
+                 from src/MainWindow.h:22,
+                 from src/main.cpp:23:
+/usr/include/KDE/../kxmlguibuilder.h:41:20: warning: 'class KXMLGUIBuilder' has pointer data members [-Weffc++]
+/usr/include/KDE/../kxmlguibuilder.h:41:20: warning:   but does not override 'KXMLGUIBuilder(const KXMLGUIBuilder&)' [-Weffc++]
+/usr/include/KDE/../kxmlguibuilder.h:41:20: warning:   or 'operator=(const KXMLGUIBuilder&)' [-Weffc++]
+In file included from src/main.cpp:23:0:
+src/MainWindow.h:30:7: warning: 'class MainWindow' has pointer data members [-Weffc++]
+src/MainWindow.h:30:7: warning:   but does not override 'MainWindow(const MainWindow&)' [-Weffc++]
+src/MainWindow.h:30:7: warning:   or 'operator=(const MainWindow&)' [-Weffc++]

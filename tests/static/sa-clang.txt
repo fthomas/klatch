@@ -1,4 +1,4 @@
-src/config/DictPage.cpp:20:10: fatal error: 'ui_DictPage.h' file not found
+src/config/DictPage.cpp:22:10: fatal error: 'ui_DictPage.h' file not found
 #include "ui_DictPage.h"
          ^
 1 error generated.

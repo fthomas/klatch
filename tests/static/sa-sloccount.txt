@@ -21,7 +21,6 @@ Adding src/MainWindow.cpp to src_top_dir
 Adding src/MainWindow.h to src_top_dir
 Creating filelist for src_results
 Creating filelist for src_utility
-Creating filelist for src_view
 Categorizing files.
 Finding a working MD5 command....
 Found a working MD5 command.
@@ -29,29 +28,28 @@ Computing results.
 
 
 SLOC	Directory	SLOC-by-Language (Sorted)
-481     src_dict        cpp=481
-254     tests           cpp=254
-187     src_top_dir     cpp=187
-97      src_utility     cpp=97
-81      src_results     cpp=81
-76      src_view        cpp=76
-43      src_config      cpp=43
+495     src_dict        cpp=495
+410     tests           cpp=410
+314     src_config      cpp=314
+203     src_top_dir     cpp=203
+105     src_utility     cpp=105
+82      src_results     cpp=82
 0       top_dir         (none)
 
 
 Totals grouped by language (dominant language first):
-cpp:           1219 (100.00%)
+cpp:           1609 (100.00%)
 
 
 
 
-Total Physical Source Lines of Code (SLOC)                = 1,219
-Development Effort Estimate, Person-Years (Person-Months) = 0.25 (2.95)
+Total Physical Source Lines of Code (SLOC)                = 1,609
+Development Effort Estimate, Person-Years (Person-Months) = 0.33 (3.95)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.31 (3.77)
+Schedule Estimate, Years (Months)                         = 0.35 (4.22)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 0.78
-Total Estimated Cost to Develop                           = $ 33,262
+Estimated Average Number of Developers (Effort/Schedule)  = 0.94
+Total Estimated Cost to Develop                           = $ 44,517
  (average salary = $56,286/year, overhead = 2.40).
 SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
 SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
