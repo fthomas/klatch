@@ -48,3 +48,27 @@ void test_DictServerList::test_appendServer() {
   QCOMPARE(list.rowCount(), 2);
   QVERIFY(config.group("Dict").hasGroup("Server0"));
 }
+
+void test_DictServerList::test_removeRows() {
+  QFile::remove(rcfile_);
+  KConfig config{rcfile_, KConfig::SimpleConfig};
+
+  DictServerList list{&config};
+
+  list.appendServer(DictServerItem{"test1", 1});
+  list.appendServer(DictServerItem{"test2", 2});
+  list.appendServer(DictServerItem{"test3", 3});
+  QCOMPARE(list.rowCount(), 3);
+
+  QVERIFY(!list.removeRows(0, 4));
+  QCOMPARE(list.rowCount(), 3);
+
+  QVERIFY(list.removeRows(1, 1));
+  QCOMPARE(list.rowCount(), 2);
+
+  QVERIFY(list.removeRows(0, 2));
+  QCOMPARE(list.rowCount(), 0);
+
+  QVERIFY(!list.removeRows(0, 1));
+  QCOMPARE(list.rowCount(), 0);
+}

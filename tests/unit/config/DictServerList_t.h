@@ -27,6 +27,7 @@ class test_DictServerList : public QObject {
   void initTestCase();
   void test_ctor();
   void test_appendServer();
+  void test_removeRows();
 
  private:
   QString rcfile_;

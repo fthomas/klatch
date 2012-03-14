@@ -93,7 +93,10 @@ bool DictServerList::removeRows(int row, int count,
   auto it = servers_.begin() + row;
 
   beginRemoveRows(QModelIndex{}, row, last - 1);
-  servers_.erase(it, it + last);
+  for (int i = 0; i < count; ++i) {
+    it->configGroup().deleteGroup();
+    it = servers_.erase(it);
+  }
   endRemoveRows();
 
   return true;
