@@ -25,9 +25,6 @@
 int main(int argc, char* argv[]) {
   KAboutData about = KlatchData::aboutData();
   KCmdLineOptions options;
-  options.add("h").add("host <server>", ki18n("Specify DICT server"));
-  options.add("p").add("port <service>",
-    ki18n("Specify port of DICT server"));
   options.add("+[word]", ki18n("Word to lookup in dictionaries"));
 
   KCmdLineArgs::init(argc, argv, &about);
