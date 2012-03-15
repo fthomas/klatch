@@ -17,6 +17,7 @@
 #ifndef CONFIG_DICTPAGE_H
 #define CONFIG_DICTPAGE_H
 
+#include <QModelIndex>
 #include <QObject>
 #include <QWidget>
 #include <QtGlobal>
@@ -46,6 +47,7 @@ class DictPage : public QWidget {
   void removeSelected();
 
  private:
+  QModelIndex selectedIndex();
   void createConnections();
 
  private:

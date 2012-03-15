@@ -56,13 +56,17 @@ void DictPage::updateButtons(const QItemSelection& selected) {
 }
 
 void DictPage::removeSelected() {
+  const QModelIndex index = selectedIndex();
+  if (index.isValid()) {
+    ui_->servers_view->model()->removeRow(index.row());
+  }
+}
+
+QModelIndex DictPage::selectedIndex() {
   const QModelIndexList selected = server_selection_->selectedRows();
-  if (selected.isEmpty()) return;
+  if (selected.isEmpty()) return QModelIndex{};
 
-  const QModelIndex& index = selected[0];
-  if (!index.isValid()) return;
-
-  ui_->servers_view->model()->removeRow(index.row());
+  return selected.at(0);
 }
 
 void DictPage::createConnections() {
