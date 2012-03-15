@@ -55,8 +55,21 @@ void DictPage::updateButtons(const QItemSelection& selected) {
   ui_->remove->setEnabled(enable);
 }
 
+void DictPage::removeSelected() {
+  const QModelIndexList selected = server_selection_->selectedRows();
+  if (selected.isEmpty()) return;
+
+  const QModelIndex& index = selected[0];
+  if (!index.isValid()) return;
+
+  ui_->servers_view->model()->removeRow(index.row());
+}
+
 void DictPage::createConnections() {
   connect(server_selection_,
       SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
     this, SLOT(updateButtons(QItemSelection)));
+
+  connect(ui_->remove, SIGNAL(clicked()),
+    this, SLOT(removeSelected()));
 }

@@ -43,6 +43,7 @@ class DictPage : public QWidget {
 
  private slots:
   void updateButtons(const QItemSelection& selected);
+  void removeSelected();
 
  private:
   void createConnections();

@@ -98,6 +98,7 @@ bool DictServerList::removeRows(int row, int count,
     it = servers_.erase(it);
   }
   endRemoveRows();
+  config_->sync();
 
   return true;
 }
