@@ -32,11 +32,13 @@ namespace Ui {
   class DictPage;
 }
 
+class DictServerList;
+
 class DictPage : public QWidget {
   Q_OBJECT
 
  public:
-  explicit DictPage(QWidget* parent = 0);
+  explicit DictPage(DictServerList* list, QWidget* parent = 0);
   ~DictPage();
 
  protected:
@@ -55,6 +57,7 @@ class DictPage : public QWidget {
 
  private:
   Ui::DictPage* ui_;
+  DictServerList* const server_list_;
   QItemSelectionModel* server_selection_;
 };
 

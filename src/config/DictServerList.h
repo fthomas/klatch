@@ -23,6 +23,8 @@
 #include <QObject>
 #include <QVariant>
 #include <Qt>
+#include <KGlobal>
+#include <KSharedConfig>
 #include "config/DictServerItem.h"
 
 class KConfig;
@@ -31,7 +33,8 @@ class DictServerList : public QAbstractListModel {
   Q_OBJECT
 
  public:
-  explicit DictServerList(KConfig* config, QObject* parent = 0);
+  explicit DictServerList(KSharedConfigPtr config = KGlobal::config(),
+                          QObject* parent = 0);
 
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
   QVariant headerData(int section, Qt::Orientation orientation,
@@ -51,7 +54,7 @@ class DictServerList : public QAbstractListModel {
   QString newSubgroupName() const;
 
  private:
-  KConfig* config_;
+  KSharedConfigPtr config_;
   QList<DictServerItem> servers_;
 
   const QString dict_name_ = "Dict";

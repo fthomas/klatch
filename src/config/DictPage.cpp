@@ -20,17 +20,22 @@
 #include <QWidget>
 #include <KIcon>
 #include "config/DictServerDialog.h"
+#include "config/DictServerList.h"
 #include "ui_DictPage.h"
 
-DictPage::DictPage(QWidget* parent)
-    : QWidget{parent}, ui_{new Ui::DictPage} {
+DictPage::DictPage(DictServerList* list, QWidget* parent)
+    : QWidget{parent}, ui_{new Ui::DictPage}, server_list_{list} {
+  Q_ASSERT(server_list_);
+
   ui_->setupUi(this);
 
   ui_->add->setIcon(KIcon("list-add"));
   ui_->modify->setIcon(KIcon("configure"));
   ui_->remove->setIcon(KIcon("list-remove"));
 
+  ui_->servers_view->setModel(server_list_);
   server_selection_ = ui_->servers_view->selectionModel();
+
   createConnections();
 }
 
@@ -58,7 +63,8 @@ void DictPage::updateButtons(const QItemSelection& selected) {
 
 void DictPage::addServer() {
   DictServerDialog dialog;
-  dialog.exec();
+  if (dialog.exec()) {
+  }
 }
 
 void DictPage::modifyServer() {
@@ -68,8 +74,8 @@ void DictPage::modifyServer() {
 
 void DictPage::removeServer() {
   const QModelIndex index = selectedIndex();
-  if (index.isValid()) {
-    ui_->servers_view->model()->removeRow(index.row());
+  if (index.isValid() && server_list_) {
+    server_list_->removeRow(index.row());
   }
 }
 

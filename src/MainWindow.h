@@ -20,6 +20,7 @@
 #include <QObject>
 #include <QtGlobal>
 #include <KXmlGuiWindow>
+#include "config/DictServerList.h"
 
 QT_BEGIN_NAMESPACE
 class QWidget;
@@ -41,6 +42,7 @@ class MainWindow : public KXmlGuiWindow {
   void setupActions();
 
  private:
+  DictServerList server_list_;
   LookupWidget* lookup_;
 };
 

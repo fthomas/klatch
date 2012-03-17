@@ -60,7 +60,7 @@ void MainWindow::showPreferences() {
   KConfigDialog* const dialog =
     new KConfigDialog(this, preferences, KlatchConfig::self());
 
-  DictPage* const dict_page = new DictPage;
+  DictPage* const dict_page = new DictPage{&server_list_};
   dialog->addPage(dict_page, i18n("DICT"), "accessories-dictionary",
     i18n("Manage Servers"));
 
