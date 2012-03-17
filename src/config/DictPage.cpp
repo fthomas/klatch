@@ -19,6 +19,7 @@
 #include <QItemSelection>
 #include <QWidget>
 #include <KIcon>
+#include "config/DictServerDialog.h"
 #include "ui_DictPage.h"
 
 DictPage::DictPage(QWidget* parent)
@@ -55,14 +56,24 @@ void DictPage::updateButtons(const QItemSelection& selected) {
   ui_->remove->setEnabled(enable);
 }
 
-void DictPage::removeSelected() {
+void DictPage::addServer() {
+  DictServerDialog dialog;
+  dialog.exec();
+}
+
+void DictPage::modifyServer() {
+  const QModelIndex index = selectedIndex();
+  if (!index.isValid()) return;
+}
+
+void DictPage::removeServer() {
   const QModelIndex index = selectedIndex();
   if (index.isValid()) {
     ui_->servers_view->model()->removeRow(index.row());
   }
 }
 
-QModelIndex DictPage::selectedIndex() {
+QModelIndex DictPage::selectedIndex() const {
   const QModelIndexList selected = server_selection_->selectedRows();
   if (selected.isEmpty()) return QModelIndex{};
 
@@ -74,6 +85,7 @@ void DictPage::createConnections() {
       SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
     this, SLOT(updateButtons(QItemSelection)));
 
-  connect(ui_->remove, SIGNAL(clicked()),
-    this, SLOT(removeSelected()));
+  connect(ui_->add,    SIGNAL(clicked()), this, SLOT(addServer()));
+  connect(ui_->modify, SIGNAL(clicked()), this, SLOT(modifyServer()));
+  connect(ui_->remove, SIGNAL(clicked()), this, SLOT(removeServer()));
 }

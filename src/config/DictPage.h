@@ -44,10 +44,13 @@ class DictPage : public QWidget {
 
  private slots:
   void updateButtons(const QItemSelection& selected);
-  void removeSelected();
+
+  void addServer();
+  void modifyServer();
+  void removeServer();
 
  private:
-  QModelIndex selectedIndex();
+  QModelIndex selectedIndex() const;
   void createConnections();
 
  private:
