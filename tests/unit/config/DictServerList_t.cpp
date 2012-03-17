@@ -18,8 +18,8 @@
 #include <QCoreApplication>
 #include <QFile>
 #include <QtTest/QtTest>
-#include <KConfig>
 #include <KConfigGroup>
+#include <KSharedConfig>
 #include "config/DictServerList.h"
 
 void test_DictServerList::initTestCase() {
@@ -29,34 +29,30 @@ void test_DictServerList::initTestCase() {
 
 void test_DictServerList::init() {
   QFile::remove(rcfile_);
+  config_.clear();
+  config_ = KSharedConfig::openConfig(rcfile_, KConfig::SimpleConfig);
 }
 
 void test_DictServerList::test_ctor() {
-  KConfig config{rcfile_, KConfig::SimpleConfig};
-
-  DictServerList list{&config};
+  DictServerList list{config_};
   QCOMPARE(list.rowCount(), 0);
   QCOMPARE(list.columnCount(), 2);
 }
 
 void test_DictServerList::test_appendServer() {
-  KConfig config{rcfile_, KConfig::SimpleConfig};
-
-  DictServerList list{&config};
+  DictServerList list{config_};
   list.appendServer(DictServerItem{"test1", 123});
   QCOMPARE(list.rowCount(), 1);
-  QVERIFY(config.group("Dict").hasGroup("Server0"));
+  QVERIFY(config_->group("Dict").hasGroup("Server0"));
 
   list.appendServer(DictServerItem{"test2", 234});
   QCOMPARE(list.rowCount(), 2);
-  QVERIFY(config.group("Dict").hasGroup("Server0"));
+  QVERIFY(config_->group("Dict").hasGroup("Server0"));
 }
 
 void test_DictServerList::test_removeRows() {
-  KConfig config{rcfile_, KConfig::SimpleConfig};
-
-  DictServerList list{&config};
-  KConfigGroup dict_group = config.group("Dict");
+  DictServerList list{config_};
+  KConfigGroup dict_group = config_->group("Dict");
 
   list.appendServer(DictServerItem{"test1", 1});
   list.appendServer(DictServerItem{"test2", 2});

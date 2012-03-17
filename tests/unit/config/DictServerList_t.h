@@ -19,6 +19,7 @@
 
 #include <QObject>
 #include <QString>
+#include <KSharedConfig>
 
 class test_DictServerList : public QObject {
   Q_OBJECT
@@ -33,6 +34,7 @@ class test_DictServerList : public QObject {
 
  private:
   QString rcfile_;
+  KSharedConfigPtr config_;
 };
 
 #endif // CONFIG_DICTSERVERLIST_T_H
