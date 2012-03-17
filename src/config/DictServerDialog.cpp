@@ -17,17 +17,30 @@
 #include "config/DictServerDialog.h"
 #include <QEvent>
 #include <QWidget>
+#include <Qt>
 #include <KLocalizedString>
+#include "config/DictServerItem.h"
 
 DictServerDialog::DictServerDialog(QWidget* parent) : KDialog{parent} {
   QWidget* main_widget = new QWidget{this};
   ui_.setupUi(main_widget);
+  ui_.hostname->setFocus(Qt::PopupFocusReason);
 
   setMainWidget(main_widget);
   setWindowTitle(i18n("Configure DICT Server"));
 }
 
 DictServerDialog::~DictServerDialog() {
+}
+
+void DictServerDialog::readServerItem(const DictServerItem& server) {
+  ui_.hostname->setText(server.hostName());
+  ui_.port->setValue(server.port());
+}
+
+void DictServerDialog::writeServerItem(DictServerItem& server) const {
+  server.setHostName(ui_.hostname->text());
+  server.setPort(ui_.port->value());
 }
 
 QSize DictServerDialog::sizeHint() const {

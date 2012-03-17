@@ -25,7 +25,7 @@
 class DictServerItem {
  public:
   explicit DictServerItem(KConfigGroup group);
-  explicit DictServerItem(const QString& hostname = "",
+  explicit DictServerItem(const QString& hostname = "localhost",
                           quint16 port = DictClient::defaultPort());
 
   KConfigGroup configGroup() const;

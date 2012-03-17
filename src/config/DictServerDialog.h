@@ -28,12 +28,17 @@ class QEvent;
 class QWidget;
 QT_END_NAMESPACE
 
+class DictServerItem;
+
 class DictServerDialog : public KDialog {
   Q_OBJECT
 
  public:
   explicit DictServerDialog(QWidget* parent = 0);
   ~DictServerDialog();
+
+  void readServerItem(const DictServerItem& server);
+  void writeServerItem(DictServerItem& server) const;
 
   QSize sizeHint() const;
 

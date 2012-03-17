@@ -18,8 +18,10 @@
 #include <QEvent>
 #include <QItemSelection>
 #include <QWidget>
+#include <QtGlobal>
 #include <KIcon>
 #include "config/DictServerDialog.h"
+#include "config/DictServerItem.h"
 #include "config/DictServerList.h"
 #include "ui_DictPage.h"
 
@@ -62,8 +64,13 @@ void DictPage::updateButtons(const QItemSelection& selected) {
 }
 
 void DictPage::addServer() {
+  DictServerItem server;
   DictServerDialog dialog;
-  if (dialog.exec()) {
+  dialog.readServerItem(server);
+
+  if (dialog.exec() && server_list_) {
+    dialog.writeServerItem(server);
+    server_list_->appendServer(server);
   }
 }
 
