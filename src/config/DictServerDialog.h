@@ -18,17 +18,15 @@
 #define CONFIG_DICTSERVERDIALOG_H
 
 #include <QObject>
+#include <QSize>
 #include <QtGlobal>
 #include <KDialog>
+#include "ui_DictServerDialog.h"
 
 QT_BEGIN_NAMESPACE
 class QEvent;
 class QWidget;
 QT_END_NAMESPACE
-
-namespace Ui {
-  class DictServerDialog;
-}
 
 class DictServerDialog : public KDialog {
   Q_OBJECT
@@ -37,11 +35,13 @@ class DictServerDialog : public KDialog {
   explicit DictServerDialog(QWidget* parent = 0);
   ~DictServerDialog();
 
+  QSize sizeHint() const;
+
  protected:
   void changeEvent(QEvent* event);
 
  private:
-  Ui::DictServerDialog* ui_;
+  Ui::DictServerDialog ui_;
 };
 
 #endif // CONFIG_DICTSERVERDIALOG_H

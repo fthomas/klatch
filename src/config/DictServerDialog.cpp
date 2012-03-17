@@ -17,22 +17,28 @@
 #include "config/DictServerDialog.h"
 #include <QEvent>
 #include <QWidget>
-#include "ui_DictServerDialog.h"
+#include <KLocalizedString>
 
-DictServerDialog::DictServerDialog(QWidget* parent)
-    : KDialog{parent}, ui_{new Ui::DictServerDialog} {
-  ui_->setupUi(this);
+DictServerDialog::DictServerDialog(QWidget* parent) : KDialog{parent} {
+  QWidget* main_widget = new QWidget{this};
+  ui_.setupUi(main_widget);
+
+  setMainWidget(main_widget);
+  setWindowTitle(i18n("Configure DICT Server"));
 }
 
 DictServerDialog::~DictServerDialog() {
-  delete ui_;
+}
+
+QSize DictServerDialog::sizeHint() const {
+  return QSize{320, 120};
 }
 
 void DictServerDialog::changeEvent(QEvent* event) {
   KDialog::changeEvent(event);
   switch (event->type()) {
     case QEvent::LanguageChange:
-      ui_->retranslateUi(this);
+      ui_.retranslateUi(this);
       break;
     default:
       break;
