@@ -25,6 +25,7 @@
 
 QT_BEGIN_NAMESPACE
 class QEvent;
+class QString;
 class QWidget;
 QT_END_NAMESPACE
 
@@ -44,6 +45,9 @@ class DictServerDialog : public KDialog {
 
  protected:
   void changeEvent(QEvent* event);
+
+ private slots:
+  void hostNameChangedSlot(const QString& hostname);
 
  private:
   Ui::DictServerDialog ui_;

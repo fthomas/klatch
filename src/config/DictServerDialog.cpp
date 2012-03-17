@@ -16,6 +16,7 @@
 
 #include "config/DictServerDialog.h"
 #include <QEvent>
+#include <QString>
 #include <QWidget>
 #include <Qt>
 #include <KLocalizedString>
@@ -26,8 +27,11 @@ DictServerDialog::DictServerDialog(QWidget* parent) : KDialog{parent} {
   ui_.setupUi(main_widget);
   ui_.hostname->setFocus(Qt::PopupFocusReason);
 
+  setCaption(i18n("Configure DICT Server"));
   setMainWidget(main_widget);
-  setWindowTitle(i18n("Configure DICT Server"));
+
+  connect(ui_.hostname, SIGNAL(textChanged(QString)),
+    this, SLOT(hostNameChangedSlot(QString)));
 }
 
 DictServerDialog::~DictServerDialog() {
@@ -44,7 +48,7 @@ void DictServerDialog::writeServerItem(DictServerItem& server) const {
 }
 
 QSize DictServerDialog::sizeHint() const {
-  return QSize{320, 120};
+  return QSize{360, 120};
 }
 
 void DictServerDialog::changeEvent(QEvent* event) {
@@ -56,4 +60,8 @@ void DictServerDialog::changeEvent(QEvent* event) {
     default:
       break;
   }
+}
+
+void DictServerDialog::hostNameChangedSlot(const QString& hostname) {
+  enableButtonOk(!hostname.isEmpty());
 }
