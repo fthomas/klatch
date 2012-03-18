@@ -31,6 +31,9 @@
     <layout class="QVBoxLayout" name="button_layout">
      <item>
       <widget class="KPushButton" name="add">
+       <property name="toolTip">
+        <string>Add a new server</string>
+       </property>
        <property name="text">
         <string>&amp;Add...</string>
        </property>
@@ -41,6 +44,9 @@
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="toolTip">
+        <string>Modify selected server</string>
+       </property>
        <property name="text">
         <string>&amp;Modify...</string>
        </property>
@@ -50,6 +56,9 @@
       <widget class="KPushButton" name="remove">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>Remove selected server</string>
        </property>
        <property name="text">
         <string>&amp;Remove</string>
