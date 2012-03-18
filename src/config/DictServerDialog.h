@@ -36,7 +36,6 @@ class DictServerDialog : public KDialog {
 
  public:
   explicit DictServerDialog(QWidget* parent = 0);
-  ~DictServerDialog();
 
   void readServerItem(const DictServerItem& server);
   void writeServerItem(DictServerItem& server) const;

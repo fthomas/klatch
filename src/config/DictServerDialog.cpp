@@ -16,6 +16,7 @@
 
 #include "config/DictServerDialog.h"
 #include <QEvent>
+#include <QSize>
 #include <QString>
 #include <QWidget>
 #include <Qt>
@@ -32,9 +33,6 @@ DictServerDialog::DictServerDialog(QWidget* parent) : KDialog{parent} {
 
   connect(ui_.hostname, SIGNAL(textChanged(QString)),
     this, SLOT(hostNameChangedSlot(QString)));
-}
-
-DictServerDialog::~DictServerDialog() {
 }
 
 void DictServerDialog::readServerItem(const DictServerItem& server) {

@@ -24,8 +24,7 @@
 #include "utility/algorithm.h"
 #include "utility/string.h"
 
-ResultList::ResultList(QObject* parent) : QAbstractListModel{parent} {
-}
+ResultList::ResultList(QObject* parent) : QAbstractListModel{parent} {}
 
 QVariant ResultList::data(const QModelIndex& index, int role) const {
   if (!index.isValid() || index.row() >= definitions_.size()) {

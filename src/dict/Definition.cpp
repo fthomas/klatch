@@ -19,8 +19,7 @@
 #include <QStringList>
 #include "utility/string.h"
 
-Definition::Definition() {
-}
+Definition::Definition() {}
 
 Definition::Definition(const QString& status, const QString& text) {
   parseStatusLine(status);

@@ -20,8 +20,7 @@
 #include <QStringList>
 #include "utility/string.h"
 
-Matches::Matches() {
-}
+Matches::Matches() {}
 
 Matches::Matches(const QString& text) {
   parseText(text);
