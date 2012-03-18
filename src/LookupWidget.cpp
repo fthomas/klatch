@@ -19,25 +19,31 @@
 #include <QEvent>
 #include <QString>
 #include <QWidget>
+#include <QtGlobal>
 #include <KApplication>
 #include <KCmdLineArgs>
 #include <KCompletion>
+#include "config/DictServerList.h"
 #include "dict/Definition.h"
 #include "dict/DictClient.h"
 #include "dict/Matches.h"
 #include "results/ResultList.h"
 #include "ui_LookupWidget.h"
 
-LookupWidget::LookupWidget(QWidget* parent)
+LookupWidget::LookupWidget(DictServerList* list, QWidget* parent)
     : QWidget{parent},
       ui_{new Ui::LookupWidget},
       results_{new ResultList{this}},
       dict_{new DictClient{this}} {
+  Q_ASSERT(list);
+
   ui_->setupUi(this);
 
   createConnections();
   initWordInput();
   initResultView();
+
+  Q_UNUSED(list);
 }
 
 LookupWidget::~LookupWidget() {

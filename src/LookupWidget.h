@@ -27,6 +27,7 @@ class QEvent;
 QT_END_NAMESPACE
 
 class DictClient;
+class DictServerList;
 class Matches;
 class ResultList;
 
@@ -38,7 +39,7 @@ class LookupWidget : public QWidget {
   Q_OBJECT
 
  public:
-  explicit LookupWidget(QWidget* parent = 0);
+  explicit LookupWidget(DictServerList* list, QWidget* parent = 0);
   ~LookupWidget();
 
  public slots:
