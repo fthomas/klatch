@@ -24,9 +24,13 @@
 #include <QtGlobal>
 #include <KConfig>
 #include <KConfigGroup>
+#include <KGlobal>
 #include <KLocalizedString>
 #include <KSharedConfig>
 #include "config/DictServerItem.h"
+
+DictServerList::DictServerList(QObject* parent)
+    : DictServerList{KGlobal::config(), parent} {}
 
 DictServerList::DictServerList(KSharedConfigPtr config, QObject* parent)
     : QAbstractListModel{parent}, config_{config} {

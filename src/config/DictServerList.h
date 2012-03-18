@@ -23,7 +23,6 @@
 #include <QObject>
 #include <QVariant>
 #include <Qt>
-#include <KGlobal>
 #include <KSharedConfig>
 #include "config/DictServerItem.h"
 
@@ -33,8 +32,8 @@ class DictServerList : public QAbstractListModel {
   Q_OBJECT
 
  public:
-  explicit DictServerList(KSharedConfigPtr config = KGlobal::config(),
-                          QObject* parent = 0);
+  explicit DictServerList(QObject* parent = 0);
+  explicit DictServerList(KSharedConfigPtr config, QObject* parent = 0);
 
   DictServerItem& at(const QModelIndex& index);
   void emitDataChanged(const QModelIndex& index);
