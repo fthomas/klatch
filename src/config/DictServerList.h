@@ -36,6 +36,8 @@ class DictServerList : public QAbstractListModel {
   explicit DictServerList(KSharedConfigPtr config = KGlobal::config(),
                           QObject* parent = 0);
 
+  DictServerItem& at(const QModelIndex& index);
+
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
   QVariant headerData(int section, Qt::Orientation orientation,
                       int role = Qt::DisplayRole) const;

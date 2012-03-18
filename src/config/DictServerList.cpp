@@ -21,6 +21,7 @@
 #include <QStringList>
 #include <QVariant>
 #include <QtAlgorithms>
+#include <QtGlobal>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
@@ -30,6 +31,11 @@
 DictServerList::DictServerList(KSharedConfigPtr config, QObject* parent)
     : QAbstractListModel{parent}, config_{config} {
   readConfig();
+}
+
+DictServerItem& DictServerList::at(const QModelIndex& index) {
+  Q_ASSERT(index.isValid() && index.row() < servers_.size());
+  return servers_[index.row()];
 }
 
 QVariant DictServerList::data(const QModelIndex& index, int role) const {

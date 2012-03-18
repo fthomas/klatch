@@ -76,7 +76,15 @@ void DictPage::addServer() {
 
 void DictPage::modifyServer() {
   const QModelIndex index = selectedIndex();
-  if (!index.isValid()) return;
+  if (!index.isValid() || !server_list_) return;
+
+  DictServerItem& server = server_list_->at(index);
+  DictServerDialog dialog;
+  dialog.readServerItem(server);
+
+  if (dialog.exec()) {
+    dialog.writeServerItem(server);
+  }
 }
 
 void DictPage::removeServer() {
