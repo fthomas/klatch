@@ -7,6 +7,15 @@ Introduction
 Dependencies
 ------------
 
+Klatch is a KDE program written in C++. To build it, a C++ compiler
+with `C++11`_ support, the `KDE`_ and `Qt`_ libraries, and `CMake`_ are
+required.
+
+.. _C++11: https://en.wikipedia.org/wiki/C++11
+.. _KDE: http://kde.org/
+.. _Qt: http://qt-project.org/
+.. _CMake: http://www.cmake.org/
+
 Building
 --------
 
