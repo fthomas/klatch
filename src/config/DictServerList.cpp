@@ -38,6 +38,10 @@ DictServerItem& DictServerList::at(const QModelIndex& index) {
   return servers_[index.row()];
 }
 
+void DictServerList::emitDataChanged(const QModelIndex& index) {
+  emit dataChanged(index, index);
+}
+
 QVariant DictServerList::data(const QModelIndex& index, int role) const {
   if (!index.isValid() || index.row() >= servers_.size()) {
     return QVariant{};

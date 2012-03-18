@@ -37,6 +37,7 @@ class DictServerList : public QAbstractListModel {
                           QObject* parent = 0);
 
   DictServerItem& at(const QModelIndex& index);
+  void emitDataChanged(const QModelIndex& index);
 
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
   QVariant headerData(int section, Qt::Orientation orientation,

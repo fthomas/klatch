@@ -84,6 +84,7 @@ void DictPage::modifyServer() {
 
   if (dialog.exec()) {
     dialog.writeServerItem(server);
+    server_list_->emitDataChanged(index);
   }
 }
 
