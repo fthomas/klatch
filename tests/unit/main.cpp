@@ -19,6 +19,7 @@
 #include <QtTest/QtTest>
 #include "config/DictServerItem_t.h"
 #include "config/DictServerList_t.h"
+#include "dict/ClientPool_t.h"
 #include "dict/DatabaseInfo_t.h"
 #include "dict/Matches_t.h"
 #include "results/ResultList_t.h"
@@ -45,6 +46,7 @@ int main(int argc, char* argv[]) {
   QCoreApplication app{argc, argv};
   exec<test_DictServerItem>();
   exec<test_DictServerList>();
+  exec<test_ClientPool>();
   exec<test_DatabaseInfo>();
   exec<test_Matches>();
   exec<test_ResultList>();

@@ -10,6 +10,7 @@ list(REMOVE_ITEM klatch_SOURCES "${klatch_SOURCE_DIR}/main.cpp")
 set(ut_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/config/DictServerItem_t.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/config/DictServerList_t.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/dict/ClientPool_t.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo_t.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches_t.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList_t.cpp
@@ -20,6 +21,7 @@ set(ut_SOURCES
 set(ut_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/config/DictServerItem_t.h
   ${CMAKE_CURRENT_SOURCE_DIR}/config/DictServerList_t.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/dict/ClientPool_t.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/DatabaseInfo_t.h
   ${CMAKE_CURRENT_SOURCE_DIR}/dict/Matches_t.h
   ${CMAKE_CURRENT_SOURCE_DIR}/results/ResultList_t.h
