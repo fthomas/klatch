@@ -20,6 +20,19 @@
 #include <QObject>
 
 class DictClient;
+class DictServerList;
+
+
+
+ /*
+ - anfragen an den CP werden an clients weitergeleitet und von diesem gesammelt
+ - alle clients werden hinter dem CP versteckt
+ - wenn ein client not found zurücksendet, schicken wir ein match
+ - die ergebnisse und matches werden direkt weitergeleitet
+ - reagiere darauf, dass die zu benutzenden server geändert werden
+ */
+
+
 
 class ClientPool : public QObject {
   Q_OBJECT
