@@ -25,7 +25,15 @@ class ClientPool : public QObject {
   Q_OBJECT
 
  public:
-  explicit ClientPool(QObject* parent = 0);
+  explicit ClientPool(DictServerList* list, QObject* parent = 0);
+
+ private:
+  void createClients();
+  void clearClients();
+
+ private:
+  DictServerList* const server_list_;
+  QList<DictClient*> clients_;
 };
 
 #endif // DICT_CLIENTPOOL_H

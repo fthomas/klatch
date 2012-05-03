@@ -15,6 +15,26 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dict/ClientPool.h"
+#include <QtAlgorithms>
+#include <QtGlobal>
+#include "config/DictServerList.h"
+#include "dict/DictClient.h"
 
-ClientPool::ClientPool(QObject* parent) : QObject{parent} {
+ClientPool::ClientPool(DictServerList* list, QObject* parent)
+    : QObject{parent}, server_list_{list} {
+  Q_ASSERT(server_list_);
+
+  createClients();
+}
+
+void ClientPool::createClients() {
+  for (int row = 0; row < server_list_->rowCount(); ++row) {
+    const DictServerItem& server = (*server_list_)[row];
+    clients_ << new DictClient{server.hostName(), server.port()};
+  }
+}
+
+void ClientPool::clearClients() {
+  qDeleteAll(clients_);
+  clients_.clear();
 }
