@@ -35,7 +35,12 @@ class DictServerList : public QAbstractListModel {
   explicit DictServerList(QObject* parent = 0);
   explicit DictServerList(KSharedConfigPtr config, QObject* parent = 0);
 
+  DictServerItem& operator[](int i);
+  const DictServerItem& operator[](int i) const;
+
   DictServerItem& at(const QModelIndex& index);
+  const DictServerItem& at(const QModelIndex& index) const;
+
   void emitDataChanged(const QModelIndex& index);
 
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
@@ -54,6 +59,7 @@ class DictServerList : public QAbstractListModel {
  private:
   void readConfig();
   QString newSubgroupName() const;
+  bool isValidIndex(const QModelIndex& index) const;
 
  private:
   KSharedConfigPtr config_;

@@ -37,8 +37,21 @@ DictServerList::DictServerList(KSharedConfigPtr config, QObject* parent)
   readConfig();
 }
 
+DictServerItem& DictServerList::operator[](int i) {
+  return servers_[i];
+}
+
+const DictServerItem& DictServerList::operator[](int i) const {
+  return servers_[i];
+}
+
 DictServerItem& DictServerList::at(const QModelIndex& index) {
-  Q_ASSERT(index.isValid() && index.row() < servers_.size());
+  Q_ASSERT(isValidIndex(index));
+  return servers_[index.row()];
+}
+
+const DictServerItem& DictServerList::at(const QModelIndex& index) const {
+  Q_ASSERT(isValidIndex(index));
   return servers_[index.row()];
 }
 
@@ -47,7 +60,7 @@ void DictServerList::emitDataChanged(const QModelIndex& index) {
 }
 
 QVariant DictServerList::data(const QModelIndex& index, int role) const {
-  if (!index.isValid() || index.row() >= servers_.size()) {
+  if (!isValidIndex(index)) {
     return QVariant{};
   }
 
@@ -162,4 +175,8 @@ QString DictServerList::newSubgroupName() const {
     name = QString{"%1%2"}.arg(server_prefix_).arg(++i);
   } while (dict_group.hasGroup(name));
   return name;
+}
+
+bool DictServerList::isValidIndex(const QModelIndex& index) const {
+  return index.isValid() && index.row() < servers_.size();
 }
