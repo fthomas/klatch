@@ -1,4 +1,31 @@
-src/config/DictPage.cpp:22:10: fatal error: 'ui_DictPage.h' file not found
-#include "ui_DictPage.h"
-         ^
-1 error generated.
+In file included from src/config/DictPage.cpp:25:
+src/config/DictServerList.h:50:44: error: 'QModelIndex' does not refer to a value
+  int rowCount(const QModelIndex& parent = QModelIndex{}) const;
+                                           ^
+/usr/include/qt4/QtGui/qabstractitemdelegate.h:57:7: note: declared here
+class QModelIndex;
+      ^
+In file included from src/config/DictPage.cpp:25:
+src/config/DictServerList.h:51:47: error: 'QModelIndex' does not refer to a value
+  int columnCount(const QModelIndex& parent = QModelIndex{}) const;
+                                              ^
+/usr/include/qt4/QtGui/qabstractitemdelegate.h:57:7: note: declared here
+class QModelIndex;
+      ^
+In file included from src/config/DictPage.cpp:25:
+src/config/DictServerList.h:55:47: error: 'QModelIndex' does not refer to a value
+                  const QModelIndex& parent = QModelIndex{});
+                                              ^
+/usr/include/qt4/QtGui/qabstractitemdelegate.h:57:7: note: declared here
+class QModelIndex;
+      ^
+src/config/DictPage.cpp:29:7: error: non-aggregate type 'QWidget' cannot be initialized with an initializer list
+    : QWidget{parent}, ui_{new Ui::DictPage}, server_list_{list} {
+      ^      ~~~~~~~~
+src/config/DictPage.cpp:100:34: error: 'QModelIndex' does not refer to a value
+  if (selected.isEmpty()) return QModelIndex{};
+                                 ^
+/usr/include/qt4/QtGui/qabstractitemdelegate.h:57:7: note: declared here
+class QModelIndex;
+      ^
+5 errors generated.
