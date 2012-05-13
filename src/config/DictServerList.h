@@ -56,6 +56,9 @@ class DictServerList : public QAbstractListModel {
 
   void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
+ signals:
+  void contentChanged();
+
  private:
   void readConfig();
   QString newSubgroupName() const;

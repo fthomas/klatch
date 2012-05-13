@@ -35,6 +35,13 @@ DictServerList::DictServerList(QObject* parent)
 DictServerList::DictServerList(KSharedConfigPtr config, QObject* parent)
     : QAbstractListModel{parent}, config_{config} {
   readConfig();
+
+  connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)),
+    this, SIGNAL(contentChanged()));
+  connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)),
+    this, SIGNAL(contentChanged()));
+  connect(this, SIGNAL(dataChanged(QModelIndex,QModelIndex)),
+    this, SIGNAL(contentChanged()));
 }
 
 DictServerItem& DictServerList::operator[](int i) {
