@@ -15,6 +15,7 @@ set(klatch_SOURCES
   ${CSD}/dict/DictClient.cpp
   ${CSD}/dict/Matches.cpp
   ${CSD}/results/ResultList.cpp
+  ${CSD}/results/ResultView.cpp
   ${CSD}/utility/stream.cpp
   ${CSD}/utility/string.cpp
   ${CBD}/KlatchData.cpp
@@ -36,6 +37,7 @@ set(klatch_HEADERS
   ${CSD}/dict/Matches.h
   ${CSD}/dict/codes.h
   ${CSD}/results/ResultList.h
+  ${CSD}/results/ResultView.h
   ${CSD}/utility/algorithm.h
   ${CSD}/utility/stream.h
   ${CSD}/utility/string.h
