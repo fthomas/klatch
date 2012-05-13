@@ -18,31 +18,37 @@
 #define DICT_CLIENTPOOL_H
 
 #include <QObject>
+#include <QList>
+#include <QtGlobal>
+#include "dict/AbstractDictClient.h"
+
+QT_BEGIN_NAMESPACE
+class QString;
+QT_END_NAMESPACE
 
 class DictClient;
 class DictServerList;
 
-
-
- /*
- - anfragen an den CP werden an clients weitergeleitet und von diesem gesammelt
- - alle clients werden hinter dem CP versteckt
- - wenn ein client not found zurücksendet, schicken wir ein match
- - die ergebnisse und matches werden direkt weitergeleitet
- - reagiere darauf, dass die zu benutzenden server geändert werden
- */
-
-
-
-class ClientPool : public QObject {
+class ClientPool : public AbstractDictClient {
   Q_OBJECT
 
  public:
   explicit ClientPool(DictServerList* list, QObject* parent = 0);
+  ~ClientPool();
+
+ public slots:
+  void sendDefine(const QString& word, const QString& database = "*");
+  void sendMatch(const QString& word, const QString& strategy = "prefix",
+                 const QString& database = "*");
 
  private:
+  void createConnections();
+
   void createClients();
   void clearClients();
+
+ private slots:
+  void recreateClients();
 
  private:
   DictServerList* const server_list_;
