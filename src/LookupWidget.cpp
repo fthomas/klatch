@@ -46,11 +46,13 @@ LookupWidget::~LookupWidget() {
 }
 
 void LookupWidget::lookupWord(const QString& word) {
+  // no sendMatch if completions are not empty the new word starts with the old one
+
   results_->setWord(word);
   if (word.isEmpty()) return;
-  // do not call sendMatch if the last word was a prefix of  word
-  //if (word.length() >= 3) dict_->sendMatch(word);
-  //dict_->sendDefine(word);
+
+  if (word.length() >= 3) client_pool_->sendMatch(word);
+  client_pool_->sendDefine(word);
 }
 
 void LookupWidget::setCompletionItems(const Matches& matches) {
@@ -72,11 +74,11 @@ void LookupWidget::createConnections() {
   connect(ui_->word_input, SIGNAL(textChanged(QString)),
     this, SLOT(lookupWord(QString)));
 
-  //connect(dict_, SIGNAL(definitionReceived(Definition)),
-  //  results_, SLOT(appendResult(Definition)));
+  connect(client_pool_, SIGNAL(definitionReceived(Definition)),
+    results_, SLOT(appendResult(Definition)));
 
-  //connect(dict_, SIGNAL(matchesReceived(Matches)),
-  //  this, SLOT(setCompletionItems(Matches)));
+  connect(client_pool_, SIGNAL(matchesReceived(Matches)),
+    this, SLOT(setCompletionItems(Matches)));
 }
 
 void LookupWidget::initWordInput() {
