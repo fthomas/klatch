@@ -16,6 +16,7 @@ set(klatch_SOURCES
   ${CSD}/dict/Matches.cpp
   ${CSD}/results/ResultList.cpp
   ${CSD}/results/ResultView.cpp
+  ${CSD}/scripts/CustomActions.cpp
   ${CSD}/utility/stream.cpp
   ${CSD}/utility/string.cpp
   ${CBD}/KlatchData.cpp
@@ -38,6 +39,7 @@ set(klatch_HEADERS
   ${CSD}/dict/codes.h
   ${CSD}/results/ResultList.h
   ${CSD}/results/ResultView.h
+  ${CSD}/scripts/CustomActions.h
   ${CSD}/utility/algorithm.h
   ${CSD}/utility/stream.h
   ${CSD}/utility/string.h
@@ -78,7 +80,8 @@ set(klatch_INCLUDE_DIRS
 
 set(klatch_LIBRARIES
   ${KDE4_KDEUI_LIBS}
-  ${QT_QTNETWORK_LIBRARY})
+  ${QT_QTNETWORK_LIBRARY}
+  ${QT_QTSCRIPT_LIBRARY})
 
 
 include_directories(${klatch_INCLUDE_DIRS})

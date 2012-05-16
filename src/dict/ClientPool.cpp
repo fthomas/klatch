@@ -20,7 +20,6 @@
 #include <QtGlobal>
 #include "config/DictServerItem.h"
 #include "config/DictServerList.h"
-#include "dict/AbstractDictClient.h"
 #include "dict/Definition.h"
 #include "dict/DictClient.h"
 #include "dict/Matches.h"
@@ -58,7 +57,7 @@ void ClientPool::createConnections() {
 void ClientPool::createClients() {
   for (int row = 0; row < server_list_->rowCount(); ++row) {
     const DictServerItem& server = (*server_list_)[row];
-    DictClient* client = new DictClient{server.hostName(), server.port()};
+    auto client = new DictClient{server.hostName(), server.port()};
 
     clients_ << client;
     connect(client, SIGNAL(definitionReceived(Definition)),
