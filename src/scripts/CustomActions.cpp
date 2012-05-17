@@ -74,14 +74,10 @@ bool CustomActions::loadScript(const QString& filename) {
 
 void CustomActions::insertActions(const QScriptValue& script) {
   const auto insert = [&](const QScriptValue& action) {
-    if (!action.isObject()) {
-      return;
-    }
+    if (!action.isObject()) return;
 
     const QString text = action.property("text").toString();
-    if (text.isEmpty()) {
-      return;
-    }
+    if (text.isEmpty()) return;
 
     actions_.insert(text, action);
   };

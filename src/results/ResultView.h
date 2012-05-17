@@ -20,8 +20,10 @@
 #include <QListView>
 #include <QWidget>
 #include <QtGlobal>
+#include "scripts/CustomActions.h"
 
 QT_BEGIN_NAMESPACE
+class QMenu;
 class QPoint;
 QT_END_NAMESPACE
 
@@ -33,9 +35,15 @@ class ResultView : public QListView {
 
  private slots:
   void showContextMenu(const QPoint& point);
+  void runCustomAction();
 
  private:
   void createConnections();
+  void createContextMenu();
+
+ private:
+  CustomActions custom_actions_;
+  QMenu* context_menu_;
 };
 
 #endif // RESULTS_RESULTVIEW_H
