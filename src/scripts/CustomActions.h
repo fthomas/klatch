@@ -18,7 +18,6 @@
 #define SCRIPTS_CUSTOMACTIONS_H
 
 #include <QMap>
-#include <QMetaType>
 #include <QScriptEngine>
 #include <QScriptValue>
 #include <QString>
@@ -31,6 +30,7 @@ class CustomActions {
   CustomActions();
 
   const map_type& actions() const;
+  void runAction(const QString& key);
 
  private:
   void loadAllScripts();
@@ -41,7 +41,5 @@ class CustomActions {
   QScriptEngine engine_;
   map_type actions_;
 };
-
-Q_DECLARE_METATYPE(QScriptValue)
 
 #endif // SCRIPTS_CUSTOMACTIONS_H

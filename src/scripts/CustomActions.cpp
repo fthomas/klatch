@@ -33,6 +33,15 @@ const CustomActions::map_type &CustomActions::actions() const {
   return actions_;
 }
 
+void CustomActions::runAction(const QString& key) {
+  QScriptValue run = actions_.value(key).property("run");
+  if (!run.isFunction()) {
+    qWarning() << "Action's run property is not a function";
+    return;
+  }
+  run.call();
+}
+
 void CustomActions::loadAllScripts() {
   QStringList filenames = KGlobal::dirs()->
     findAllResources("appdata", "*.js", KStandardDirs::Recursive);
@@ -74,10 +83,16 @@ bool CustomActions::loadScript(const QString& filename) {
 
 void CustomActions::insertActions(const QScriptValue& script) {
   const auto insert = [&](const QScriptValue& action) {
-    if (!action.isObject()) return;
+    if (!action.isObject()) {
+      qWarning() << "Action is not an Object";
+      return;
+    }
 
     const QString text = action.property("text").toString();
-    if (text.isEmpty()) return;
+    if (text.isEmpty()) {
+      qWarning() << "Action's text property is empty";
+      return;
+    }
 
     actions_.insert(text, action);
   };
