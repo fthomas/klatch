@@ -36,7 +36,9 @@ void ResultView::showContextMenu(const QPoint& point) {
 }
 
 void ResultView::runCustomAction() {
-  qDebug() << "runCustomAction";
+  if (QAction* const qaction = qobject_cast<QAction*>(sender())) {
+    custom_actions_.runAction(qaction->text());
+  }
 }
 
 void ResultView::createConnections() {
@@ -47,10 +49,8 @@ void ResultView::createConnections() {
 void ResultView::createContextMenu() {
   context_menu_ = new QMenu{this};
 
-  const auto& actions = custom_actions_.actions();
-  for (auto it = actions.begin(); it != actions.end(); ++it) {
-    auto qaction =
-      context_menu_->addAction(it.key(), this, SLOT(runCustomAction()));
-    qaction->setData(QVariant::fromValue(it.value()));
+  const auto& texts = custom_actions_.actions().keys();
+  for (const QString& text : texts) {
+    context_menu_->addAction(text, this, SLOT(runCustomAction()));
   }
 }
