@@ -30,7 +30,8 @@ add_subdirectory(tests)
 add_custom_target(dummy SOURCES
   COPYING
   COPYRIGHT
-  README.rst)
+  README.rst
+  TODO)
 
 set(ARCHIVE_FILE_NAME "${PROJECT_NAME_LOWER}-${klatch_VERSION}")
 add_custom_target(dist
