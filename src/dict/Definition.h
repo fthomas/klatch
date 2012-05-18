@@ -17,7 +17,14 @@
 #ifndef DICT_DEFINITION_H
 #define DICT_DEFINITION_H
 
+#include <QMetaType>
+#include <QScriptValue>
 #include <QString>
+#include <QtGlobal>
+
+QT_BEGIN_NAMESPACE
+class QScriptEngine;
+QT_END_NAMESPACE
 
 class Definition {
  public:
@@ -31,6 +38,10 @@ class Definition {
 
   bool isEmpty() const;
 
+  static QScriptValue toScriptValue(QScriptEngine* engine,
+                                    const Definition& def);
+  static void fromScriptValue(const QScriptValue& obj, Definition& def);
+
  private:
   void parseStatusLine(const QString& line);
 
@@ -41,5 +52,7 @@ class Definition {
   QString text_;
   bool empty_ = true;
 };
+
+Q_DECLARE_METATYPE(Definition)
 
 #endif // DICT_DEFINITION_H
