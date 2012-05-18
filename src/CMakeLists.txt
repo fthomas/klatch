@@ -98,10 +98,12 @@ set_target_properties(klatch PROPERTIES
   klatch_INCLUDE_DIRS "${klatch_INCLUDE_DIRS}"
   klatch_LIBRARIES "${klatch_LIBRARIES}")
 
+set(klatch_DATA_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME_LOWER})
 install(TARGETS klatch ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES ${klatch_RCS} DESTINATION ${DATA_INSTALL_DIR}/klatch)
-install(FILES ${klatch_KCFGS} DESTINATION ${KCFG_INSTALL_DIR})
-install(FILES klatch.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES ${klatch_RCS}     DESTINATION ${klatch_DATA_INSTALL_DIR})
+install(FILES ${klatch_SCRIPTS} DESTINATION ${klatch_DATA_INSTALL_DIR})
+install(FILES ${klatch_KCFGS}   DESTINATION ${KCFG_INSTALL_DIR})
+install(FILES klatch.desktop    DESTINATION ${XDG_APPS_INSTALL_DIR})
 
 add_custom_target(dummy SOURCES
   ${klatch_KCFGS}
