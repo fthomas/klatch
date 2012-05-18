@@ -17,9 +17,11 @@
 #ifndef RESULTS_RESULTVIEW_H
 #define RESULTS_RESULTVIEW_H
 
+#include <QList>
 #include <QListView>
 #include <QWidget>
 #include <QtGlobal>
+#include "dict/Definition.h"
 #include "scripts/CustomActions.h"
 
 QT_BEGIN_NAMESPACE
@@ -38,6 +40,8 @@ class ResultView : public QListView {
   void runCustomAction();
 
  private:
+  QList<Definition> selectedResults() const;
+
   void createConnections();
   void createContextMenu();
 

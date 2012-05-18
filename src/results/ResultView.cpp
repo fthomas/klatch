@@ -15,12 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "results/ResultView.h"
+#include <QList>
 #include <QMenu>
+#include <QModelIndex>
 #include <QPoint>
 #include <QWidget>
 #include <Qt>
-
-#include <QDebug>
+#include "dict/Definition.h"
 
 ResultView::ResultView(QWidget* parent) : QListView{parent} {
   setContextMenuPolicy(Qt::CustomContextMenu);
@@ -37,8 +38,17 @@ void ResultView::showContextMenu(const QPoint& point) {
 
 void ResultView::runCustomAction() {
   if (QAction* const qaction = qobject_cast<QAction*>(sender())) {
+    custom_actions_.setResults(selectedResults());
     custom_actions_.runAction(qaction->text());
   }
+}
+
+QList<Definition> ResultView::selectedResults() const {
+  QList<Definition> retval;
+  for (const QModelIndex& index : selectedIndexes()) {
+    retval << index.data(Qt::UserRole).value<Definition>();
+  }
+  return retval;
 }
 
 void ResultView::createConnections() {

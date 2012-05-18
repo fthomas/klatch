@@ -17,10 +17,12 @@
 #ifndef SCRIPTS_CUSTOMACTIONS_H
 #define SCRIPTS_CUSTOMACTIONS_H
 
+#include <QList>
 #include <QMap>
 #include <QScriptEngine>
 #include <QScriptValue>
 #include <QString>
+#include "dict/Definition.h"
 
 class CustomActions {
  public:
@@ -30,6 +32,7 @@ class CustomActions {
   CustomActions();
 
   const map_type& actions() const;
+  void setResults(const QList<Definition>& definitions);
   void runAction(const QString& key);
 
  private:

@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "scripts/CustomActions.h"
-#include <QDebug>
 #include <QFile>
+#include <QList>
 #include <QScriptValue>
 #include <QString>
 #include <QStringList>
@@ -24,8 +24,12 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KStandardDirs>
+#include "dict/Definition.h"
 
 CustomActions::CustomActions() {
+  qScriptRegisterMetaType(&engine_,
+    Definition::toScriptValue, Definition::fromScriptValue);
+
   loadAllScripts();
 }
 
@@ -33,10 +37,19 @@ const CustomActions::map_type &CustomActions::actions() const {
   return actions_;
 }
 
+void CustomActions::setResults(const QList<Definition>& definitions) {
+  QScriptValue array = engine_.newArray(definitions.length());
+
+  for (int i = 0; i < definitions.length(); ++i) {
+    array.setProperty(i, engine_.toScriptValue(definitions.at(i)));
+  }
+  engine_.globalObject().setProperty("results", array);
+}
+
 void CustomActions::runAction(const QString& key) {
   QScriptValue run = actions_.value(key).property("run");
   if (!run.isFunction()) {
-    qWarning() << "Action's run property is not a function";
+    // error
     return;
   }
   run.call();
@@ -54,7 +67,7 @@ void CustomActions::loadAllScripts() {
 bool CustomActions::loadScript(const QString& filename) {
   QFile file{filename};
   if (!file.open(QIODevice::ReadOnly)) {
-    qWarning() << file.errorString() << filename;
+    // error
     return false;
   }
 
@@ -70,8 +83,6 @@ bool CustomActions::loadScript(const QString& filename) {
     const QString backtrace =
       engine_.uncaughtExceptionBacktrace().join("\n");
 
-    qWarning() << exception;
-    qWarning() << backtrace;
     KMessageBox::error(0, exception + "\n" + backtrace,
       ki18n("Qt Script Exception").toString());
     return false;
@@ -83,14 +94,11 @@ bool CustomActions::loadScript(const QString& filename) {
 
 void CustomActions::insertActions(const QScriptValue& script) {
   const auto insert = [&](const QScriptValue& action) {
-    if (!action.isObject()) {
-      qWarning() << "Action is not an Object";
-      return;
-    }
+    if (!action.isObject()) return;
 
     const QString text = action.property("text").toString();
     if (text.isEmpty()) {
-      qWarning() << "Action's text property is empty";
+      // error
       return;
     }
 
