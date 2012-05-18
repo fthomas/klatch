@@ -31,7 +31,7 @@ QVariant ResultList::data(const QModelIndex& index, int role) const {
     return QVariant{};
   }
 
-  if  (role == Qt::DisplayRole) {
+  if (role == Qt::DisplayRole) {
     const Definition& def = definitions_.at(index.row());
 
     return QString{"%1 %2 [%3]:\n\n%4\n"}
@@ -40,6 +40,10 @@ QVariant ResultList::data(const QModelIndex& index, int role) const {
       .arg(def.database())
       .arg(indent(def.text().trimmed()));
   }
+  else if (role == Qt::UserRole) {
+    return QVariant::fromValue(definitions_.at((index.row())));
+  }
+
   return QVariant{};
 }
 
