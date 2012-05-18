@@ -65,6 +65,8 @@ kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
 
 kde4_add_kcfg_files(klatch_GENERATED_KCFGCS ${klatch_KCFGCS})
 
+file(GLOB_RECURSE klatch_SCRIPTS scripts/*.js)
+
 set(klatch_ALL_SOURCES
   ${klatch_SOURCES}
   ${klatch_HEADERS}
@@ -101,4 +103,7 @@ install(FILES ${klatch_RCS} DESTINATION ${DATA_INSTALL_DIR}/klatch)
 install(FILES ${klatch_KCFGS} DESTINATION ${KCFG_INSTALL_DIR})
 install(FILES klatch.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
-add_custom_target(dummy SOURCES ${klatch_KCFGS} klatch.desktop)
+add_custom_target(dummy SOURCES
+  ${klatch_KCFGS}
+  ${klatch_SCRIPTS}
+  klatch.desktop)
