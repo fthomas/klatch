@@ -148,7 +148,8 @@ void DictServerList::sort(int column, Qt::SortOrder order) {
   } else if (column == 1) {
     if (order == Qt::AscendingOrder) {
       comp_fn = DictServerItem::lessByPort;
-    } else if (order == Qt::DescendingOrder) {
+    }
+    else if (order == Qt::DescendingOrder) {
       comp_fn = DictServerItem::greaterByPort;
     }
   }
@@ -167,7 +168,7 @@ void DictServerList::readConfig() {
   const QStringList subgroups = dict_group.groupList();
   for (const QString& subgroup : subgroups) {
     if (subgroup.startsWith(server_prefix_)) {
-      servers_ << DictServerItem(dict_group.group(subgroup));
+      servers_ << DictServerItem{dict_group.group(subgroup)};
     }
   }
 }
