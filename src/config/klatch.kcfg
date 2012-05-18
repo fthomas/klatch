@@ -3,16 +3,5 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
                           http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
-  <include>dict/DictClient.h</include>
   <kcfgfile name="klatchrc"/>
-  <group name="Dict">
-    <entry name="Hostname" type="String">
-      <default>localhost</default>
-    </entry>
-    <entry name="Port" type="UInt">
-      <default code="true">DictClient::defaultPort()</default>
-      <min>0</min>
-      <max>65535</max>
-    </entry>
-  </group>
 </kcfg>

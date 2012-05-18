@@ -15,12 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dict/Definition.h"
+#include <QScriptEngine>
+#include <QScriptValue>
 #include <QString>
 #include <QStringList>
 #include "utility/string.h"
 
-Definition::Definition() {
-}
+Definition::Definition() {}
 
 Definition::Definition(const QString& status, const QString& text) {
   parseStatusLine(status);
@@ -56,4 +57,21 @@ void Definition::parseStatusLine(const QString& line) {
   if (args.size() > 0) word_ = args.at(0);
   if (args.size() > 1) database_ = args.at(1);
   if (args.size() > 2) db_description_ = args.at(2);
+}
+
+QScriptValue Definition::toScriptValue(QScriptEngine* engine,
+                                       const Definition& def) {
+   QScriptValue obj = engine->newObject();
+   obj.setProperty("word", def.word_);
+   obj.setProperty("database", def.database_);
+   obj.setProperty("databaseDescription", def.db_description_);
+   obj.setProperty("text", def.text_);
+   return obj;
+}
+
+void Definition::fromScriptValue(const QScriptValue& obj, Definition& def) {
+  def.word_ = obj.property("word").toString();
+  def.database_ = obj.property("database").toString();
+  def.db_description_ = obj.property("databaseDescription").toString();
+  def.text_ = obj.property("text").toString();
 }

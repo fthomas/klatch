@@ -24,6 +24,7 @@
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtDebug>
+#include <QtGlobal>
 #include "dict/DatabaseInfo.h"
 #include "dict/Definition.h"
 #include "dict/Matches.h"
@@ -39,7 +40,7 @@ DictClient::DictClient(const QString &hostname, QObject *parent)
   : DictClient{hostname, defaultPort(), parent} {}
 
 DictClient::DictClient(const QString& hostname, quint16 port,
-                       QObject* parent) : QObject{parent} {
+                       QObject* parent) : AbstractDictClient{parent} {
   hostname_ = hostname;
   port_ = port;
 
@@ -54,6 +55,10 @@ DictClient::DictClient(const QString& hostname, quint16 port,
     this, SLOT(resetCache()));
 }
 
+DictClient::~DictClient() {
+  disconnectIfConnected();
+}
+
 QString DictClient::peerName() const {
   return hostname_;
 }
@@ -61,7 +66,7 @@ QString DictClient::peerName() const {
 void DictClient::setPeerName(const QString& name) {
   if (hostname_ != name) {
     hostname_ = name;
-    socket_.disconnectFromHost();
+    disconnectIfConnected();
   }
 }
 
@@ -72,7 +77,7 @@ quint16 DictClient::peerPort() const {
 void DictClient::setPeerPort(quint16 port) {
   if (port_ != port) {
     port_ = port;
-    socket_.disconnectFromHost();
+    disconnectIfConnected();
   }
 }
 
@@ -150,6 +155,16 @@ void DictClient::connectIfDisconnected() {
     sendClient();
     sendShowDatabases();
     sendShowStrategies();
+  }
+}
+
+void DictClient::disconnectIfConnected() {
+  const QAbstractSocket::SocketState state = socket_.state();
+
+  if (state != QAbstractSocket::UnconnectedState &&
+      state != QAbstractSocket::ClosingState) {
+    sendQuit();
+    socket_.disconnectFromHost();
   }
 }
 

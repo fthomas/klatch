@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,36 +14,42 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef CONFIG_DICTSERVERDIALOG_H
+#define CONFIG_DICTSERVERDIALOG_H
 
 #include <QObject>
+#include <QSize>
 #include <QtGlobal>
-#include <KXmlGuiWindow>
+#include <KDialog>
+#include "ui_DictServerDialog.h"
 
 QT_BEGIN_NAMESPACE
+class QEvent;
+class QString;
 class QWidget;
 QT_END_NAMESPACE
 
-class DictServerList;
-class LookupWidget;
+class DictServerItem;
 
-class MainWindow : public KXmlGuiWindow {
+class DictServerDialog : public KDialog {
   Q_OBJECT
 
  public:
-  explicit MainWindow(QWidget* parent = 0);
+  explicit DictServerDialog(QWidget* parent = 0);
+
+  void readServerItem(const DictServerItem& server);
+  void writeServerItem(DictServerItem& server) const;
+
+  QSize sizeHint() const;
+
+ protected:
+  void changeEvent(QEvent* event);
 
  private slots:
-  void toggleMenuBar();
-  void showPreferences();
+  void hostNameChangedSlot(const QString& hostname);
 
  private:
-  void setupActions();
-
- private:
-  DictServerList* const server_list_;
-  LookupWidget* const lookup_;
+  Ui::DictServerDialog ui_;
 };
 
-#endif // MAINWINDOW_H
+#endif // CONFIG_DICTSERVERDIALOG_H

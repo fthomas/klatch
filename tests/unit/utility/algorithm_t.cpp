@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,26 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <KAboutData>
-#include <KApplication>
-#include <KCmdLineArgs>
-#include <KCmdLineOptions>
-#include <KLocale>
-#include "KlatchData.h"
-#include "MainWindow.h"
+#include "utility/algorithm_t.h"
+#include <QList>
+#include <QtTest/QtTest>
+#include "utility/algorithm.h"
 
-int main(int argc, char* argv[]) {
-  KAboutData about = KlatchData::aboutData();
-  KCmdLineOptions options;
-  options.add("+[word]", ki18n("Word to lookup in dictionaries"));
+void test_algorithm::test_erase_if() {
+  QList<int> l1; l1 << 1 << 2 << 3 << 4;
 
-  KCmdLineArgs::init(argc, argv, &about);
-  KCmdLineArgs::addCmdLineOptions(options);
+  erase_if(l1, [](int i) { return i > 2; });
+  QCOMPARE(l1, (QList<int>{} << 1 << 2));
 
-  KApplication app;
+  erase_if(l1, [](int i) { return i > 0; });
+  QCOMPARE(l1, QList<int>{});
 
-  auto window = new MainWindow;
-  window->show();
-
-  return app.exec();
+  erase_if(l1, [](int i) { return i > 0; });
+  QCOMPARE(l1, QList<int>{});
 }

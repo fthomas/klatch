@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,36 +14,35 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef DICT_ABSTRACTDICTCLIENT_H
+#define DICT_ABSTRACTDICTCLIENT_H
 
 #include <QObject>
 #include <QtGlobal>
-#include <KXmlGuiWindow>
 
 QT_BEGIN_NAMESPACE
-class QWidget;
+class QString;
 QT_END_NAMESPACE
 
-class DictServerList;
-class LookupWidget;
+class Definition;
+class Matches;
 
-class MainWindow : public KXmlGuiWindow {
+class AbstractDictClient : public QObject {
   Q_OBJECT
 
  public:
-  explicit MainWindow(QWidget* parent = 0);
+  explicit AbstractDictClient(QObject* parent = 0);
 
- private slots:
-  void toggleMenuBar();
-  void showPreferences();
+ signals:
+  void definitionReceived(const Definition& def);
+  void matchesReceived(const Matches& matches);
 
- private:
-  void setupActions();
-
- private:
-  DictServerList* const server_list_;
-  LookupWidget* const lookup_;
+ public slots:
+  virtual void sendDefine(const QString& word,
+                          const QString& database = "*") = 0;
+  virtual void sendMatch(const QString& word,
+                         const QString& strategy = "prefix",
+                         const QString& database = "*") = 0;
 };
 
-#endif // MAINWINDOW_H
+#endif // DICT_ABSTRACTDICTCLIENT_H

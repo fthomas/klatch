@@ -22,17 +22,18 @@
 #include <KApplication>
 #include <KCmdLineArgs>
 #include <KCompletion>
+#include "config/DictServerList.h"
+#include "dict/ClientPool.h"
 #include "dict/Definition.h"
-#include "dict/DictClient.h"
 #include "dict/Matches.h"
 #include "results/ResultList.h"
 #include "ui_LookupWidget.h"
 
-LookupWidget::LookupWidget(QWidget* parent)
+LookupWidget::LookupWidget(DictServerList* list, QWidget* parent)
     : QWidget{parent},
       ui_{new Ui::LookupWidget},
-      results_{new ResultList{this}},
-      dict_{new DictClient{this}} {
+      client_pool_{new ClientPool{list, this}},
+      results_{new ResultList{this}} {
   ui_->setupUi(this);
 
   createConnections();
@@ -45,11 +46,13 @@ LookupWidget::~LookupWidget() {
 }
 
 void LookupWidget::lookupWord(const QString& word) {
+  // no sendMatch if completions are not empty the new word starts with the old one
+
   results_->setWord(word);
   if (word.isEmpty()) return;
-  // do not call sendMatch if the last word was a prefix of  word
-  if (word.length() >= 3) dict_->sendMatch(word);
-  dict_->sendDefine(word);
+
+  if (word.length() >= 3) client_pool_->sendMatch(word);
+  client_pool_->sendDefine(word);
 }
 
 void LookupWidget::setCompletionItems(const Matches& matches) {
@@ -71,10 +74,10 @@ void LookupWidget::createConnections() {
   connect(ui_->word_input, SIGNAL(textChanged(QString)),
     this, SLOT(lookupWord(QString)));
 
-  connect(dict_, SIGNAL(definitionReceived(Definition)),
+  connect(client_pool_, SIGNAL(definitionReceived(Definition)),
     results_, SLOT(appendResult(Definition)));
 
-  connect(dict_, SIGNAL(matchesReceived(Matches)),
+  connect(client_pool_, SIGNAL(matchesReceived(Matches)),
     this, SLOT(setCompletionItems(Matches)));
 }
 

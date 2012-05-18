@@ -26,7 +26,8 @@ QT_BEGIN_NAMESPACE
 class QEvent;
 QT_END_NAMESPACE
 
-class DictClient;
+class ClientPool;
+class DictServerList;
 class Matches;
 class ResultList;
 
@@ -38,7 +39,7 @@ class LookupWidget : public QWidget {
   Q_OBJECT
 
  public:
-  explicit LookupWidget(QWidget* parent = 0);
+  explicit LookupWidget(DictServerList* list, QWidget* parent = 0);
   ~LookupWidget();
 
  public slots:
@@ -57,8 +58,9 @@ class LookupWidget : public QWidget {
 
  private:
   Ui::LookupWidget* ui_;
-  ResultList* results_;
-  DictClient* dict_;
+  ClientPool* const client_pool_;
+  ResultList* const results_;
+
 };
 
 #endif // LOOKUPWIDGET_H

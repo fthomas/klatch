@@ -20,8 +20,8 @@ Adding src/main.cpp to src_top_dir
 Adding src/MainWindow.cpp to src_top_dir
 Adding src/MainWindow.h to src_top_dir
 Creating filelist for src_results
+Creating filelist for src_scripts
 Creating filelist for src_utility
-Creating filelist for src_view
 Categorizing files.
 Finding a working MD5 command....
 Found a working MD5 command.
@@ -29,29 +29,29 @@ Computing results.
 
 
 SLOC	Directory	SLOC-by-Language (Sorted)
-481     src_dict        cpp=481
-254     tests           cpp=254
-187     src_top_dir     cpp=187
-97      src_utility     cpp=97
-81      src_results     cpp=81
-76      src_view        cpp=76
-43      src_config      cpp=43
+601     src_dict        cpp=601
+466     src_config      cpp=466
+424     tests           cpp=424
+206     src_top_dir     cpp=206
+132     src_results     cpp=132
+105     src_utility     cpp=105
+87      src_scripts     cpp=87
 0       top_dir         (none)
 
 
 Totals grouped by language (dominant language first):
-cpp:           1219 (100.00%)
+cpp:           2021 (100.00%)
 
 
 
 
-Total Physical Source Lines of Code (SLOC)                = 1,219
-Development Effort Estimate, Person-Years (Person-Months) = 0.25 (2.95)
+Total Physical Source Lines of Code (SLOC)                = 2,021
+Development Effort Estimate, Person-Years (Person-Months) = 0.42 (5.02)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.31 (3.77)
+Schedule Estimate, Years (Months)                         = 0.38 (4.62)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 0.78
-Total Estimated Cost to Develop                           = $ 33,262
+Estimated Average Number of Developers (Effort/Schedule)  = 1.09
+Total Estimated Cost to Develop                           = $ 56,557
  (average salary = $56,286/year, overhead = 2.40).
 SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
 SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.

@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,36 +14,35 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef SCRIPTS_CUSTOMACTIONS_H
+#define SCRIPTS_CUSTOMACTIONS_H
 
-#include <QObject>
-#include <QtGlobal>
-#include <KXmlGuiWindow>
+#include <QList>
+#include <QMap>
+#include <QScriptEngine>
+#include <QScriptValue>
+#include <QString>
+#include "dict/Definition.h"
 
-QT_BEGIN_NAMESPACE
-class QWidget;
-QT_END_NAMESPACE
-
-class DictServerList;
-class LookupWidget;
-
-class MainWindow : public KXmlGuiWindow {
-  Q_OBJECT
+class CustomActions {
+ public:
+  typedef QMap<QString, QScriptValue> map_type;
 
  public:
-  explicit MainWindow(QWidget* parent = 0);
+  CustomActions();
 
- private slots:
-  void toggleMenuBar();
-  void showPreferences();
-
- private:
-  void setupActions();
+  const map_type& actions() const;
+  void setResults(const QList<Definition>& definitions);
+  void runAction(const QString& key);
 
  private:
-  DictServerList* const server_list_;
-  LookupWidget* const lookup_;
+  void loadAllScripts();
+  bool loadScript(const QString& filename);
+  void insertActions(const QScriptValue& script);
+
+ private:
+  QScriptEngine engine_;
+  map_type actions_;
 };
 
-#endif // MAINWINDOW_H
+#endif // SCRIPTS_CUSTOMACTIONS_H

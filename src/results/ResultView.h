@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,36 +14,40 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef RESULTS_RESULTVIEW_H
+#define RESULTS_RESULTVIEW_H
 
-#include <QObject>
+#include <QList>
+#include <QListView>
+#include <QWidget>
 #include <QtGlobal>
-#include <KXmlGuiWindow>
+#include "dict/Definition.h"
+#include "scripts/CustomActions.h"
 
 QT_BEGIN_NAMESPACE
-class QWidget;
+class QMenu;
+class QPoint;
 QT_END_NAMESPACE
 
-class DictServerList;
-class LookupWidget;
-
-class MainWindow : public KXmlGuiWindow {
+class ResultView : public QListView {
   Q_OBJECT
 
  public:
-  explicit MainWindow(QWidget* parent = 0);
+  explicit ResultView(QWidget* parent = 0);
 
  private slots:
-  void toggleMenuBar();
-  void showPreferences();
+  void showContextMenu(const QPoint& point);
+  void runCustomAction();
 
  private:
-  void setupActions();
+  QList<Definition> selectedResults() const;
+
+  void createConnections();
+  void createContextMenu();
 
  private:
-  DictServerList* const server_list_;
-  LookupWidget* const lookup_;
+  CustomActions custom_actions_;
+  QMenu* context_menu_;
 };
 
-#endif // MAINWINDOW_H
+#endif // RESULTS_RESULTVIEW_H

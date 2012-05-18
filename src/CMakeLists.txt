@@ -5,12 +5,18 @@ set(CBD ${CMAKE_CURRENT_BINARY_DIR})
 
 set(klatch_SOURCES
   ${CSD}/config/DictPage.cpp
+  ${CSD}/config/DictServerDialog.cpp
+  ${CSD}/config/DictServerItem.cpp
+  ${CSD}/config/DictServerList.cpp
+  ${CSD}/dict/AbstractDictClient.cpp
   ${CSD}/dict/ClientPool.cpp
   ${CSD}/dict/DatabaseInfo.cpp
   ${CSD}/dict/Definition.cpp
   ${CSD}/dict/DictClient.cpp
   ${CSD}/dict/Matches.cpp
   ${CSD}/results/ResultList.cpp
+  ${CSD}/results/ResultView.cpp
+  ${CSD}/scripts/CustomActions.cpp
   ${CSD}/utility/stream.cpp
   ${CSD}/utility/string.cpp
   ${CBD}/KlatchData.cpp
@@ -21,6 +27,10 @@ set(klatch_SOURCES
 
 set(klatch_HEADERS
   ${CSD}/config/DictPage.h
+  ${CSD}/config/DictServerDialog.h
+  ${CSD}/config/DictServerItem.h
+  ${CSD}/config/DictServerList.h
+  ${CSD}/dict/AbstractDictClient.h
   ${CSD}/dict/ClientPool.h
   ${CSD}/dict/DatabaseInfo.h
   ${CSD}/dict/Definition.h
@@ -28,6 +38,9 @@ set(klatch_HEADERS
   ${CSD}/dict/Matches.h
   ${CSD}/dict/codes.h
   ${CSD}/results/ResultList.h
+  ${CSD}/results/ResultView.h
+  ${CSD}/scripts/CustomActions.h
+  ${CSD}/utility/algorithm.h
   ${CSD}/utility/stream.h
   ${CSD}/utility/string.h
   ${CSD}/KlatchData.h
@@ -36,6 +49,7 @@ set(klatch_HEADERS
 
 set(klatch_UIS
   ${CSD}/config/DictPage.ui
+  ${CSD}/config/DictServerDialog.ui
   ${CSD}/LookupWidget.ui)
 
 set(klatch_RCS
@@ -50,6 +64,8 @@ set(klatch_KCFGCS
 kde4_add_ui_files(klatch_GENERATED_UIS ${klatch_UIS})
 
 kde4_add_kcfg_files(klatch_GENERATED_KCFGCS ${klatch_KCFGCS})
+
+file(GLOB_RECURSE klatch_SCRIPTS scripts/*.js)
 
 set(klatch_ALL_SOURCES
   ${klatch_SOURCES}
@@ -66,7 +82,8 @@ set(klatch_INCLUDE_DIRS
 
 set(klatch_LIBRARIES
   ${KDE4_KDEUI_LIBS}
-  ${QT_QTNETWORK_LIBRARY})
+  ${QT_QTNETWORK_LIBRARY}
+  ${QT_QTSCRIPT_LIBRARY})
 
 
 include_directories(${klatch_INCLUDE_DIRS})
@@ -86,4 +103,7 @@ install(FILES ${klatch_RCS} DESTINATION ${DATA_INSTALL_DIR}/klatch)
 install(FILES ${klatch_KCFGS} DESTINATION ${KCFG_INSTALL_DIR})
 install(FILES klatch.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 
-add_custom_target(dummy SOURCES ${klatch_KCFGS} klatch.desktop)
+add_custom_target(dummy SOURCES
+  ${klatch_KCFGS}
+  ${klatch_SCRIPTS}
+  klatch.desktop)

@@ -23,6 +23,7 @@
 #include <QTcpSocket>
 #include <QTextStream>
 #include <QtGlobal>
+#include "dict/AbstractDictClient.h"
 
 class DatabaseInfo;
 class Definition;
@@ -31,13 +32,14 @@ class Matches;
 /**
  * https://tools.ietf.org/html/rfc2229
  */
-class DictClient : public QObject {
+class DictClient : public AbstractDictClient {
   Q_OBJECT
 
  public:
   explicit DictClient(QObject* parent = 0);
   explicit DictClient(const QString& hostname, QObject* parent = 0);
   DictClient(const QString& hostname, quint16 port, QObject* parent = 0);
+  ~DictClient();
 
   QString peerName() const;
   void setPeerName(const QString& name);
@@ -54,9 +56,6 @@ class DictClient : public QObject {
  signals:
   void definitionsFound(int count);
   void matchesFound(int count);
-
-  void definitionReceived(const Definition& def);
-  void matchesReceived(const Matches& matches);
 
   void databaseInfoReceived(const DatabaseInfo& info);
   void helpTextReceived(const QString& help);
@@ -78,6 +77,7 @@ class DictClient : public QObject {
 
  private:
   void connectIfDisconnected();
+  void disconnectIfConnected();
   void sendRawCommand(const QString& command);
 
   bool readStatusLine(const QString& line);

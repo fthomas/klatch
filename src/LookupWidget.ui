@@ -16,15 +16,24 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="KLineEdit" name="word_input">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>24</height>
+      </size>
+     </property>
      <property name="showClearButton" stdset="0">
       <bool>true</bool>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QListView" name="result_view">
+    <widget class="ResultView" name="result_view">
      <property name="alternatingRowColors">
       <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::ExtendedSelection</enum>
      </property>
      <property name="verticalScrollMode">
       <enum>QAbstractItemView::ScrollPerPixel</enum>
@@ -41,6 +50,11 @@
    <class>KLineEdit</class>
    <extends>QLineEdit</extends>
    <header>klineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ResultView</class>
+   <extends>QListView</extends>
+   <header>results/ResultView.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

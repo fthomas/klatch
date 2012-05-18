@@ -1,5 +1,5 @@
 // Klatch - a DICT client for KDE
-// Copyright © 2011-2012 Frank S. Thomas <frank@timepit.eu>
+// Copyright © 2012 Frank S. Thomas <frank@timepit.eu>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,26 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include <KAboutData>
-#include <KApplication>
-#include <KCmdLineArgs>
-#include <KCmdLineOptions>
-#include <KLocale>
-#include "KlatchData.h"
-#include "MainWindow.h"
+#ifndef UTILITY_ALGORITHM_T_H
+#define UTILITY_ALGORITHM_T_H
 
-int main(int argc, char* argv[]) {
-  KAboutData about = KlatchData::aboutData();
-  KCmdLineOptions options;
-  options.add("+[word]", ki18n("Word to lookup in dictionaries"));
+#include <QObject>
 
-  KCmdLineArgs::init(argc, argv, &about);
-  KCmdLineArgs::addCmdLineOptions(options);
+class test_algorithm : public QObject {
+  Q_OBJECT
 
-  KApplication app;
+ private slots:
+  void test_erase_if();
+};
 
-  auto window = new MainWindow;
-  window->show();
-
-  return app.exec();
-}
+#endif // UTILITY_ALGORITHM_T_H

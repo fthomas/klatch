@@ -25,11 +25,13 @@
 #include <KStandardAction>
 #include <KToggleAction>
 #include "config/DictPage.h"
+#include "config/DictServerList.h"
 #include "LookupWidget.h"
 #include "klatchconfig.h"
 
-MainWindow::MainWindow(QWidget* parent)
-    : KXmlGuiWindow{parent}, lookup_{new LookupWidget{this}} {
+MainWindow::MainWindow(QWidget* parent) : KXmlGuiWindow{parent},
+    server_list_{new DictServerList{this}},
+    lookup_{new LookupWidget{server_list_, this}} {
   setupActions();
   setCentralWidget(lookup_);
 }
@@ -58,9 +60,9 @@ void MainWindow::showPreferences() {
   if (KConfigDialog::showDialog(preferences)) return;
 
   KConfigDialog* const dialog =
-    new KConfigDialog(this, preferences, KlatchConfig::self());
+    new KConfigDialog{this, preferences, KlatchConfig::self()};
 
-  DictPage* const dict_page = new DictPage;
+  DictPage* const dict_page = new DictPage{server_list_};
   dialog->addPage(dict_page, i18n("DICT"), "accessories-dictionary",
     i18n("Manage Servers"));
 

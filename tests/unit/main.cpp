@@ -17,9 +17,13 @@
 #include <cstdlib>
 #include <QCoreApplication>
 #include <QtTest/QtTest>
+#include "config/DictServerItem_t.h"
+#include "config/DictServerList_t.h"
+#include "dict/ClientPool_t.h"
 #include "dict/DatabaseInfo_t.h"
 #include "dict/Matches_t.h"
 #include "results/ResultList_t.h"
+#include "utility/algorithm_t.h"
 #include "utility/string_t.h"
 
 int g_argc;
@@ -40,9 +44,13 @@ int main(int argc, char* argv[]) {
   g_argv = argv;
 
   QCoreApplication app{argc, argv};
+  exec<test_DictServerItem>();
+  exec<test_DictServerList>();
+  exec<test_ClientPool>();
   exec<test_DatabaseInfo>();
   exec<test_Matches>();
   exec<test_ResultList>();
+  exec<test_algorithm>();
   exec<test_string>();
 
   std::exit(EXIT_SUCCESS);

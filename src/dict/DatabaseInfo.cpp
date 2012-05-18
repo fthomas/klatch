@@ -19,8 +19,7 @@
 #include <QStringList>
 #include "utility/string.h"
 
-DatabaseInfo::DatabaseInfo() {
-}
+DatabaseInfo::DatabaseInfo() {}
 
 DatabaseInfo::DatabaseInfo(const QString& status, const QString& text) {
   parseStatusLine(status);

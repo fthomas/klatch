@@ -17,30 +17,48 @@
 #ifndef CONFIG_DICTPAGE_H
 #define CONFIG_DICTPAGE_H
 
+#include <QModelIndex>
 #include <QObject>
 #include <QWidget>
 #include <QtGlobal>
 
 QT_BEGIN_NAMESPACE
 class QEvent;
+class QItemSelection;
+class QItemSelectionModel;
 QT_END_NAMESPACE
 
 namespace Ui {
   class DictPage;
 }
 
+class DictServerList;
+
 class DictPage : public QWidget {
   Q_OBJECT
 
  public:
-  explicit DictPage(QWidget* parent = 0);
+  explicit DictPage(DictServerList* list, QWidget* parent = 0);
   ~DictPage();
 
  protected:
   void changeEvent(QEvent* event);
 
+ private slots:
+  void updateButtons(const QItemSelection& selected);
+
+  void addServer();
+  void modifyServer();
+  void removeServer();
+
+ private:
+  QModelIndex selectedIndex() const;
+  void createConnections();
+
  private:
   Ui::DictPage* ui_;
+  DictServerList* const server_list_;
+  QItemSelectionModel* server_selection_;
 };
 
 #endif // CONFIG_DICTPAGE_H
