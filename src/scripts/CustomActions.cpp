@@ -47,6 +47,11 @@ void CustomActions::setResults(const QList<Definition>& definitions) {
 }
 
 void CustomActions::runAction(const QString& key) {
+  if (!actions_.contains(key)) {
+    // error
+    return;
+  }
+
   QScriptValue run = actions_.value(key).property("run");
   if (!run.isFunction()) {
     // error
