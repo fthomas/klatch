@@ -36,7 +36,8 @@ can be used by adding the following option to the CMake invocation::
 Download
 --------
 
-You can download Klatch in either `tar.gz`_ or `zip`_ formats.
+You can download the latest Klatch source code as `tar.gz`_ or `zip`_
+archives.
 
 .. _tar.gz: http://github.com/fthomas/klatch/tarball/master
 .. _zip:    http://github.com/fthomas/klatch/zipball/master

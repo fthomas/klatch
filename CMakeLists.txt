@@ -4,7 +4,7 @@ project(Klatch)
 string(TOLOWER ${CMAKE_PROJECT_NAME} PROJECT_NAME_LOWER)
 
 set(klatch_VERSION_MAJOR "0")
-set(klatch_VERSION_MINOR "1")
+set(klatch_VERSION_MINOR "0")
 set(klatch_VERSION "${klatch_VERSION_MAJOR}.${klatch_VERSION_MINOR}")
 
 # Enable more warnings if g++ or clang is used.
@@ -33,8 +33,16 @@ add_custom_target(dummy SOURCES
   README.rst
   TODO)
 
-set(ARCHIVE_FILE_NAME "${PROJECT_NAME_LOWER}-${klatch_VERSION}")
+set(ARCHIVE_FILENAME "${PROJECT_NAME_LOWER}-${klatch_VERSION}")
+set(ORIG_FILENAME "${PROJECT_NAME_LOWER}_${klatch_VERSION}.orig")
 add_custom_target(dist
-  COMMAND git archive --format=tar --prefix=${ARCHIVE_FILE_NAME}/ HEAD |
-    bzip2 -9 > ${CMAKE_BINARY_DIR}/${ARCHIVE_FILE_NAME}.tar.bz2
+  COMMAND git archive --format=tar --prefix=${ARCHIVE_FILENAME}/ HEAD |
+    bzip2 -9 > ${CMAKE_BINARY_DIR}/${ARCHIVE_FILENAME}.tar.bz2
+  COMMAND ${CMAKE_COPY} ${CMAKE_BINARY_DIR}/${ARCHIVE_FILENAME}.tar.bz2
+    ${CMAKE_BINARY_DIR}/${ORIG_FILENAME}.tar.bz2
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+add_custom_target(git-tag
+  COMMAND git tag -s "v${klatch_VERSION}"
+    -m "${CMAKE_PROJECT_NAME} ${klatch_VERSION}"
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})

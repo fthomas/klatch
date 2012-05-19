@@ -46,8 +46,6 @@ LookupWidget::~LookupWidget() {
 }
 
 void LookupWidget::lookupWord(const QString& word) {
-  // no sendMatch if completions are not empty the new word starts with the old one
-
   results_->setWord(word);
   if (word.isEmpty()) return;
 
