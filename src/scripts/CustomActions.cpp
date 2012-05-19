@@ -57,6 +57,7 @@ bool CustomActions::runAction(const QString& key) {
     // error
     return false;
   }
+
   run.call();
   return showScriptException();
 }

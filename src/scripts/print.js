@@ -1,3 +1,6 @@
+// This is a very simple script that should demonstrate the basics of
+// writing scripts for Klatch.
+
 var action = new Object;
 
 action.text = "Print Selected Results";
