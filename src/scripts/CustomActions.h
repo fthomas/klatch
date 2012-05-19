@@ -33,12 +33,13 @@ class CustomActions {
 
   const map_type& actions() const;
   void setResults(const QList<Definition>& definitions);
-  void runAction(const QString& key);
+  bool runAction(const QString& key);
 
  private:
   void loadAllScripts();
   bool loadScript(const QString& filename);
   void insertActions(const QScriptValue& script);
+  bool showScriptException() const;
 
  private:
   QScriptEngine engine_;

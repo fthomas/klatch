@@ -46,18 +46,19 @@ void CustomActions::setResults(const QList<Definition>& definitions) {
   engine_.globalObject().setProperty("results", array);
 }
 
-void CustomActions::runAction(const QString& key) {
+bool CustomActions::runAction(const QString& key) {
   if (!actions_.contains(key)) {
     // error
-    return;
+    return false;
   }
 
   QScriptValue run = actions_.value(key).property("run");
   if (!run.isFunction()) {
     // error
-    return;
+    return false;
   }
   run.call();
+  return showScriptException();
 }
 
 void CustomActions::loadAllScripts() {
@@ -83,15 +84,7 @@ bool CustomActions::loadScript(const QString& filename) {
   engine_.evaluate(content, filename);
   engine_.popContext();
 
-  if (engine_.hasUncaughtException()) {
-    const QString exception = engine_.uncaughtException().toString();
-    const QString backtrace =
-      engine_.uncaughtExceptionBacktrace().join("\n");
-
-    KMessageBox::error(0, exception + "\n" + backtrace,
-      ki18n("Qt Script Exception").toString());
-    return false;
-  }
+  if (showScriptException()) return false;
 
   insertActions(context->activationObject());
   return true;
@@ -118,4 +111,15 @@ void CustomActions::insertActions(const QScriptValue& script) {
       insert(actions.property(i));
     }
   }
+}
+
+bool CustomActions::showScriptException() const {
+  if (!engine_.hasUncaughtException()) return false;
+
+  const QString exception = engine_.uncaughtException().toString();
+  const QString backtrace = engine_.uncaughtExceptionBacktrace().join("\n");
+
+  KMessageBox::error(0, exception + "\n" + backtrace,
+    ki18n("Qt Script Exception").toString());
+  return true;
 }
