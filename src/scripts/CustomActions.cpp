@@ -29,6 +29,8 @@
 CustomActions::CustomActions() {
   qScriptRegisterMetaType(&engine_,
     Definition::toScriptValue, Definition::fromScriptValue);
+  engine_.importExtension("qt.core");
+  engine_.importExtension("qt.xml");
 
   loadAllScripts();
 }

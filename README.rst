@@ -4,6 +4,45 @@ Klatch - a DICT client for KDE
 Introduction
 ------------
 
+Klatch is a KDE client for the Dictionary Server Protocol (`DICT`_).
+It can query multiple DICT servers simultaneously and has a simple user
+interface for querying words and displaying their definitions. It also
+features a scripting interface for processing definitions via
+`QtScript`_ which is based on the ECMAScript standard. This allows, for
+example, to append selected definitions to an external vocabulary
+collections, like `kvtml`_ files.
+
+.. _DICT: https://en.wikipedia.org/wiki/DICT
+.. _QtScript: https://en.wikipedia.org/wiki/QtScript
+.. _kvtml: http://edu.kde.org/contrib/kvtml.php
+
+Packages
+--------
+
+Source and (amd64) binary packages for Debian are available in my
+`personal package archive`_. Packages for other distributions are not
+available yet.
+
+.. _personal package archive: http://timepit.eu/~frank/wiki/debian/#ppa
+
+Download
+--------
+
+The latest Klatch source code can be downloaded as `tar.gz`_ or `zip`_
+archives.
+
+.. _tar.gz: http://github.com/fthomas/klatch/tarball/master
+.. _zip:    http://github.com/fthomas/klatch/zipball/master
+
+The version control system used for development of Klatch is Git. The
+`Git repository`_ can be inspected and browsed online at `GitHub`_ and
+it can be cloned by running::
+
+  git clone git://github.com/fthomas/klatch.git
+
+.. _Git repository: http://github.com/fthomas/klatch
+.. _GitHub: http://github.com/
+
 Dependencies
 ------------
 
@@ -32,24 +71,6 @@ compiler. For example, on Debian ``g++`` from the gcc-snapshot package
 can be used by adding the following option to the CMake invocation::
 
   -DCMAKE_CXX_COMPILER=/usr/lib/gcc-snapshot/bin/g++
-
-Download
---------
-
-You can download the latest Klatch source code as `tar.gz`_ or `zip`_
-archives.
-
-.. _tar.gz: http://github.com/fthomas/klatch/tarball/master
-.. _zip:    http://github.com/fthomas/klatch/zipball/master
-
-The version control system used for development of Klatch is Git. The
-`Git repository`_ can be inspected and browsed online at `GitHub`_ and
-it can be cloned by running::
-
-  git clone git://github.com/fthomas/klatch.git
-
-.. _Git repository: http://github.com/fthomas/klatch
-.. _GitHub: http://github.com/
 
 Issues and feedback
 -------------------
