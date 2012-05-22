@@ -44,5 +44,5 @@ add_custom_target(dist
 
 add_custom_target(git-tag
   COMMAND git tag -s "v${klatch_VERSION}"
-    -m "${CMAKE_PROJECT_NAME} ${klatch_Version}"
+    -m "${CMAKE_PROJECT_NAME} ${klatch_VERSION}"
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
