@@ -1,3 +1,9 @@
+klatch (0.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Frank S. Thomas <fst@debian.org>  Tue, 22 May 2012 22:38:12 +0200
+
 klatch (0.0-1) unstable; urgency=low
 
   * Initial release.
