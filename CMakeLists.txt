@@ -4,7 +4,7 @@ project(Klatch)
 string(TOLOWER ${CMAKE_PROJECT_NAME} PROJECT_NAME_LOWER)
 
 set(klatch_VERSION_MAJOR "0")
-set(klatch_VERSION_MINOR "0")
+set(klatch_VERSION_MINOR "1")
 set(klatch_VERSION "${klatch_VERSION_MAJOR}.${klatch_VERSION_MINOR}")
 
 # Enable more warnings if g++ or clang is used.
