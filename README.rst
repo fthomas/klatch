@@ -4,6 +4,18 @@ Klatch - a DICT client for KDE
 Introduction
 ------------
 
+Klatch is a KDE client for the Dictionary Server Protocol (`DICT`_).
+It can query multiple DICT servers simultaneously and has a simple user
+interface for querying words and displaying their definitions. It also
+features a scripting interface for processing definitions via
+`QtScript`_ which is based on the ECMAScript standard. This allows, for
+example, to append selected definitions to an external vocabulary
+collections, like `kvtml`_ files.
+
+.. _DICT: https://en.wikipedia.org/wiki/DICT
+.. _QtScript: https://en.wikipedia.org/wiki/QtScript
+.. _kvtml: http://edu.kde.org/contrib/kvtml.php
+
 Packages
 --------
 
