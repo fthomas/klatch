@@ -1,3 +1,9 @@
-* Extract translatable strings
-* Make text of results selectable
-* Use 'Get Hot New Stuff' to share scripts
+x.y:
+ * Extract translatable strings
+ * Make text of results selectable
+ * Use 'Get Hot New Stuff' to share scripts
+ * Search for similar words if no definitions are found
+
+0.1:
+ * Finish the kvtml.js and print.js scripts
+ * Write a long description for Klatch
