@@ -3,4 +3,4 @@ x.y:
  * Make text of results selectable
  * Use 'Get Hot New Stuff' to share scripts
  * Search for similar words if no definitions are found
-
+ * Allow to query only specific databases
