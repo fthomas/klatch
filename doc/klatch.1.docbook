@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN"
+  "dtd/kdex.dtd" [
+
+]>
+<refentry>
+  <refmeta>
+    <refentrytitle>klatch</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>klatch</refname>
+    <refpurpose></refpurpose>
+  </refnamediv>
+</refentry>
