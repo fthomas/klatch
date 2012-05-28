@@ -24,6 +24,7 @@ list(REMOVE_ITEM CMAKE_CXX_FLAGS "-ansi")
 
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 
+add_subdirectory(doc)
 add_subdirectory(po)
 add_subdirectory(src)
 add_subdirectory(tests)
