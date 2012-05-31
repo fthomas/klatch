@@ -15,6 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dict/ClientPool.h"
+#include <QMap>
 #include <QString>
 #include <QtAlgorithms>
 #include <QtGlobal>
@@ -34,6 +35,14 @@ ClientPool::ClientPool(DictServerList* list, QObject* parent)
 
 ClientPool::~ClientPool() {
   clearClients();
+}
+
+QMap<QString, QString> ClientPool::databases() const {
+  QMap<QString, QString> retval;
+  for (DictClient* const client : clients_) {
+    retval.unite(client->databases());
+  }
+  return retval;
 }
 
 void ClientPool::sendDefine(const QString& word, const QString& database) {

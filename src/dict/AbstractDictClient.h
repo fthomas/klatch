@@ -17,12 +17,9 @@
 #ifndef DICT_ABSTRACTDICTCLIENT_H
 #define DICT_ABSTRACTDICTCLIENT_H
 
+#include <QMap>
 #include <QObject>
-#include <QtGlobal>
-
-QT_BEGIN_NAMESPACE
-class QString;
-QT_END_NAMESPACE
+#include <QString>
 
 class Definition;
 class Matches;
@@ -33,9 +30,14 @@ class AbstractDictClient : public QObject {
  public:
   explicit AbstractDictClient(QObject* parent = 0);
 
+  virtual QMap<QString, QString> databases() const = 0;
+
  signals:
   void definitionReceived(const Definition& def);
   void matchesReceived(const Matches& matches);
+
+  void databaseListReceived();
+  void strategyListReceived();
 
  public slots:
   virtual void sendDefine(const QString& word,

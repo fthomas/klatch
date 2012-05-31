@@ -234,10 +234,12 @@ void DictClient::parseTextResponse(const QString& text) {
   switch (last_status_code_) {
     case CODE_DATABASE_LIST:
       parseDatabaseList(text);
+      emit databaseListReceived();
       break;
 
     case CODE_STRATEGY_LIST:
       parseStrategyList(text);
+      emit strategyListReceived();
       break;
 
     case CODE_DATABASE_INFO:
