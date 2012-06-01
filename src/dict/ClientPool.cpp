@@ -67,12 +67,17 @@ void ClientPool::createClients() {
   for (int row = 0; row < server_list_->rowCount(); ++row) {
     const DictServerItem& server = (*server_list_)[row];
     auto client = new DictClient{server.hostName(), server.port()};
+    client->connectIfDisconnected();
 
     clients_ << client;
     connect(client, SIGNAL(definitionReceived(Definition)),
       this, SIGNAL(definitionReceived(Definition)));
     connect(client, SIGNAL(matchesReceived(Matches)),
       this, SIGNAL(matchesReceived(Matches)));
+    connect(client, SIGNAL(databaseListReceived()),
+      this, SIGNAL(databaseListReceived()));
+    connect(client, SIGNAL(strategyListReceived()),
+      this, SIGNAL(strategyListReceived()));
   }
 }
 

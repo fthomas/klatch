@@ -44,10 +44,13 @@ class LookupWidget : public QWidget {
 
  public slots:
   void lookupWord(const QString& word);
-  void setCompletionItems(const Matches& matches);
 
  protected:
   void changeEvent(QEvent* event);
+
+ private slots:
+  void setCompletionItems(const Matches& matches);
+  void updateDatabaseSelector();
 
  private:
   void createConnections();

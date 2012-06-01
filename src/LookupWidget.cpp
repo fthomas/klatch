@@ -17,11 +17,13 @@
 #include "LookupWidget.h"
 #include <QClipboard>
 #include <QEvent>
+#include <QMap>
 #include <QString>
 #include <QWidget>
 #include <KApplication>
 #include <KCmdLineArgs>
 #include <KCompletion>
+#include <KLocalizedString>
 #include "config/DictServerList.h"
 #include "dict/ClientPool.h"
 #include "dict/Definition.h"
@@ -39,6 +41,9 @@ LookupWidget::LookupWidget(DictServerList* list, QWidget* parent)
   createConnections();
   initWordInput();
   initResultView();
+
+  ui_->database_selector->addItem(
+    QString{"%1 (*)"}.arg(i18n("All Dictionaries")), "*");
 }
 
 LookupWidget::~LookupWidget() {
@@ -53,10 +58,6 @@ void LookupWidget::lookupWord(const QString& word) {
   client_pool_->sendDefine(word);
 }
 
-void LookupWidget::setCompletionItems(const Matches& matches) {
-  ui_->word_input->completionObject()->setItems(matches.words());
-}
-
 void LookupWidget::changeEvent(QEvent* event) {
   QWidget::changeEvent(event);
   switch (event->type()) {
@@ -65,6 +66,27 @@ void LookupWidget::changeEvent(QEvent* event) {
       break;
     default:
       break;
+  }
+}
+
+void LookupWidget::setCompletionItems(const Matches& matches) {
+  ui_->word_input->completionObject()->setItems(matches.words());
+}
+
+void LookupWidget::updateDatabaseSelector() {
+  const int rows = ui_->database_selector->model()->rowCount();
+  ui_->database_selector->model()->removeRows(1, rows - 1);
+
+  const auto databases = client_pool_->databases();
+  QMap<QString, QString> sorted_dbs;
+
+  const auto key_format = QString{"%1 (%2)"};
+  for (auto it = databases.begin(); it != databases.end(); ++it) {
+    sorted_dbs.insert(key_format.arg(it.value(), it.key()), it.key());
+  }
+
+  for (auto it = sorted_dbs.begin(); it != sorted_dbs.end(); ++it) {
+    ui_->database_selector->addItem(it.key(), it.value());
   }
 }
 
@@ -77,6 +99,9 @@ void LookupWidget::createConnections() {
 
   connect(client_pool_, SIGNAL(matchesReceived(Matches)),
     this, SLOT(setCompletionItems(Matches)));
+
+  connect(client_pool_, SIGNAL(databaseListReceived()),
+    this, SLOT(updateDatabaseSelector()));
 }
 
 void LookupWidget::initWordInput() {

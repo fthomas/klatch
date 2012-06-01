@@ -47,6 +47,9 @@ class DictClient : public AbstractDictClient {
   quint16 peerPort() const;
   void setPeerPort(quint16 port);
 
+  void connectIfDisconnected();
+  void disconnectIfConnected();
+
   static quint16 defaultPort();
   static int maxLineLength();
 
@@ -76,8 +79,6 @@ class DictClient : public AbstractDictClient {
   void sendStatus();
 
  private:
-  void connectIfDisconnected();
-  void disconnectIfConnected();
   void sendRawCommand(const QString& command);
 
   bool readStatusLine(const QString& line);

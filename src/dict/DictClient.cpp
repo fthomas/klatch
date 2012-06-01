@@ -81,6 +81,28 @@ void DictClient::setPeerPort(quint16 port) {
   }
 }
 
+void DictClient::connectIfDisconnected() {
+  const QAbstractSocket::SocketState state = socket_.state();
+
+  if (state == QAbstractSocket::UnconnectedState ||
+      state == QAbstractSocket::ClosingState) {
+    socket_.connectToHost(peerName(), peerPort());
+    sendClient();
+    sendShowDatabases();
+    sendShowStrategies();
+  }
+}
+
+void DictClient::disconnectIfConnected() {
+  const QAbstractSocket::SocketState state = socket_.state();
+
+  if (state != QAbstractSocket::UnconnectedState &&
+      state != QAbstractSocket::ClosingState) {
+    sendQuit();
+    socket_.disconnectFromHost();
+  }
+}
+
 quint16 DictClient::defaultPort() {
   return 2628;
 }
@@ -144,28 +166,6 @@ void DictClient::sendShowStrategies() {
 
 void DictClient::sendStatus() {
   sendRawCommand("STATUS");
-}
-
-void DictClient::connectIfDisconnected() {
-  const QAbstractSocket::SocketState state = socket_.state();
-
-  if (state == QAbstractSocket::UnconnectedState ||
-      state == QAbstractSocket::ClosingState) {
-    socket_.connectToHost(peerName(), peerPort());
-    sendClient();
-    sendShowDatabases();
-    sendShowStrategies();
-  }
-}
-
-void DictClient::disconnectIfConnected() {
-  const QAbstractSocket::SocketState state = socket_.state();
-
-  if (state != QAbstractSocket::UnconnectedState &&
-      state != QAbstractSocket::ClosingState) {
-    sendQuit();
-    socket_.disconnectFromHost();
-  }
 }
 
 void DictClient::sendRawCommand(const QString& command) {
