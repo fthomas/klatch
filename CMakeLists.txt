@@ -30,6 +30,7 @@ add_subdirectory(src)
 add_subdirectory(tests)
 
 add_custom_target(dummy SOURCES
+  ChangeLog
   COPYING
   COPYRIGHT
   README.rst
