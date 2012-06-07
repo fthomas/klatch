@@ -42,13 +42,17 @@ void MainWindow::setupActions() {
   KStandardAction::quit(kapp, SLOT(quit()),
     actionCollection());
 
-  KToggleAction* const action_show_menubar =
+  KToggleAction* const show_menubar =
     KStandardAction::showMenubar(this, SLOT(toggleMenuBar()),
       actionCollection());
 
+  KToggleAction* const show_dicts =
+    new KToggleAction(i18n("Show Dictionaries"), this);
+  actionCollection()->addAction("showDicts", show_dicts);
+
   setupGUI();
 
-  action_show_menubar->setChecked(menuBar()->isVisibleTo(this));
+  show_menubar->setChecked(menuBar()->isVisibleTo(this));
 }
 
 void MainWindow::toggleMenuBar() {

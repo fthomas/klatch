@@ -54,8 +54,10 @@ void LookupWidget::lookupWord(const QString& word) {
   results_->setWord(word);
   if (word.isEmpty()) return;
 
-  if (word.length() >= 3) client_pool_->sendMatch(word);
-  client_pool_->sendDefine(word);
+  const auto database = selectedDatabase();
+
+  if (word.length() >= 3) client_pool_->sendMatch(word, "prefix", database);
+  client_pool_->sendDefine(word, database);
 }
 
 void LookupWidget::changeEvent(QEvent* event) {
@@ -112,6 +114,14 @@ void LookupWidget::initWordInput() {
 
 void LookupWidget::initResultView() {
   ui_->result_view->setModel(results_);
+}
+
+QString LookupWidget::selectedDatabase() const {
+  auto db = ui_->database_selector->itemData(
+    ui_->database_selector->currentIndex()).toString();
+
+  if (db.isEmpty()) db = "*";
+  return db;
 }
 
 QString LookupWidget::getInitialWord() {

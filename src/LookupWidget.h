@@ -56,6 +56,7 @@ class LookupWidget : public QWidget {
   void createConnections();
   void initWordInput();
   void initResultView();
+  QString selectedDatabase() const;
 
   static QString getInitialWord();
 

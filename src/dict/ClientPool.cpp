@@ -47,14 +47,19 @@ QMap<QString, QString> ClientPool::databases() const {
 
 void ClientPool::sendDefine(const QString& word, const QString& database) {
   for (DictClient* const client : clients_) {
-    client->sendDefine(word, database);
+    if (client->hasDatabase(database)) {
+      client->sendDefine(word, database);
+    }
   }
 }
 
 void ClientPool::sendMatch(const QString& word, const QString& strategy,
                            const QString& database) {
   for (DictClient* const client : clients_) {
-    client->sendMatch(word, strategy, database);
+    if (client->hasSearchStrategy(strategy) &&
+        client->hasDatabase(database)) {
+      client->sendMatch(word, strategy, database);
+    }
   }
 }
 

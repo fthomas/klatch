@@ -119,6 +119,14 @@ QMap<QString, QString> DictClient::searchStrategies() const {
   return search_strategies_;
 }
 
+bool DictClient::hasDatabase(const QString& database) const {
+  return (database == "*") ? true : databases_.contains(database);
+}
+
+bool DictClient::hasSearchStrategy(const QString& strategy) const {
+  return search_strategies_.contains(strategy);
+}
+
 void DictClient::sendClient() {
   stream_ << "CLIENT " << KlatchData::displayNameSlashVersion() << crlf;
 }
@@ -211,7 +219,7 @@ bool DictClient::readStatusLine(const QString& line) {
 }
 
 void DictClient::parseStatusResponse(int code, const QString& line) {
-  qDebug() << code << line;
+  qDebug() << hostname_ << code << line;
 
   switch (code) {
     case CODE_DEFINITIONS_FOUND: {
@@ -229,8 +237,6 @@ void DictClient::parseStatusResponse(int code, const QString& line) {
 }
 
 void DictClient::parseTextResponse(const QString& text) {
-  qDebug() << text;
-
   switch (last_status_code_) {
     case CODE_DATABASE_LIST:
       parseDatabaseList(text);

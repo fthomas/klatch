@@ -56,6 +56,9 @@ class DictClient : public AbstractDictClient {
   QMap<QString, QString> databases() const;
   QMap<QString, QString> searchStrategies() const;
 
+  bool hasDatabase(const QString& database) const;
+  bool hasSearchStrategy(const QString& strategy) const;
+
  signals:
   void definitionsFound(int count);
   void matchesFound(int count);
