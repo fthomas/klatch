@@ -44,6 +44,7 @@ class LookupWidget : public QWidget {
 
  public slots:
   void lookupWord(const QString& word);
+  void repeatLookup();
 
  protected:
   void changeEvent(QEvent* event);

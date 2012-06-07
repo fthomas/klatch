@@ -60,6 +60,11 @@ void LookupWidget::lookupWord(const QString& word) {
   client_pool_->sendDefine(word, database);
 }
 
+void LookupWidget::repeatLookup() {
+  results_->setWord(QString{});
+  lookupWord(ui_->word_input->text());
+}
+
 void LookupWidget::changeEvent(QEvent* event) {
   QWidget::changeEvent(event);
   switch (event->type()) {
@@ -95,6 +100,9 @@ void LookupWidget::updateDatabaseSelector() {
 void LookupWidget::createConnections() {
   connect(ui_->word_input, SIGNAL(textChanged(QString)),
     this, SLOT(lookupWord(QString)));
+
+  connect(ui_->database_selector, SIGNAL(currentIndexChanged(int)),
+    this, SLOT(repeatLookup()));
 
   connect(client_pool_, SIGNAL(definitionReceived(Definition)),
     results_, SLOT(appendResult(Definition)));
