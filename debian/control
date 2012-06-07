@@ -9,6 +9,7 @@ Vcs-Browser: https://github.com/fthomas/klatch
 
 Package: klatch
 Architecture: any
+Provides: dict-client
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: DICT client for KDE
  Klatch is a KDE client for the Dictionary Server Protocol (DICT). It
