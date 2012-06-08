@@ -84,9 +84,9 @@ For bug reports, feature requests, or general feedback either use the
 Localizing
 ----------
 
-If you would like to help translating Klatch, you can use `Transifex`_
-to create or update translations of the `klatch.pot`_ file into your
-language.
+If you would like to help translating Klatch into your language, you
+can use `Transifex`_ to create or update translations of the
+`klatch.pot`_ file.
 
 .. _Transifex: https://www.transifex.net/projects/p/klatch/
 .. _klatch.pot: https://www.transifex.net/projects/p/klatch/resource/pot/
