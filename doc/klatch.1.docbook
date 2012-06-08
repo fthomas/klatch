@@ -5,6 +5,7 @@
 ]>
 <refentry>
   <refentryinfo>
+    <productname>Klatch</productname>
     <author>
       <firstname>Frank</firstname>
       <surname>Thomas</surname>
@@ -19,12 +20,13 @@
 
   <refnamediv>
     <refname>klatch</refname>
-    <refpurpose></refpurpose>
+    <refpurpose>DICT client for KDE</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
     <cmdsynopsis>
       <command>klatch</command>
+      <arg><replaceable>word</replaceable></arg>
     </cmdsynopsis>
   </refsynopsisdiv>
 
