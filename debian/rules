@@ -5,6 +5,8 @@ export  CC=/usr/lib/gcc-snapshot/bin/gcc
 export CXX=/usr/lib/gcc-snapshot/bin/g++
 export CPP=/usr/lib/gcc-snapshot/bin/cpp
 
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
 %:
 	dh $@
 
