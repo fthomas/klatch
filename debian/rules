@@ -10,3 +10,5 @@ export CPP=/usr/lib/gcc-snapshot/bin/cpp
 
 override_dh_auto_build:
 	dh_auto_build -- all #ut
+
+override_dh_auto_test:
