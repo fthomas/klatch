@@ -81,6 +81,16 @@ For bug reports, feature requests, or general feedback either use the
 .. _issue tracker: http://github.com/fthomas/klatch/issues
 .. _write me an email: frank@timepit.eu
 
+Localizing
+----------
+
+If you would like to help translating Klatch, you can use `Transifex`_
+to create or update translations of the `klatch.pot`_ file into your
+language.
+
+.. _Transifex: https://www.transifex.net/projects/p/klatch/
+.. _klatch.pot: https://www.transifex.net/projects/p/klatch/resource/pot/
+
 License
 -------
 
