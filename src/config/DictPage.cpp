@@ -17,6 +17,8 @@
 #include "config/DictPage.h"
 #include <QEvent>
 #include <QItemSelection>
+#include <QModelIndex>
+#include <QModelIndexList>
 #include <QWidget>
 #include <QtGlobal>
 #include <KIcon>

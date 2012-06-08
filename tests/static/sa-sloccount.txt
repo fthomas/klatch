@@ -1,10 +1,14 @@
 Have a non-directory at the top, so creating directory top_dir
+Adding ChangeLog to top_dir
 Adding CMakeLists.txt to top_dir
 Adding CMakeLists.txt.user to top_dir
 Adding COPYING to top_dir
 Adding COPYRIGHT to top_dir
+Creating filelist for doc
+Creating filelist for po
 Adding README.rst to top_dir
 Creating filelist for tests
+Adding TODO to top_dir
 Have a non-directory at the top, so creating directory src_top_dir
 Adding src/CMakeLists.txt to src_top_dir
 Creating filelist for src_config
@@ -29,29 +33,32 @@ Computing results.
 
 
 SLOC	Directory	SLOC-by-Language (Sorted)
-601     src_dict        cpp=601
-466     src_config      cpp=466
+655     src_dict        cpp=655
+469     src_config      cpp=469
 424     tests           cpp=424
-206     src_top_dir     cpp=206
-132     src_results     cpp=132
+238     src_top_dir     cpp=238
+155     src_results     cpp=155
+111     src_scripts     cpp=111
 105     src_utility     cpp=105
-87      src_scripts     cpp=87
+47      po              sh=47
+0       doc             (none)
 0       top_dir         (none)
 
 
 Totals grouped by language (dominant language first):
-cpp:           2021 (100.00%)
+cpp:           2157 (97.87%)
+sh:              47 (2.13%)
 
 
 
 
-Total Physical Source Lines of Code (SLOC)                = 2,021
-Development Effort Estimate, Person-Years (Person-Months) = 0.42 (5.02)
+Total Physical Source Lines of Code (SLOC)                = 2,204
+Development Effort Estimate, Person-Years (Person-Months) = 0.46 (5.50)
  (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
-Schedule Estimate, Years (Months)                         = 0.38 (4.62)
+Schedule Estimate, Years (Months)                         = 0.40 (4.78)
  (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
-Estimated Average Number of Developers (Effort/Schedule)  = 1.09
-Total Estimated Cost to Develop                           = $ 56,557
+Estimated Average Number of Developers (Effort/Schedule)  = 1.15
+Total Estimated Cost to Develop                           = $ 61,946
  (average salary = $56,286/year, overhead = 2.40).
 SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
 SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.

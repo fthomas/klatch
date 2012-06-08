@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN"
+  "dtd/kdex.dtd" [
+
+]>
+<refentry>
+  <refentryinfo>
+    <productname>Klatch</productname>
+    <author>
+      <firstname>Frank</firstname>
+      <surname>Thomas</surname>
+      <email>frank@timepit.eu</email>
+    </author>
+  </refentryinfo>
+
+  <refmeta>
+    <refentrytitle>klatch</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>klatch</refname>
+    <refpurpose>DICT client for KDE</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>klatch</command>
+      <arg><replaceable>word</replaceable></arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1>
+    <title>DESCRIPTION</title>
+    <para></para>
+  </refsect1>
+</refentry>

@@ -44,15 +44,22 @@ class LookupWidget : public QWidget {
 
  public slots:
   void lookupWord(const QString& word);
-  void setCompletionItems(const Matches& matches);
+  void repeatLookup();
+
+  void showDatabaseSelector(bool show);
 
  protected:
   void changeEvent(QEvent* event);
+
+ private slots:
+  void setCompletionItems(const Matches& matches);
+  void updateDatabaseSelector();
 
  private:
   void createConnections();
   void initWordInput();
   void initResultView();
+  QString selectedDatabase() const;
 
   static QString getInitialWord();
 

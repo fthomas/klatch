@@ -15,6 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dict/ClientPool.h"
+#include <QMap>
 #include <QString>
 #include <QtAlgorithms>
 #include <QtGlobal>
@@ -36,16 +37,29 @@ ClientPool::~ClientPool() {
   clearClients();
 }
 
+QMap<QString, QString> ClientPool::databases() const {
+  QMap<QString, QString> retval;
+  for (DictClient* const client : clients_) {
+    retval.unite(client->databases());
+  }
+  return retval;
+}
+
 void ClientPool::sendDefine(const QString& word, const QString& database) {
   for (DictClient* const client : clients_) {
-    client->sendDefine(word, database);
+    if (client->hasDatabase(database)) {
+      client->sendDefine(word, database);
+    }
   }
 }
 
 void ClientPool::sendMatch(const QString& word, const QString& strategy,
                            const QString& database) {
   for (DictClient* const client : clients_) {
-    client->sendMatch(word, strategy, database);
+    if (client->hasSearchStrategy(strategy) &&
+        client->hasDatabase(database)) {
+      client->sendMatch(word, strategy, database);
+    }
   }
 }
 
@@ -58,12 +72,17 @@ void ClientPool::createClients() {
   for (int row = 0; row < server_list_->rowCount(); ++row) {
     const DictServerItem& server = (*server_list_)[row];
     auto client = new DictClient{server.hostName(), server.port()};
+    client->connectIfDisconnected();
 
     clients_ << client;
     connect(client, SIGNAL(definitionReceived(Definition)),
       this, SIGNAL(definitionReceived(Definition)));
     connect(client, SIGNAL(matchesReceived(Matches)),
       this, SIGNAL(matchesReceived(Matches)));
+    connect(client, SIGNAL(databaseListReceived()),
+      this, SIGNAL(databaseListReceived()));
+    connect(client, SIGNAL(strategyListReceived()),
+      this, SIGNAL(strategyListReceived()));
   }
 }
 

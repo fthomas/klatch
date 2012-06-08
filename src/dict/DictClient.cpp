@@ -81,6 +81,28 @@ void DictClient::setPeerPort(quint16 port) {
   }
 }
 
+void DictClient::connectIfDisconnected() {
+  const QAbstractSocket::SocketState state = socket_.state();
+
+  if (state == QAbstractSocket::UnconnectedState ||
+      state == QAbstractSocket::ClosingState) {
+    socket_.connectToHost(peerName(), peerPort());
+    sendClient();
+    sendShowDatabases();
+    sendShowStrategies();
+  }
+}
+
+void DictClient::disconnectIfConnected() {
+  const QAbstractSocket::SocketState state = socket_.state();
+
+  if (state != QAbstractSocket::UnconnectedState &&
+      state != QAbstractSocket::ClosingState) {
+    sendQuit();
+    socket_.disconnectFromHost();
+  }
+}
+
 quint16 DictClient::defaultPort() {
   return 2628;
 }
@@ -95,6 +117,14 @@ QMap<QString, QString> DictClient::databases() const {
 
 QMap<QString, QString> DictClient::searchStrategies() const {
   return search_strategies_;
+}
+
+bool DictClient::hasDatabase(const QString& database) const {
+  return (database == "*") ? true : databases_.contains(database);
+}
+
+bool DictClient::hasSearchStrategy(const QString& strategy) const {
+  return search_strategies_.contains(strategy);
 }
 
 void DictClient::sendClient() {
@@ -146,28 +176,6 @@ void DictClient::sendStatus() {
   sendRawCommand("STATUS");
 }
 
-void DictClient::connectIfDisconnected() {
-  const QAbstractSocket::SocketState state = socket_.state();
-
-  if (state == QAbstractSocket::UnconnectedState ||
-      state == QAbstractSocket::ClosingState) {
-    socket_.connectToHost(peerName(), peerPort());
-    sendClient();
-    sendShowDatabases();
-    sendShowStrategies();
-  }
-}
-
-void DictClient::disconnectIfConnected() {
-  const QAbstractSocket::SocketState state = socket_.state();
-
-  if (state != QAbstractSocket::UnconnectedState &&
-      state != QAbstractSocket::ClosingState) {
-    sendQuit();
-    socket_.disconnectFromHost();
-  }
-}
-
 void DictClient::sendRawCommand(const QString& command) {
   connectIfDisconnected();
   stream_ << command << crlf;
@@ -211,7 +219,7 @@ bool DictClient::readStatusLine(const QString& line) {
 }
 
 void DictClient::parseStatusResponse(int code, const QString& line) {
-  qDebug() << code << line;
+  qDebug() << hostname_ << code << line;
 
   switch (code) {
     case CODE_DEFINITIONS_FOUND: {
@@ -229,15 +237,15 @@ void DictClient::parseStatusResponse(int code, const QString& line) {
 }
 
 void DictClient::parseTextResponse(const QString& text) {
-  qDebug() << text;
-
   switch (last_status_code_) {
     case CODE_DATABASE_LIST:
       parseDatabaseList(text);
+      emit databaseListReceived();
       break;
 
     case CODE_STRATEGY_LIST:
       parseStrategyList(text);
+      emit strategyListReceived();
       break;
 
     case CODE_DATABASE_INFO:

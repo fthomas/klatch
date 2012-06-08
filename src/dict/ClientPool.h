@@ -17,14 +17,11 @@
 #ifndef DICT_CLIENTPOOL_H
 #define DICT_CLIENTPOOL_H
 
-#include <QObject>
+#include <QMap>
 #include <QList>
-#include <QtGlobal>
+#include <QObject>
+#include <QString>
 #include "dict/AbstractDictClient.h"
-
-QT_BEGIN_NAMESPACE
-class QString;
-QT_END_NAMESPACE
 
 class DictClient;
 class DictServerList;
@@ -35,6 +32,8 @@ class ClientPool : public AbstractDictClient {
  public:
   explicit ClientPool(DictServerList* list, QObject* parent = 0);
   ~ClientPool();
+
+  QMap<QString, QString> databases() const;
 
  public slots:
   void sendDefine(const QString& word, const QString& database = "*");

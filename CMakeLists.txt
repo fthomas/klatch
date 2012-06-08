@@ -4,7 +4,7 @@ project(Klatch)
 string(TOLOWER ${CMAKE_PROJECT_NAME} PROJECT_NAME_LOWER)
 
 set(klatch_VERSION_MAJOR "0")
-set(klatch_VERSION_MINOR "1")
+set(klatch_VERSION_MINOR "2")
 set(klatch_VERSION "${klatch_VERSION_MAJOR}.${klatch_VERSION_MINOR}")
 
 # Enable more warnings if g++ or clang is used.
@@ -24,10 +24,13 @@ list(REMOVE_ITEM CMAKE_CXX_FLAGS "-ansi")
 
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 
+add_subdirectory(doc)
+add_subdirectory(po)
 add_subdirectory(src)
 add_subdirectory(tests)
 
 add_custom_target(dummy SOURCES
+  ChangeLog
   COPYING
   COPYRIGHT
   README.rst

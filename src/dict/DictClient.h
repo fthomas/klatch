@@ -47,11 +47,17 @@ class DictClient : public AbstractDictClient {
   quint16 peerPort() const;
   void setPeerPort(quint16 port);
 
+  void connectIfDisconnected();
+  void disconnectIfConnected();
+
   static quint16 defaultPort();
   static int maxLineLength();
 
   QMap<QString, QString> databases() const;
   QMap<QString, QString> searchStrategies() const;
+
+  bool hasDatabase(const QString& database) const;
+  bool hasSearchStrategy(const QString& strategy) const;
 
  signals:
   void definitionsFound(int count);
@@ -76,8 +82,6 @@ class DictClient : public AbstractDictClient {
   void sendStatus();
 
  private:
-  void connectIfDisconnected();
-  void disconnectIfConnected();
   void sendRawCommand(const QString& command);
 
   bool readStatusLine(const QString& line);
