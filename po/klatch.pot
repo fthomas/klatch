@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: klatch\n"
 "Report-Msgid-Bugs-To: https://github.com/fthomas/klatch/issues\n"
-"POT-Creation-Date: 2012-06-01 06:25+0200\n"
+"POT-Creation-Date: 2012-06-08 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,11 +41,15 @@ msgstr ""
 msgid "Word to lookup in dictionaries"
 msgstr ""
 
-#: MainWindow.cpp:66
+#: MainWindow.cpp:73
+msgid "Show Dictionaries"
+msgstr ""
+
+#: MainWindow.cpp:93
 msgid "DICT"
 msgstr ""
 
-#: MainWindow.cpp:67
+#: MainWindow.cpp:94
 msgid "Manage Servers"
 msgstr ""
 
