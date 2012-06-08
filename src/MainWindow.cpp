@@ -32,8 +32,31 @@
 MainWindow::MainWindow(QWidget* parent) : KXmlGuiWindow{parent},
     server_list_{new DictServerList{this}},
     lookup_{new LookupWidget{server_list_, this}} {
-  setupActions();
   setCentralWidget(lookup_);
+  setupActions();
+  readConfig();
+}
+
+MainWindow::~MainWindow() {
+}
+
+bool MainWindow::queryExit() {
+  saveSettings();
+  return KXmlGuiWindow::queryExit();
+}
+
+void MainWindow::readConfig() {
+  if (show_dicts_) {
+    show_dicts_->setChecked(KlatchConfig::showDictionaries());
+    lookup_->showDatabaseSelector(show_dicts_->isChecked());
+  }
+}
+
+void MainWindow::saveSettings() {
+  if (show_dicts_) {
+    KlatchConfig::setShowDictionaries(show_dicts_->isChecked());
+  }
+  KlatchConfig::self()->writeConfig();
 }
 
 void MainWindow::setupActions() {
@@ -42,17 +65,17 @@ void MainWindow::setupActions() {
   KStandardAction::quit(kapp, SLOT(quit()),
     actionCollection());
 
-  KToggleAction* const show_menubar =
+  auto const show_menubar =
     KStandardAction::showMenubar(this, SLOT(toggleMenuBar()),
       actionCollection());
+  show_menubar->setChecked(menuBar()->isVisibleTo(this));
 
-  KToggleAction* const show_dicts =
-    new KToggleAction(i18n("Show Dictionaries"), this);
-  actionCollection()->addAction("showDicts", show_dicts);
+  show_dicts_ = new KToggleAction(i18n("Show Dictionaries"), this);
+  connect(show_dicts_, SIGNAL(toggled(bool)),
+    lookup_, SLOT(showDatabaseSelector(bool)));
+  actionCollection()->addAction("show_dicts", show_dicts_);
 
   setupGUI();
-
-  show_menubar->setChecked(menuBar()->isVisibleTo(this));
 }
 
 void MainWindow::toggleMenuBar() {

@@ -8,7 +8,7 @@
 
   <MenuBar>
     <Menu name="settings" >
-      <Action name="showDicts" />
+      <Action name="show_dicts" />
     </Menu>
   </MenuBar>
 </gui>

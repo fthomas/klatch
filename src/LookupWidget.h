@@ -46,6 +46,8 @@ class LookupWidget : public QWidget {
   void lookupWord(const QString& word);
   void repeatLookup();
 
+  void showDatabaseSelector(bool show);
+
  protected:
   void changeEvent(QEvent* event);
 

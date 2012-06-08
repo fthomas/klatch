@@ -25,6 +25,8 @@ QT_BEGIN_NAMESPACE
 class QWidget;
 QT_END_NAMESPACE
 
+class KToggleAction;
+
 class DictServerList;
 class LookupWidget;
 
@@ -33,17 +35,26 @@ class MainWindow : public KXmlGuiWindow {
 
  public:
   explicit MainWindow(QWidget* parent = 0);
+  virtual ~MainWindow();
+
+ protected:
+  bool queryExit();
 
  private slots:
   void toggleMenuBar();
   void showPreferences();
 
  private:
+  void readConfig();
+  void saveSettings();
+
   void setupActions();
 
  private:
   DictServerList* const server_list_;
   LookupWidget* const lookup_;
+
+  KToggleAction* show_dicts_;
 };
 
 #endif // MAINWINDOW_H

@@ -65,6 +65,10 @@ void LookupWidget::repeatLookup() {
   lookupWord(ui_->word_input->text());
 }
 
+void LookupWidget::showDatabaseSelector(bool show) {
+  ui_->database_selector->setVisible(show);
+}
+
 void LookupWidget::changeEvent(QEvent* event) {
   QWidget::changeEvent(event);
   switch (event->type()) {
