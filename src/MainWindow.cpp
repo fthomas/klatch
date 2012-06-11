@@ -16,6 +16,7 @@
 
 #include "MainWindow.h"
 #include <QWidget>
+#include <Qt>
 #include <KAction>
 #include <KActionCollection>
 #include <KApplication>
@@ -71,6 +72,7 @@ void MainWindow::setupActions() {
   show_menubar->setChecked(menuBar()->isVisibleTo(this));
 
   show_dicts_ = new KToggleAction(i18n("Show Dictionaries"), this);
+  show_dicts_->setShortcut(Qt::CTRL + Qt::Key_D);
   connect(show_dicts_, SIGNAL(toggled(bool)),
     lookup_, SLOT(showDatabaseSelector(bool)));
   actionCollection()->addAction("show_dicts", show_dicts_);
