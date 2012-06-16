@@ -16,6 +16,7 @@ enable_testing()
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_COPY ${CMAKE_COMMAND} -E copy)
 
+find_package(Gettext REQUIRED)
 find_package(KDE4 REQUIRED)
 include(KDE4Defaults)
 
