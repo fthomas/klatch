@@ -4,7 +4,7 @@ project(Klatch)
 string(TOLOWER ${CMAKE_PROJECT_NAME} PROJECT_NAME_LOWER)
 
 set(klatch_VERSION_MAJOR "0")
-set(klatch_VERSION_MINOR "2")
+set(klatch_VERSION_MINOR "3")
 set(klatch_VERSION "${klatch_VERSION_MAJOR}.${klatch_VERSION_MINOR}")
 
 # Enable more warnings if g++ or clang is used.
@@ -16,6 +16,7 @@ enable_testing()
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_COPY ${CMAKE_COMMAND} -E copy)
 
+find_package(Gettext REQUIRED)
 find_package(KDE4 REQUIRED)
 include(KDE4Defaults)
 
